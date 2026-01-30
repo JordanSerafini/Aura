@@ -7,7 +7,7 @@ Architecture multi-niveaux inspirée de MIRIX et des recherches cognitives.
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from enum import Enum, auto
-from typing import Optional, List, Dict, Any
+from typing import Any
 import json
 import hashlib
 
@@ -45,17 +45,17 @@ class MemoryMetadata:
     created_at: str = field(default_factory=lambda: datetime.now().isoformat())
     updated_at: str = field(default_factory=lambda: datetime.now().isoformat())
     access_count: int = 0
-    last_accessed: Optional[str] = None
+    last_accessed: str | None = None
     source: str = "user"  # user, system, agent, consolidation
-    tags: List[str] = field(default_factory=list)
+    tags: list[str] = field(default_factory=list)
     priority: int = MemoryPriority.NORMAL.value
     status: str = MemoryStatus.ACTIVE.name
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'MemoryMetadata':
+    def from_dict(cls, data: dict[str, Any]) -> 'MemoryMetadata':
         return cls(**data)
 
 
@@ -71,7 +71,7 @@ class Episode:
     action: str            # Action effectuée
     outcome: str           # Résultat (success/failure + détails)
     thought_process: str   # Raisonnement qui a mené à l'action
-    entities: List[str]    # Entités impliquées
+    entities: list[str]    # Entités impliquées
     emotional_valence: float = 0.0  # -1 (négatif) à +1 (positif)
     importance: float = 0.5  # 0 à 1
     metadata: MemoryMetadata = field(default_factory=MemoryMetadata)
@@ -84,13 +84,13 @@ class Episode:
         data = f"{self.timestamp}:{self.context[:50]}:{self.action[:50]}"
         return f"ep_{hashlib.sha256(data.encode()).hexdigest()[:12]}"
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
         d['metadata'] = self.metadata.to_dict()
         return d
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'Episode':
+    def from_dict(cls, data: dict[str, Any]) -> 'Episode':
         if 'metadata' in data and isinstance(data['metadata'], dict):
             data['metadata'] = MemoryMetadata.from_dict(data['metadata'])
         return cls(**data)
@@ -106,11 +106,11 @@ class Skill:
     name: str
     description: str
     pattern: str           # Pattern général appris
-    trigger_conditions: List[str]  # Quand appliquer ce skill
+    trigger_conditions: list[str]  # Quand appliquer ce skill
     action_template: str   # Template d'action à exécuter
     success_rate: float = 0.0
     usage_count: int = 0
-    source_episodes: List[str] = field(default_factory=list)  # IDs des épisodes sources
+    source_episodes: list[str] = field(default_factory=list)  # IDs des épisodes sources
     metadata: MemoryMetadata = field(default_factory=MemoryMetadata)
 
     def __post_init__(self):
@@ -121,13 +121,13 @@ class Skill:
         data = f"{self.name}:{self.pattern[:50]}"
         return f"sk_{hashlib.sha256(data.encode()).hexdigest()[:12]}"
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
         d['metadata'] = self.metadata.to_dict()
         return d
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'Skill':
+    def from_dict(cls, data: dict[str, Any]) -> 'Skill':
         if 'metadata' in data and isinstance(data['metadata'], dict):
             data['metadata'] = MemoryMetadata.from_dict(data['metadata'])
         return cls(**data)
@@ -144,7 +144,7 @@ class KnowledgeTriple:
     predicate: str  # Type de relation
     object: str
     confidence: float = 1.0  # Confiance dans ce triplet
-    source_episode: Optional[str] = None  # Lien vers l'épisode source
+    source_episode: str | None = None  # Lien vers l'épisode source
     metadata: MemoryMetadata = field(default_factory=MemoryMetadata)
 
     def __post_init__(self):
@@ -159,13 +159,13 @@ class KnowledgeTriple:
         """Représentation textuelle pour l'embedding."""
         return f"{self.subject} {self.predicate} {self.object}"
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
         d['metadata'] = self.metadata.to_dict()
         return d
 
     @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'KnowledgeTriple':
+    def from_dict(cls, data: dict[str, Any]) -> 'KnowledgeTriple':
         if 'metadata' in data and isinstance(data['metadata'], dict):
             data['metadata'] = MemoryMetadata.from_dict(data['metadata'])
         return cls(**data)
@@ -195,7 +195,7 @@ class MemoryScore:
             self.access_frequency * 0.1
         )
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             'similarity': self.similarity,
             'importance': self.importance,
@@ -214,7 +214,7 @@ class ConsolidationResult:
     triples_extracted: int
     episodes_archived: int
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-    details: Dict[str, Any] = field(default_factory=dict)
+    details: dict[str, Any] = field(default_factory=dict)
 
 
 # Configuration par défaut du système de mémoire

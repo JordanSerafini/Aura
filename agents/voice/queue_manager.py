@@ -26,8 +26,8 @@ class QueueItem:
     timestamp: float = field(compare=False)
     id: str = field(compare=False)
     text: str = field(compare=False)
-    voice: Optional[str] = field(compare=False, default=None)
-    callback: Optional[Callable] = field(compare=False, default=None)
+    voice: str | None = field(compare=False, default=None)
+    callback: Callable | None = field(compare=False, default=None)
 
     def __post_init__(self):
         # Inverser la priorité pour que HIGH passe avant LOW dans le heap
@@ -40,18 +40,18 @@ class VoiceQueueManager:
     def __init__(self, max_queue_size: int = 50):
         self.max_queue_size = max_queue_size
         self._queue: asyncio.PriorityQueue = asyncio.PriorityQueue(maxsize=max_queue_size)
-        self._current_item: Optional[QueueItem] = None
+        self._current_item: QueueItem | None = None
         self._is_playing = False
         self._is_running = False
-        self._speak_callback: Optional[Callable[[str, Optional[str]], Awaitable[bool]]] = None
-        self._task: Optional[asyncio.Task] = None
+        self._speak_callback: Callable[[str, Optional[str | None], Awaitable[bool]]] = None
+        self._task: asyncio.Task | None = None
         self._lock = asyncio.Lock()
 
         # Stats
         self._total_processed = 0
         self._total_dropped = 0
 
-    def set_speak_callback(self, callback: Callable[[str, Optional[str]], Awaitable[bool]]):
+    def set_speak_callback(self, callback: Callable[[str, str | None], Awaitable[bool]]):
         """Définit la fonction de synthèse vocale à appeler"""
         self._speak_callback = callback
 
@@ -76,10 +76,10 @@ class VoiceQueueManager:
     async def enqueue(
         self,
         text: str,
-        voice: Optional[str] = None,
+        voice: str | None = None,
         priority: Priority = Priority.NORMAL,
-        callback: Optional[Callable] = None
-    ) -> Optional[str]:
+        callback: Callable | None = None
+    ) -> str | None:
         """Ajoute un message à la queue"""
 
         # Si urgent, interrompre le message en cours
@@ -186,7 +186,7 @@ class VoiceQueueManager:
 
 
 # Singleton pour accès global
-_queue_manager: Optional[VoiceQueueManager] = None
+_queue_manager: VoiceQueueManager | None = None
 
 
 def get_queue_manager() -> VoiceQueueManager:

@@ -10,7 +10,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Dict, Any, Set, Tuple
+from typing import Dict, Any
 
 import chromadb
 from chromadb.config import Settings
@@ -61,7 +61,7 @@ class KnowledgeGraph:
         "returns": "Retourne"
     }
 
-    def __init__(self, storage_path: Optional[Path] = None):
+    def __init__(self, storage_path: Path | None = None):
         """Initialise le graphe de connaissances."""
         self.storage_path = storage_path or Path.home() / ".aura" / "memory" / "knowledge"
         self.storage_path.mkdir(parents=True, exist_ok=True)
@@ -78,16 +78,16 @@ class KnowledgeGraph:
         )
 
         # Modèle d'embedding
-        self._model: Optional[SentenceTransformer] = None
+        self._model: SentenceTransformer | None = None
 
         # Index du graphe (adjacency lists)
         self.graph_file = self.storage_path / "graph.json"
-        self._graph: Dict[str, dict] = self._load_graph()
+        self._graph: dict[str, dict] = self._load_graph()
 
         # Index inversé pour recherche rapide
-        self._subject_index: Dict[str, Set[str]] = defaultdict(set)
-        self._object_index: Dict[str, Set[str]] = defaultdict(set)
-        self._predicate_index: Dict[str, Set[str]] = defaultdict(set)
+        self._subject_index: dict[str, set[str]] = defaultdict(set)
+        self._object_index: dict[str, set[str]] = defaultdict(set)
+        self._predicate_index: dict[str, set[str]] = defaultdict(set)
         self._rebuild_indices()
 
     @property
@@ -96,7 +96,7 @@ class KnowledgeGraph:
             self._model = SentenceTransformer(MEMORY_CONFIG["embedding_model"])
         return self._model
 
-    def _load_graph(self) -> Dict[str, dict]:
+    def _load_graph(self) -> dict[str, dict]:
         """Charge le graphe depuis le fichier."""
         if self.graph_file.exists():
             try:
@@ -120,7 +120,7 @@ class KnowledgeGraph:
             self._object_index[data["object"].lower()].add(triple_id)
             self._predicate_index[data["predicate"].lower()].add(triple_id)
 
-    def _get_embedding(self, text: str) -> List[float]:
+    def _get_embedding(self, text: str) -> list[float]:
         return self.model.encode(text, show_progress_bar=False).tolist()
 
     def add_triple(
@@ -129,7 +129,7 @@ class KnowledgeGraph:
         predicate: str,
         obj: str,
         confidence: float = 1.0,
-        source_episode: Optional[str] = None
+        source_episode: str | None = None
     ) -> str:
         """
         Ajoute un triplet au graphe.
@@ -194,7 +194,7 @@ class KnowledgeGraph:
 
         return triple.id
 
-    def _find_existing_triple(self, subject: str, predicate: str, obj: str) -> Optional[str]:
+    def _find_existing_triple(self, subject: str, predicate: str, obj: str) -> str | None:
         """Trouve un triplet existant identique."""
         subject_matches = self._subject_index.get(subject.lower(), set())
         for triple_id in subject_matches:
@@ -204,7 +204,7 @@ class KnowledgeGraph:
                 return triple_id
         return None
 
-    def extract_triples_from_text(self, text: str, source_episode: Optional[str] = None) -> List[str]:
+    def extract_triples_from_text(self, text: str, source_episode: str | None = None) -> list[str]:
         """
         Extrait automatiquement des triplets depuis du texte.
         Utilise des patterns simples pour l'extraction.
@@ -259,7 +259,7 @@ class KnowledgeGraph:
         self,
         query: str,
         n_results: int = 10
-    ) -> List[Tuple[KnowledgeTriple, float]]:
+    ) -> list[tuple[KnowledgeTriple, float]]:
         """
         Recherche sémantique dans le graphe.
 
@@ -293,7 +293,7 @@ class KnowledgeGraph:
 
         return triples_with_scores
 
-    def get_relations(self, entity: str, direction: str = "both") -> List[KnowledgeTriple]:
+    def get_relations(self, entity: str, direction: str = "both") -> list[KnowledgeTriple]:
         """
         Récupère toutes les relations d'une entité.
 
@@ -319,7 +319,7 @@ class KnowledgeGraph:
 
         return triples
 
-    def get_by_predicate(self, predicate: str) -> List[KnowledgeTriple]:
+    def get_by_predicate(self, predicate: str) -> list[KnowledgeTriple]:
         """Récupère tous les triplets avec un prédicat donné."""
         triples = []
         for triple_id in self._predicate_index.get(predicate.lower(), set()):
@@ -331,8 +331,8 @@ class KnowledgeGraph:
         self,
         start_entity: str,
         max_depth: int = 2,
-        predicates: Optional[List[str]] = None
-    ) -> Dict[str, List[KnowledgeTriple]]:
+        predicates: list[str | None] = None
+    ) -> dict[str, list[KnowledgeTriple]]:
         """
         Traverse le graphe à partir d'une entité.
 
@@ -375,7 +375,7 @@ class KnowledgeGraph:
         source: str,
         target: str,
         max_depth: int = 4
-    ) -> Optional[List[KnowledgeTriple]]:
+    ) -> list[KnowledgeTriple | None]:
         """
         Trouve un chemin entre deux entités.
 
@@ -440,7 +440,7 @@ class KnowledgeGraph:
 
         return True
 
-    def get_all_entities(self) -> Set[str]:
+    def get_all_entities(self) -> set[str]:
         """Récupère toutes les entités uniques du graphe."""
         entities = set()
         for data in self._graph.values():
@@ -448,7 +448,7 @@ class KnowledgeGraph:
             entities.add(data["object"])
         return entities
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Retourne les statistiques du graphe."""
         total_triples = len(self._graph)
         entities = self.get_all_entities()

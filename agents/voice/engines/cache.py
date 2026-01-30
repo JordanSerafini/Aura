@@ -10,7 +10,6 @@ import os
 import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
-from typing import Optional
 import aiofiles
 import aiofiles.os
 
@@ -31,7 +30,7 @@ class CacheEntry:
 class VoiceCache:
     """Cache intelligent pour les synthèses vocales"""
 
-    def __init__(self, cache_dir: Optional[Path] = None, max_size_mb: int = 100):
+    def __init__(self, cache_dir: Path | None = None, max_size_mb: int = 100):
         self.cache_dir = cache_dir or Path.home() / ".aura" / "voice" / "cache"
         self.index_file = self.cache_dir / "index.json"
         self.max_size_bytes = max_size_mb * 1024 * 1024
@@ -83,7 +82,7 @@ class VoiceCache:
         content = f"{text}|{voice}|{engine}"
         return hashlib.sha256(content.encode()).hexdigest()[:16]
 
-    async def get(self, text: str, voice: str, engine: str) -> Optional[bytes]:
+    async def get(self, text: str, voice: str, engine: str) -> bytes | None:
         """Récupère un audio depuis le cache"""
         cache_key = self._get_cache_key(text, voice, engine)
 

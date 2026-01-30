@@ -7,7 +7,7 @@ import asyncio
 import tempfile
 import os
 from pathlib import Path
-from typing import AsyncIterator, Optional
+from typing import AsyncIterator
 import subprocess
 import shutil
 

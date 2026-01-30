@@ -95,11 +95,20 @@ def modernize_file(filepath: Path, dry_run: bool = False) -> dict:
     return result
 
 
-def modernize_directory(path: Path, dry_run: bool = False) -> list:
+def modernize_directory(path: Path, dry_run: bool = False, recursive: bool = True) -> list:
     """Modernise tous les fichiers Python d'un répertoire."""
     results = []
 
-    for filepath in path.glob('*.py'):
+    # Directories to skip
+    skip_dirs = {'__pycache__', '.git', 'venv', '.venv', 'node_modules'}
+
+    # Use rglob for recursive, glob for non-recursive
+    pattern_func = path.rglob if recursive else path.glob
+
+    for filepath in pattern_func('*.py'):
+        # Skip certain directories
+        if any(skip in filepath.parts for skip in skip_dirs):
+            continue
         if filepath.name == 'modernize_typing.py':
             continue
         result = modernize_file(filepath, dry_run)

@@ -10,7 +10,7 @@ import sys
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Dict, Any, Tuple
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).parent))
 from memory_types import (
@@ -30,9 +30,9 @@ class MemoryConsolidator:
 
     def __init__(
         self,
-        episodic: Optional[EpisodicMemory] = None,
-        procedural: Optional[ProceduralMemory] = None,
-        knowledge: Optional[KnowledgeGraph] = None
+        episodic: EpisodicMemory | None = None,
+        procedural: ProceduralMemory | None = None,
+        knowledge: KnowledgeGraph | None = None
     ):
         """Initialise le consolidateur avec les composants mémoire."""
         self.episodic = episodic or EpisodicMemory()
@@ -122,7 +122,7 @@ class MemoryConsolidator:
 
         return result
 
-    def _group_by_pattern(self, episodes: List[Episode]) -> Dict[str, List[Episode]]:
+    def _group_by_pattern(self, episodes: list[Episode]) -> dict[str, list[Episode]]:
         """
         Groupe les épisodes par patterns d'action similaires.
         Utilise une heuristique simple basée sur les premiers mots de l'action.
@@ -141,9 +141,9 @@ class MemoryConsolidator:
     def _consolidate_pattern_to_skill(
         self,
         pattern_key: str,
-        episodes: List[Episode],
+        episodes: list[Episode],
         dry_run: bool
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Consolide un groupe d'épisodes en skill.
         """
@@ -212,7 +212,7 @@ class MemoryConsolidator:
 
         return result
 
-    def _find_common_pattern(self, texts: List[str]) -> str:
+    def _find_common_pattern(self, texts: list[str]) -> str:
         """Trouve le pattern commun dans une liste de textes."""
         if not texts:
             return ""
@@ -231,7 +231,7 @@ class MemoryConsolidator:
 
         return pattern if pattern else texts[0][:100]
 
-    def _extract_trigger_conditions(self, contexts: List[str]) -> List[str]:
+    def _extract_trigger_conditions(self, contexts: list[str]) -> list[str]:
         """Extrait les conditions déclencheuses depuis les contextes."""
         # Mots-clés fréquents dans les contextes
         word_freq = defaultdict(int)
@@ -330,7 +330,7 @@ class MemoryConsolidator:
         }
         log_file.write_text(json.dumps(log_data, indent=2))
 
-    def analyze_patterns(self, limit: int = 50) -> Dict[str, Any]:
+    def analyze_patterns(self, limit: int = 50) -> dict[str, Any]:
         """
         Analyse les patterns dans les épisodes récents.
         Utile pour voir quels skills pourraient être créés.
@@ -364,7 +364,7 @@ class MemoryConsolidator:
 
         return analysis
 
-    def get_consolidation_history(self, limit: int = 10) -> List[Dict[str, Any]]:
+    def get_consolidation_history(self, limit: int = 10) -> list[dict[str, Any]]:
         """Récupère l'historique des consolidations."""
         log_files = sorted(self.logs_dir.glob("consolidation_*.json"), reverse=True)
         history = []
@@ -378,7 +378,7 @@ class MemoryConsolidator:
 
         return history
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Statistiques globales du système de mémoire."""
         return {
             "episodic": self.episodic.get_stats(),

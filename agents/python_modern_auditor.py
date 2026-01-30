@@ -24,8 +24,8 @@ class PythonModernAuditor:
         "critical": [
             (r'from\s+typing\s+import\s+(?:List|Dict|Set|Tuple|Optional|Union)\b',
              "Legacy typing import - use built-in types (list, dict, set | None)"),
-            (r':\s*Optional\[', "Optional[X] is deprecated - use 'X | None'"),
-            (r':\s*Union\[', "Union[X, Y] is deprecated - use 'X | Y'"),
+            (r':\s*Optional\[', "X | None is deprecated - use 'X | None'"),
+            (r':\s*Union\[', "X | Y is deprecated - use 'X | Y'"),
             (r'\bprint\s*\([^)]*\)\s*$', "Bare print() - use logging or rich"),
         ],
         "high": [
@@ -54,15 +54,14 @@ class PythonModernAuditor:
     }
 
     MODERN_TYPE_HINTS = {
-        "list[": "List[",
-        "dict[": "Dict[",
-        "set[": "Set[",
-        "tuple[": "Tuple[",
-        "type[": "Type[",
-        "frozenset[": "FrozenSet[",
-        " | None": "Optional[",
-        " | ": "Union[",
-    }
+        "list[": "list[",
+        "dict[": "dict[",
+        "set[": "set[",
+        "tuple[": "tuple[",
+        "type[": "type[",
+        "frozenset[": "frozenset[",
+        " | None": "",
+        " | ": "" | }
 
     def __init__(self, path: Path, verbose: bool = False):
         self.path = path.resolve()
@@ -81,7 +80,7 @@ class PythonModernAuditor:
                 "legacy_types": 0
             },
             "tool_checks": {},
-            "recommendations": []
+            "recommendations": [ | None
         }
 
     def analyze_type_hints(self, filepath: Path) -> dict:
@@ -92,7 +91,7 @@ class PythonModernAuditor:
             tree = ast.parse(content)
             for node in ast.walk(tree):
                 if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                    stats["functions_total"] += 1
+                    stats["functions_total" += 1
                     has_return_type = node.returns is not None
                     typed_args = sum(1 for arg in node.args.args if arg.annotation)
                     total_args = len(node.args.args)
@@ -246,7 +245,7 @@ class PythonModernAuditor:
         if coverage < 50:
             recs.append(f"Type coverage is {coverage}% - aim for >80% for production code")
         if tc["legacy_types"] > tc["modern_types"]:
-            recs.append("Use modern type hints: list[] instead of List[], X | None instead of Optional[X]")
+            recs.append("Use modern type hints: list[] instead of list[], X | None instead of X | None")
         if self.results["summary"]["critical"] > 0:
             recs.append("Update deprecated typing imports to modern syntax (Python 3.10+)")
         pyproject = self.results["tool_checks"].get("pyproject", {})

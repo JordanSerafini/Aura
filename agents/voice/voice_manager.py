@@ -19,7 +19,6 @@ import tempfile
 import os
 import argparse
 from pathlib import Path
-from typing import Optional, List
 from enum import Enum
 
 # Imports locaux
@@ -43,8 +42,8 @@ class VoiceManager:
 
     def __init__(self):
         self.engines: dict[str, VoiceEngine] = {}
-        self.cache: Optional[VoiceCache] = None
-        self.queue: Optional[VoiceQueueManager] = None
+        self.cache: VoiceCache | None = None
+        self.queue: VoiceQueueManager | None = None
         self.default_engine = "edge-tts"
         self.default_voice = "henri"
         self.output_device = OutputDevice.DEFAULT
@@ -111,17 +110,17 @@ class VoiceManager:
         except Exception:
             pass  # Garder les valeurs par défaut
 
-    def get_engine(self, name: Optional[str] = None) -> Optional[VoiceEngine]:
+    def get_engine(self, name: str | None = None) -> VoiceEngine | None:
         """Récupère un moteur par son nom"""
         if name is None:
             name = self.default_engine
         return self.engines.get(name)
 
-    def list_engines(self) -> List[str]:
+    def list_engines(self) -> list[str]:
         """Liste les moteurs disponibles"""
         return list(self.engines.keys())
 
-    def list_voices(self, engine: Optional[str] = None) -> List[VoiceConfig]:
+    def list_voices(self, engine: str | None = None) -> list[VoiceConfig]:
         """Liste toutes les voix disponibles"""
         voices = []
         engines_to_check = [self.engines[engine]] if engine else self.engines.values()
@@ -134,13 +133,13 @@ class VoiceManager:
     async def speak(
         self,
         text: str,
-        voice: Optional[str] = None,
-        engine: Optional[str] = None,
+        voice: str | None = None,
+        engine: str | None = None,
         emotion: Emotion = Emotion.NEUTRAL,
         priority: Priority = Priority.NORMAL,
         use_cache: bool = True,
         use_queue: bool = True,
-        output_device: Optional[OutputDevice] = None,
+        output_device: OutputDevice | None = None,
         ssml: bool = False
     ) -> bool:
         """
@@ -178,11 +177,11 @@ class VoiceManager:
     async def _speak_internal(
         self,
         text: str,
-        voice: Optional[str] = None,
-        engine_name: Optional[str] = None,
+        voice: str | None = None,
+        engine_name: str | None = None,
         emotion: Emotion = Emotion.NEUTRAL,
         use_cache: bool = True,
-        output_device: Optional[OutputDevice] = None
+        output_device: OutputDevice | None = None
     ) -> bool:
         """Synthèse interne (appelée par la queue ou directement)"""
         voice = voice or self.default_voice
@@ -227,7 +226,7 @@ class VoiceManager:
         audio_data: bytes,
         engine_name: str,
         output_device: OutputDevice = OutputDevice.DEFAULT,
-        audio_path: Optional[str] = None
+        audio_path: str | None = None
     ) -> bool:
         """Joue l'audio sur le périphérique spécifié"""
         try:
@@ -272,8 +271,8 @@ class VoiceManager:
     async def speak_streaming(
         self,
         text: str,
-        voice: Optional[str] = None,
-        engine: Optional[str] = None
+        voice: str | None = None,
+        engine: str | None = None
     ) -> bool:
         """Synthétise avec streaming (lecture pendant la génération)"""
         voice = voice or self.default_voice
@@ -375,7 +374,7 @@ class VoiceManager:
 
 
 # Instance singleton
-_manager: Optional[VoiceManager] = None
+_manager: VoiceManager | None = None
 
 
 def get_voice_manager() -> VoiceManager:

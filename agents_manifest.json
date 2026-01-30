@@ -1033,6 +1033,127 @@
         "python3 nestjs_microservice_auditor.py ~/projet-nestjs",
         "python3 nestjs_microservice_auditor.py --verbose"
       ]
+    },
+    {
+      "id": "self_reflection",
+      "name": "Self-Reflection Agent",
+      "team": "core",
+      "script": "self_reflection.py",
+      "description": "Agent de réflexion et métacognition basé sur ReMA, Reflexion et SCoRe (2025-2026)",
+      "created": "2026-01-30T21:10:00",
+      "version": "1.0.0",
+      "sources": ["arxiv.org/abs/2503.09501 (ReMA)", "arxiv.org/abs/2409.12917 (SCoRe)", "ICLR 2025"],
+      "arguments": [
+        {"name": "action", "required": true, "choices": ["task", "error", "meta", "confidence", "stats"]},
+        {"name": "--task", "required": false, "description": "Description de la tâche"},
+        {"name": "--outcome", "required": false, "description": "Résultat de la tâche"},
+        {"name": "--success", "required": false, "description": "Tâche réussie (flag)"},
+        {"name": "--error", "required": false, "description": "Message d'erreur"},
+        {"name": "--context", "required": false, "description": "Contexte de l'erreur"},
+        {"name": "--count", "required": false, "default": 10, "description": "Nombre pour meta-réflexion"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 self_reflection.py task --task 'Création fichier' --outcome 'Succès' --success",
+        "python3 self_reflection.py error --error 'Permission denied' --context 'Écriture fichier'",
+        "python3 self_reflection.py meta --count 20",
+        "python3 self_reflection.py stats"
+      ]
+    },
+    {
+      "id": "hybrid_search",
+      "name": "Hybrid Search Engine",
+      "team": "core",
+      "script": "memory/hybrid_search.py",
+      "description": "Recherche hybride BM25 (sparse) + embeddings (dense) pour la mémoire",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["search", "index", "stats", "demo"]}
+      ],
+      "examples": [
+        "python3 memory/hybrid_search.py search 'query'",
+        "python3 memory/hybrid_search.py demo"
+      ]
+    },
+    {
+      "id": "temporal_graph",
+      "name": "Temporal Knowledge Graph",
+      "team": "core",
+      "script": "memory/temporal_graph.py",
+      "description": "Graphe de connaissances bi-temporel (pattern Graphiti/Zep) avec versioning",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["add", "query", "history", "timeline", "stats", "demo"]}
+      ],
+      "examples": [
+        "python3 memory/temporal_graph.py add 'Aura' 'version' '3.2'",
+        "python3 memory/temporal_graph.py history 'Aura' 'version'"
+      ]
+    },
+    {
+      "id": "memory_scheduler",
+      "name": "Memory Scheduler",
+      "team": "core",
+      "script": "memory_scheduler.py",
+      "description": "Planificateur de tâches de maintenance mémoire (consolidation, cleanup)",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["run", "status", "force", "list"]}
+      ],
+      "examples": [
+        "python3 memory_scheduler.py status",
+        "python3 memory_scheduler.py run"
+      ]
+    },
+    {
+      "id": "token_optimizer",
+      "name": "Token Optimizer",
+      "team": "core",
+      "script": "token_optimizer.py",
+      "description": "Monitoring et optimisation de l'usage des tokens Claude",
+      "arguments": [
+        {"name": "command", "required": false, "choices": ["status", "tips", "statusline", "ccusage", "context"]}
+      ],
+      "examples": [
+        "python3 token_optimizer.py status",
+        "python3 token_optimizer.py tips"
+      ]
+    },
+    {
+      "id": "aura_watchdog",
+      "name": "Aura Watchdog",
+      "team": "core",
+      "script": "aura_watchdog.py",
+      "description": "Agent de surveillance autonome - Vérifie si Aura tourne et lance auto-amélioration si inactif",
+      "created": "2026-01-30T23:30:00",
+      "version": "1.0.0",
+      "cron": "0 * * * *",
+      "arguments": [],
+      "examples": [
+        "python3 aura_watchdog.py"
+      ],
+      "notes": "Exécuté automatiquement par cron toutes les heures à 00min"
+    },
+    {
+      "id": "aura_reporter",
+      "name": "Aura Reporter",
+      "team": "core",
+      "script": "aura_reporter.py",
+      "description": "Agent de rapports quotidiens - Génère et maintient les rapports dans ~/Desktop/rapports_aura/",
+      "created": "2026-01-30T23:35:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["init", "action", "error", "improve", "build", "summary", "list"]},
+        {"name": "--agent", "required": false, "description": "Nom de l'agent"},
+        {"name": "--message", "required": false, "description": "Message/description"},
+        {"name": "--result", "required": false, "description": "Résultat"},
+        {"name": "--status", "required": false, "description": "Statut (pour build)"}
+      ],
+      "examples": [
+        "python3 aura_reporter.py init",
+        "python3 aura_reporter.py action --agent sys_health -m 'Check système' -r OK",
+        "python3 aura_reporter.py build --status OK -d '45s'",
+        "python3 aura_reporter.py summary",
+        "python3 aura_reporter.py list --days 7"
+      ],
+      "notes": "Rapports stockés dans ~/Desktop/rapports_aura/{jj-mm-aaaa}/"
     }
   ]
 }

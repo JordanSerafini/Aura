@@ -7,7 +7,7 @@ import json
 import time
 import hashlib
 from pathlib import Path
-from typing import Any, Optional, Dict
+from typing import Any
 
 CACHE_DIR = Path("/tmp/aura_cache")
 CACHE_DIR.mkdir(exist_ok=True)
@@ -16,7 +16,7 @@ def _get_cache_file(key: str) -> Path:
     safe_key = hashlib.md5(key.encode()).hexdigest()[:16]
     return CACHE_DIR / f"aura_{key}_{safe_key}.json"
 
-def get_cached(key: str, max_age_seconds: int = 300) -> Optional[Any]:
+def get_cached(key: str, max_age_seconds: int = 300) -> Any | None:
     cache_file = _get_cache_file(key)
     if not cache_file.exists():
         return None
@@ -40,7 +40,7 @@ def set_cache(key: str, data: Any) -> bool:
 def is_cache_valid(key: str, max_age_seconds: int = 300) -> bool:
     return get_cached(key, max_age_seconds) is not None
 
-def clear_cache(key: Optional[str] = None) -> int:
+def clear_cache(key: str | None = None) -> int:
     deleted = 0
     if key:
         f = _get_cache_file(key)
@@ -53,7 +53,7 @@ def clear_cache(key: Optional[str] = None) -> int:
             deleted += 1
     return deleted
 
-def get_cache_info(key: str) -> Dict[str, Any]:
+def get_cache_info(key: str) -> dict[str, Any]:
     cache_file = _get_cache_file(key)
     info = {'key': key, 'exists': cache_file.exists(), 'valid': False}
     if cache_file.exists():

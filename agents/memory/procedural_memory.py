@@ -8,7 +8,7 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Dict, Any, Tuple
+from typing import Any
 
 import chromadb
 from chromadb.config import Settings
@@ -29,7 +29,7 @@ class ProceduralMemory:
 
     COLLECTION_NAME = "skills"
 
-    def __init__(self, storage_path: Optional[Path] = None):
+    def __init__(self, storage_path: Path | None = None):
         """Initialise la mémoire procédurale."""
         self.storage_path = storage_path or Path.home() / ".aura" / "memory" / "procedural"
         self.storage_path.mkdir(parents=True, exist_ok=True)
@@ -46,11 +46,11 @@ class ProceduralMemory:
         )
 
         # Modèle d'embedding (lazy loading)
-        self._model: Optional[SentenceTransformer] = None
+        self._model: SentenceTransformer | None = None
 
         # Cache JSON pour skills complets
         self.skills_file = self.storage_path / "skills.json"
-        self._skills_cache: Dict[str, dict] = self._load_skills_cache()
+        self._skills_cache: dict[str, dict] = self._load_skills_cache()
 
     @property
     def model(self) -> SentenceTransformer:
@@ -59,7 +59,7 @@ class ProceduralMemory:
             self._model = SentenceTransformer(MEMORY_CONFIG["embedding_model"])
         return self._model
 
-    def _load_skills_cache(self) -> Dict[str, dict]:
+    def _load_skills_cache(self) -> dict[str, dict]:
         """Charge le cache de skills."""
         if self.skills_file.exists():
             try:
@@ -72,7 +72,7 @@ class ProceduralMemory:
         """Sauvegarde le cache de skills."""
         self.skills_file.write_text(json.dumps(self._skills_cache, indent=2, ensure_ascii=False))
 
-    def _get_embedding(self, text: str) -> List[float]:
+    def _get_embedding(self, text: str) -> list[float]:
         """Génère l'embedding pour un texte."""
         return self.model.encode(text, show_progress_bar=False).tolist()
 
@@ -130,9 +130,9 @@ class ProceduralMemory:
         name: str,
         description: str,
         pattern: str,
-        trigger_conditions: List[str],
+        trigger_conditions: list[str],
         action_template: str,
-        source_episodes: Optional[List[str]] = None,
+        source_episodes: list[str | None] = None,
         success_rate: float = 0.0
     ) -> str:
         """
@@ -170,7 +170,7 @@ class ProceduralMemory:
         context: str,
         n_results: int = 3,
         min_success_rate: float = 0.0
-    ) -> List[Tuple[Skill, MemoryScore]]:
+    ) -> list[tuple[Skill, MemoryScore]]:
         """
         Trouve les skills applicables pour un contexte donné.
 
@@ -192,7 +192,7 @@ class ProceduralMemory:
             n_results=min(n_results * 2, self.collection.count())
         )
 
-        scored_results: List[Tuple[Skill, MemoryScore]] = []
+        scored_results: list[tuple[Skill, MemoryScore]] = []
 
         for i, skill_id in enumerate(results["ids"][0]):
             if skill_id not in self._skills_cache:
@@ -224,13 +224,13 @@ class ProceduralMemory:
         scored_results.sort(key=lambda x: x[1].combined_score, reverse=True)
         return scored_results[:n_results]
 
-    def get_skill(self, skill_id: str) -> Optional[Skill]:
+    def get_skill(self, skill_id: str) -> Skill | None:
         """Récupère un skill par son ID."""
         if skill_id in self._skills_cache:
             return Skill.from_dict(self._skills_cache[skill_id])
         return None
 
-    def get_skill_by_name(self, name: str) -> Optional[Skill]:
+    def get_skill_by_name(self, name: str) -> Skill | None:
         """Récupère un skill par son nom."""
         for data in self._skills_cache.values():
             if data.get("name") == name:
@@ -241,7 +241,7 @@ class ProceduralMemory:
         self,
         skill_id: str,
         success: bool,
-        context: Optional[str] = None
+        context: str | None = None
     ) -> bool:
         """
         Enregistre l'utilisation d'un skill et met à jour son taux de succès.
@@ -283,9 +283,9 @@ class ProceduralMemory:
     def update_skill(
         self,
         skill_id: str,
-        pattern: Optional[str] = None,
-        trigger_conditions: Optional[List[str]] = None,
-        action_template: Optional[str] = None
+        pattern: str | None = None,
+        trigger_conditions: list[str | None] = None,
+        action_template: str | None = None
     ) -> bool:
         """Met à jour un skill existant."""
         if skill_id not in self._skills_cache:
@@ -334,11 +334,11 @@ class ProceduralMemory:
             return True
         return False
 
-    def get_all_skills(self) -> List[Skill]:
+    def get_all_skills(self) -> list[Skill]:
         """Récupère tous les skills."""
         return [Skill.from_dict(data) for data in self._skills_cache.values()]
 
-    def get_top_skills(self, limit: int = 10, by: str = "success_rate") -> List[Skill]:
+    def get_top_skills(self, limit: int = 10, by: str = "success_rate") -> list[Skill]:
         """
         Récupère les meilleurs skills.
 
@@ -355,7 +355,7 @@ class ProceduralMemory:
 
         return skills[:limit]
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Retourne les statistiques de la mémoire procédurale."""
         skills = self.get_all_skills()
         total = len(skills)

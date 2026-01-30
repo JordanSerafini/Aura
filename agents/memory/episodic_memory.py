@@ -8,7 +8,7 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Dict, Any, Tuple
+from typing import Any
 
 import chromadb
 from chromadb.config import Settings
@@ -30,7 +30,7 @@ class EpisodicMemory:
 
     COLLECTION_NAME = "episodes"
 
-    def __init__(self, storage_path: Optional[Path] = None):
+    def __init__(self, storage_path: Path | None = None):
         """Initialise la mémoire épisodique."""
         self.storage_path = storage_path or Path.home() / ".aura" / "memory" / "episodic"
         self.storage_path.mkdir(parents=True, exist_ok=True)
@@ -47,11 +47,11 @@ class EpisodicMemory:
         )
 
         # Modèle d'embedding (lazy loading)
-        self._model: Optional[SentenceTransformer] = None
+        self._model: SentenceTransformer | None = None
 
         # Cache JSON pour métadonnées étendues
         self.metadata_file = self.storage_path / "episodes_metadata.json"
-        self._metadata_cache: Dict[str, dict] = self._load_metadata_cache()
+        self._metadata_cache: dict[str, dict] = self._load_metadata_cache()
 
     @property
     def model(self) -> SentenceTransformer:
@@ -60,7 +60,7 @@ class EpisodicMemory:
             self._model = SentenceTransformer(MEMORY_CONFIG["embedding_model"])
         return self._model
 
-    def _load_metadata_cache(self) -> Dict[str, dict]:
+    def _load_metadata_cache(self) -> dict[str, dict]:
         """Charge le cache de métadonnées depuis le fichier JSON."""
         if self.metadata_file.exists():
             try:
@@ -73,7 +73,7 @@ class EpisodicMemory:
         """Sauvegarde le cache de métadonnées."""
         self.metadata_file.write_text(json.dumps(self._metadata_cache, indent=2))
 
-    def _get_embedding(self, text: str) -> List[float]:
+    def _get_embedding(self, text: str) -> list[float]:
         """Génère l'embedding pour un texte."""
         return self.model.encode(text, show_progress_bar=False).tolist()
 
@@ -137,7 +137,7 @@ class EpisodicMemory:
         action: str,
         outcome: str,
         thought_process: str = "",
-        entities: Optional[List[str]] = None,
+        entities: list[str | None] = None,
         importance: float = 0.5,
         emotional_valence: float = 0.0,
         source: str = "user"
@@ -179,7 +179,7 @@ class EpisodicMemory:
         n_results: int = 5,
         min_importance: float = 0.0,
         include_archived: bool = False
-    ) -> List[Tuple[Episode, MemoryScore]]:
+    ) -> list[tuple[Episode, MemoryScore]]:
         """
         Rappelle les épisodes pertinents avec scoring avancé.
 
@@ -210,7 +210,7 @@ class EpisodicMemory:
         )
 
         # Construire les résultats avec scoring
-        scored_results: List[Tuple[Episode, MemoryScore]] = []
+        scored_results: list[tuple[Episode, MemoryScore]] = []
 
         for i, doc_id in enumerate(results["ids"][0]):
             # Récupérer l'épisode complet depuis le cache
@@ -262,14 +262,14 @@ class EpisodicMemory:
             # Sauvegarde différée pour performance
             # self._save_metadata_cache()
 
-    def get_episode(self, episode_id: str) -> Optional[Episode]:
+    def get_episode(self, episode_id: str) -> Episode | None:
         """Récupère un épisode par son ID."""
         if episode_id in self._metadata_cache:
             self._update_access_stats(episode_id)
             return Episode.from_dict(self._metadata_cache[episode_id])
         return None
 
-    def get_recent_episodes(self, limit: int = 10) -> List[Episode]:
+    def get_recent_episodes(self, limit: int = 10) -> list[Episode]:
         """Récupère les épisodes les plus récents."""
         episodes = []
         for data in self._metadata_cache.values():
@@ -285,7 +285,7 @@ class EpisodicMemory:
         self,
         min_valence: float = 0.3,
         limit: int = 20
-    ) -> List[Episode]:
+    ) -> list[Episode]:
         """
         Récupère les épisodes avec résultat positif.
         Utile pour la consolidation en skills.
@@ -315,7 +315,7 @@ class EpisodicMemory:
             return True
         return False
 
-    def mark_consolidated(self, episode_ids: List[str], skill_id: str) -> int:
+    def mark_consolidated(self, episode_ids: list[str], skill_id: str) -> int:
         """Marque des épisodes comme consolidés dans un skill."""
         count = 0
         for ep_id in episode_ids:
@@ -343,7 +343,7 @@ class EpisodicMemory:
             return True
         return False
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Retourne les statistiques de la mémoire épisodique."""
         total = len(self._metadata_cache)
         active = sum(1 for e in self._metadata_cache.values()

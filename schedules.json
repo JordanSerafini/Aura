@@ -1,0 +1,41 @@
+{
+  "tasks": [
+    {
+      "id": "80459561",
+      "name": "health_check",
+      "command": "python3 ~/.aura/agents/sys_health.py",
+      "interval": "6h",
+      "enabled": true,
+      "created": "2026-01-30T21:31:36.310551",
+      "last_run": null,
+      "next_run": "2026-01-30T21:31:36.310553",
+      "run_count": 0,
+      "last_status": null
+    },
+    {
+      "id": "25ce4929",
+      "name": "daily_cleanup",
+      "command": "python3 ~/.aura/agents/system_cleaner.py scan",
+      "interval": "1d",
+      "enabled": true,
+      "created": "2026-01-30T21:31:37.350988",
+      "last_run": null,
+      "next_run": "2026-01-30T21:31:37.350990",
+      "run_count": 0,
+      "last_status": null
+    },
+    {
+      "id": "5508b140",
+      "name": "report_summary",
+      "command": "python3 ~/.aura/agents/aura_reporter.py summary",
+      "interval": "4h",
+      "enabled": true,
+      "created": "2026-01-30T21:31:41.469167",
+      "last_run": null,
+      "next_run": "2026-01-30T21:31:41.469168",
+      "run_count": 0,
+      "last_status": null
+    }
+  ],
+  "version": "1.0.0"
+}

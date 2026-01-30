@@ -6,7 +6,7 @@ Classe abstraite pour tous les moteurs TTS
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Optional, AsyncIterator
+from typing import AsyncIterator
 import asyncio
 
 
@@ -45,24 +45,24 @@ class VoiceConfig:
 class TTSRequest:
     """Requête de synthèse vocale"""
     text: str
-    voice: Optional[str] = None
+    voice: str | None = None
     emotion: Emotion = Emotion.NEUTRAL
     priority: Priority = Priority.NORMAL
-    rate: Optional[str] = None
+    rate: str | None = None
     ssml: bool = False
-    cache_key: Optional[str] = None
-    output_device: Optional[str] = None  # None = default
+    cache_key: str | None = None
+    output_device: str | None = None  # None = default
 
 
 @dataclass
 class TTSResult:
     """Résultat de synthèse vocale"""
     success: bool
-    audio_path: Optional[str] = None
-    audio_data: Optional[bytes] = None
+    audio_path: str | None = None
+    audio_data: bytes | None = None
     duration_ms: int = 0
     from_cache: bool = False
-    error: Optional[str] = None
+    error: str | None = None
 
 
 class VoiceEngine(ABC):
@@ -103,7 +103,7 @@ class VoiceEngine(ABC):
         """Vérifie si le moteur est disponible"""
         pass
 
-    def get_voice(self, voice_name: str) -> Optional[VoiceConfig]:
+    def get_voice(self, voice_name: str) -> VoiceConfig | None:
         """Récupère une voix par son nom"""
         return self.voices.get(voice_name)
 

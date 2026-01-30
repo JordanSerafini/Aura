@@ -9,7 +9,7 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Dict, Any, Union
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).parent))
 from memory_types import (
@@ -28,16 +28,16 @@ class MemoryAPI:
     Point d'entrée unique pour interagir avec le système de mémoire Aura v3.1.
     """
 
-    def __init__(self, base_path: Optional[Path] = None):
+    def __init__(self, base_path: Path | None = None):
         """Initialise l'API de mémoire."""
         self.base_path = base_path or Path.home() / ".aura" / "memory"
         self.base_path.mkdir(parents=True, exist_ok=True)
 
         # Composants de mémoire (lazy loading)
-        self._episodic: Optional[EpisodicMemory] = None
-        self._procedural: Optional[ProceduralMemory] = None
-        self._knowledge: Optional[KnowledgeGraph] = None
-        self._consolidator: Optional[MemoryConsolidator] = None
+        self._episodic: EpisodicMemory | None = None
+        self._procedural: ProceduralMemory | None = None
+        self._knowledge: KnowledgeGraph | None = None
+        self._consolidator: MemoryConsolidator | None = None
 
         # Fichiers mémoire simples (style Anthropic)
         self.files_dir = self.base_path / "files"
@@ -77,8 +77,8 @@ class MemoryAPI:
         self,
         filename: str,
         content: str,
-        metadata: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
+        metadata: dict[str, Any | None] = None
+    ) -> dict[str, Any]:
         """
         Crée un nouveau fichier mémoire.
 
@@ -126,7 +126,7 @@ class MemoryAPI:
             "size": len(content)
         }
 
-    def read_file(self, filename: str) -> Dict[str, Any]:
+    def read_file(self, filename: str) -> dict[str, Any]:
         """Lit un fichier mémoire."""
         file_path = self.files_dir / filename
 
@@ -157,7 +157,7 @@ class MemoryAPI:
         filename: str,
         content: str,
         append: bool = False
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Met à jour un fichier mémoire."""
         file_path = self.files_dir / filename
 
@@ -188,7 +188,7 @@ class MemoryAPI:
             "appended": append
         }
 
-    def delete_file(self, filename: str) -> Dict[str, Any]:
+    def delete_file(self, filename: str) -> dict[str, Any]:
         """Supprime un fichier mémoire."""
         file_path = self.files_dir / filename
 
@@ -204,7 +204,7 @@ class MemoryAPI:
 
         return {"status": "deleted", "filename": filename}
 
-    def list_files(self) -> Dict[str, Any]:
+    def list_files(self) -> dict[str, Any]:
         """Liste tous les fichiers mémoire."""
         files = []
         for file_path in self.files_dir.iterdir():
@@ -233,10 +233,10 @@ class MemoryAPI:
         action: str,
         outcome: str,
         thought_process: str = "",
-        entities: Optional[List[str]] = None,
+        entities: list[str | None] = None,
         importance: float = 0.5,
         valence: float = 0.0
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Enregistre un épisode dans la mémoire épisodique.
 
@@ -273,7 +273,7 @@ class MemoryAPI:
         query: str,
         n_results: int = 5,
         min_importance: float = 0.0
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Rappelle des épisodes pertinents."""
         results = self.episodic.recall(
             query=query,
@@ -306,7 +306,7 @@ class MemoryAPI:
         self,
         context: str,
         n_results: int = 3
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Trouve les skills applicables pour un contexte."""
         results = self.procedural.find_applicable_skills(
             context=context,
@@ -336,7 +336,7 @@ class MemoryAPI:
         self,
         skill_id: str,
         success: bool
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Enregistre l'utilisation d'un skill."""
         result = self.procedural.record_usage(skill_id, success)
         return {
@@ -353,7 +353,7 @@ class MemoryAPI:
         predicate: str,
         obj: str,
         confidence: float = 1.0
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Ajoute un triplet de connaissance."""
         triple_id = self.knowledge.add_triple(
             subject=subject,
@@ -372,7 +372,7 @@ class MemoryAPI:
         self,
         query: str,
         n_results: int = 5
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Recherche sémantique dans le graphe."""
         results = self.knowledge.query_semantic(query, n_results)
 
@@ -398,7 +398,7 @@ class MemoryAPI:
         self,
         entity: str,
         direction: str = "both"
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Récupère les relations d'une entité."""
         triples = self.knowledge.get_relations(entity, direction)
 
@@ -422,7 +422,7 @@ class MemoryAPI:
     def consolidate(
         self,
         dry_run: bool = False
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Lance une consolidation de la mémoire."""
         result = self.consolidator.consolidate(dry_run=dry_run)
 
@@ -436,7 +436,7 @@ class MemoryAPI:
             "episodes_archived": result.episodes_archived
         }
 
-    def analyze_patterns(self) -> Dict[str, Any]:
+    def analyze_patterns(self) -> dict[str, Any]:
         """Analyse les patterns pour la consolidation."""
         return self.consolidator.analyze_patterns()
 
@@ -447,8 +447,8 @@ class MemoryAPI:
         content: str,
         memory_type: str = "note",
         importance: float = 0.5,
-        tags: Optional[List[str]] = None
-    ) -> Dict[str, Any]:
+        tags: list[str | None] = None
+    ) -> dict[str, Any]:
         """
         Méthode simplifiée pour mémoriser quelque chose.
         Choisit automatiquement le bon type de stockage.
@@ -492,9 +492,9 @@ class MemoryAPI:
     def search(
         self,
         query: str,
-        memory_types: Optional[List[str]] = None,
+        memory_types: list[str | None] = None,
         n_results: int = 5
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Recherche unifiée dans tous les types de mémoire.
 
@@ -527,7 +527,7 @@ class MemoryAPI:
             "results": results
         }
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Statistiques complètes du système de mémoire."""
         stats = {
             "episodic": self.episodic.get_stats(),
