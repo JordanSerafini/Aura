@@ -13,7 +13,6 @@ import subprocess
 import tarfile
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 import hashlib
 
 BACKUP_DIR = Path.home() / "Backups" / "aura"
@@ -105,7 +104,7 @@ def calculate_checksum(file_path: Path) -> str:
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
-def create_backup(profile_name: str, config: dict, dry_run: bool = False) -> Optional[dict]:
+def create_backup(profile_name: str, config: dict, dry_run: bool = False) -> dict | None:
     """Crée une sauvegarde pour un profil"""
     if profile_name not in config["profiles"]:
         print(f"[-] Profil inconnu: {profile_name}")
@@ -217,7 +216,7 @@ def cleanup_old_backups(profile_name: str, keep_last: int):
             old_backup.unlink()
             print(f"  [i] Supprimé ancien: {old_backup.name}")
 
-def restore_backup(backup_path: str, destination: Optional[str] = None, dry_run: bool = False) -> bool:
+def restore_backup(backup_path: str, destination: str | None = None, dry_run: bool = False) -> bool:
     """Restaure une sauvegarde"""
     backup = Path(backup_path)
     if not backup.exists():
@@ -256,7 +255,7 @@ def restore_backup(backup_path: str, destination: Optional[str] = None, dry_run:
         print(f"  [-] Erreur: {e}")
         return False
 
-def list_backups(profile_name: Optional[str] = None):
+def list_backups(profile_name: str | None = None):
     """Liste les backups disponibles"""
     if not BACKUP_DIR.exists():
         print("[i] Aucun backup trouvé")
@@ -284,7 +283,7 @@ def list_backups(profile_name: Optional[str] = None):
     print(f"{'='*70}")
     print(f"Total: {count} backups, {get_size_str(total_size)}\n")
 
-def run_all_profiles(config: dict, profiles: Optional[list] = None, dry_run: bool = False):
+def run_all_profiles(config: dict, profiles: list | None = None, dry_run: bool = False):
     """Exécute les backups pour tous les profils (ou une liste spécifique)"""
     profiles_to_run = profiles or list(config["profiles"].keys())
 

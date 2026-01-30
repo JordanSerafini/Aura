@@ -3,7 +3,6 @@
 import argparse, ast, hashlib, os, re, sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
 
 AURA_HOME = Path.home() / ".aura"
 CONTEXT_DIR = AURA_HOME / "context"

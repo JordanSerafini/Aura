@@ -20,7 +20,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum, auto
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -60,13 +60,13 @@ class SupervisedTask:
     query: str
     state: TaskState = TaskState.PENDING
     primary_agent: str = ""
-    secondary_agents: List[str] = field(default_factory=list)
-    results: List[AgentResult] = field(default_factory=list)
+    secondary_agents: list[str] = field(default_factory=list)
+    results: list[AgentResult] = field(default_factory=list)
     aggregated_result: str = ""
     created_at: str = field(default_factory=lambda: datetime.now().isoformat())
     updated_at: str = ""
-    checkpoints: List[str] = field(default_factory=list)
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    checkpoints: list[str] = field(default_factory=list)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
 
 class AgentSupervisor:
@@ -75,7 +75,7 @@ class AgentSupervisor:
     def __init__(self, max_workers: int = 4, timeout: int = 120):
         self.max_workers = max_workers
         self.timeout = timeout
-        self.active_tasks: Dict[str, SupervisedTask] = {}
+        self.active_tasks: dict[str, SupervisedTask] = {}
         self.executor = ThreadPoolExecutor(max_workers=max_workers)
         self._task_counter = 0
 
@@ -131,7 +131,7 @@ class AgentSupervisor:
         checkpoint_file.write_text(json.dumps(data, indent=2))
         return str(checkpoint_file)
 
-    def _execute_agent(self, agent: str, args: List[str] = None) -> AgentResult:
+    def _execute_agent(self, agent: str, args: list[str] = None) -> AgentResult:
         """Exécute un agent et retourne le résultat."""
         agent_path = AGENTS_DIR / f"{agent}.py"
         if not agent_path.exists():
@@ -178,7 +178,7 @@ class AgentSupervisor:
                 execution_time=time.time() - start_time
             )
 
-    def _execute_parallel(self, agents: List[str], args_map: Dict[str, List[str]] = None) -> List[AgentResult]:
+    def _execute_parallel(self, agents: list[str], args_map: dict[str, list[str]] = None) -> list[AgentResult]:
         """Exécute plusieurs agents en parallèle."""
         args_map = args_map or {}
         results = []
@@ -236,7 +236,7 @@ class AgentSupervisor:
     def supervise(
         self,
         query: str,
-        agents: List[str] = None,
+        agents: list[str] = None,
         parallel: bool = False,
         background: bool = False
     ) -> SupervisedTask:
@@ -329,7 +329,7 @@ class AgentSupervisor:
         self._save_checkpoint(task)
         return task
 
-    def get_task(self, task_id: str) -> Optional[SupervisedTask]:
+    def get_task(self, task_id: str) -> SupervisedTask | None:
         """Récupère une tâche par son ID."""
         return self.active_tasks.get(task_id)
 
@@ -341,14 +341,14 @@ class AgentSupervisor:
             return True
         return False
 
-    def list_tasks(self, state: TaskState = None) -> List[SupervisedTask]:
+    def list_tasks(self, state: TaskState = None) -> list[SupervisedTask]:
         """Liste les tâches."""
         tasks = list(self.active_tasks.values())
         if state:
             tasks = [t for t in tasks if t.state == state]
         return sorted(tasks, key=lambda t: t.created_at, reverse=True)
 
-    def resume_from_checkpoint(self, checkpoint_file: str) -> Optional[SupervisedTask]:
+    def resume_from_checkpoint(self, checkpoint_file: str) -> SupervisedTask | None:
         """Reprend une tâche depuis un checkpoint."""
         try:
             data = json.loads(Path(checkpoint_file).read_text())
@@ -390,7 +390,7 @@ class AgentSupervisor:
         return count
 
 
-def supervise_query(query: str, parallel: bool = False, background: bool = False) -> Dict[str, Any]:
+def supervise_query(query: str, parallel: bool = False, background: bool = False) -> dict[str, Any]:
     """Fonction helper pour supervision rapide."""
     supervisor = AgentSupervisor()
     task = supervisor.supervise(query, parallel=parallel, background=background)

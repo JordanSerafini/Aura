@@ -12,7 +12,6 @@ import subprocess
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional
 import hashlib
 
 SCHEDULE_FILE = Path.home() / ".aura" / "schedules.json"
@@ -93,7 +92,7 @@ def remove_task(task_id: str) -> bool:
     print(f"[-] Tâche non trouvée: {task_id}")
     return False
 
-def toggle_task(task_id: str, enabled: Optional[bool] = None) -> bool:
+def toggle_task(task_id: str, enabled: bool | None = None) -> bool:
     """Active/désactive une tâche"""
     data = load_schedules()
     for task in data["tasks"]:

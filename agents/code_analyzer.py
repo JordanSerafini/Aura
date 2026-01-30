@@ -12,12 +12,12 @@ import os
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Any
+from typing import Any
 from collections import defaultdict
 from datetime import datetime
 
 
-def analyze_python_file(filepath: Path) -> Dict[str, Any]:
+def analyze_python_file(filepath: Path) -> dict[str, Any]:
     """Analyse un fichier Python."""
     result = {
         "file": str(filepath),
@@ -90,7 +90,7 @@ def analyze_python_file(filepath: Path) -> Dict[str, Any]:
     return result
 
 
-def analyze_js_file(filepath: Path) -> Dict[str, Any]:
+def analyze_js_file(filepath: Path) -> dict[str, Any]:
     """Analyse basique d'un fichier JS/TS."""
     result = {
         "file": str(filepath),
@@ -139,7 +139,7 @@ def analyze_js_file(filepath: Path) -> Dict[str, Any]:
     return result
 
 
-def analyze_directory(path: Path, extensions: List[str] = None) -> Dict[str, Any]:
+def analyze_directory(path: Path, extensions: list[str] = None) -> dict[str, Any]:
     """Analyse un répertoire de code."""
     if extensions is None:
         extensions = ['.py', '.js', '.ts', '.tsx', '.jsx']
@@ -197,7 +197,7 @@ def analyze_directory(path: Path, extensions: List[str] = None) -> Dict[str, Any
     return results
 
 
-def print_report(results: Dict[str, Any], verbose: bool = False):
+def print_report(results: dict[str, Any], verbose: bool = False):
     """Affiche un rapport formaté."""
     s = results["summary"]
 

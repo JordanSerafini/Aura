@@ -12,7 +12,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any
 from datetime import datetime
 from collections import defaultdict
 
@@ -56,7 +56,7 @@ class TSStrictAuditor:
     def __init__(self, path: Path, verbose: bool = False):
         self.path = path.resolve()
         self.verbose = verbose
-        self.results: Dict[str, Any] = {
+        self.results: dict[str, Any] = {
             "path": str(self.path),
             "audited_at": datetime.now().isoformat(),
             "files_analyzed": 0,
@@ -72,7 +72,7 @@ class TSStrictAuditor:
             "recommendations": []
         }
 
-    def analyze_file(self, filepath: Path) -> List[Dict]:
+    def analyze_file(self, filepath: Path) -> list[Dict]:
         """Analyse un fichier TS."""
         issues = []
         try:
@@ -103,7 +103,7 @@ class TSStrictAuditor:
 
         return issues
 
-    def check_tsconfig(self) -> Dict[str, Any]:
+    def check_tsconfig(self) -> dict[str, Any]:
         """Vérifie la configuration TypeScript."""
         tsconfig_path = self.path / "tsconfig.json"
         if not tsconfig_path.exists():
@@ -153,7 +153,7 @@ class TSStrictAuditor:
         except Exception as e:
             return {"exists": True, "error": str(e)}
 
-    def check_eslint(self) -> Dict[str, Any]:
+    def check_eslint(self) -> dict[str, Any]:
         """Vérifie la configuration ESLint."""
         eslint_files = list(self.path.glob("eslint.config.*")) + \
                        list(self.path.glob(".eslintrc*"))
@@ -186,7 +186,7 @@ class TSStrictAuditor:
             "issues": issues
         }
 
-    def run_eslint(self) -> Optional[Dict]:
+    def run_eslint(self) -> Dict | None:
         """Exécute ESLint si disponible."""
         try:
             result = subprocess.run(
@@ -202,7 +202,7 @@ class TSStrictAuditor:
             pass
         return None
 
-    def audit(self) -> Dict[str, Any]:
+    def audit(self) -> dict[str, Any]:
         """Lance l'audit complet."""
         # Check configs
         self.results["tsconfig_check"] = self.check_tsconfig()
@@ -263,7 +263,7 @@ class TSStrictAuditor:
         self.results["recommendations"] = recs
 
 
-def print_report(results: Dict[str, Any], verbose: bool = False):
+def print_report(results: dict[str, Any], verbose: bool = False):
     """Affiche le rapport d'audit."""
     print(f"\n{'='*60}")
     print(f" TypeScript Strict Audit Report")

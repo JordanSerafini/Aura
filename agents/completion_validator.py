@@ -8,7 +8,6 @@ import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, Tuple
 
 CONFIG_DIR = Path.home() / ".aura" / "hooks"
 CONFIG_FILE = CONFIG_DIR / "config.json"
@@ -54,12 +53,12 @@ def print_result(success: bool, message: str) -> None:
     print(f"{'\u2705' if success else '\u274c'} {'PASS' if success else 'FAIL'}: {message}")
 
 
-def run_cmd(cmd: list, cwd: Path = None) -> Tuple[int, str, str]:
+def run_cmd(cmd: list, cwd: Path = None) -> tuple[int, str, str]:
     r = subprocess.run(cmd, capture_output=True, text=True, cwd=cwd)
     return r.returncode, r.stdout.strip(), r.stderr.strip()
 
 
-def validate_python(path: Path) -> Tuple[bool, str]:
+def validate_python(path: Path) -> tuple[bool, str]:
     if not path.exists():
         return False, f"File not found: {path}"
     rc, _, err = run_cmd([sys.executable, "-m", "py_compile", str(path)])
@@ -74,7 +73,7 @@ def validate_python(path: Path) -> Tuple[bool, str]:
     return True, "Syntax OK"
 
 
-def validate_javascript(path: Path) -> Tuple[bool, str]:
+def validate_javascript(path: Path) -> tuple[bool, str]:
     if not path.exists():
         return False, f"File not found: {path}"
     if subprocess.run(["which", "eslint"], capture_output=True).returncode == 0:
@@ -86,7 +85,7 @@ def validate_javascript(path: Path) -> Tuple[bool, str]:
     return True, "No JS validator available, skipped"
 
 
-def validate_typescript(path: Path) -> Tuple[bool, str]:
+def validate_typescript(path: Path) -> tuple[bool, str]:
     if not path.exists():
         return False, f"File not found: {path}"
     if subprocess.run(["which", "tsc"], capture_output=True).returncode == 0:
@@ -95,7 +94,7 @@ def validate_typescript(path: Path) -> Tuple[bool, str]:
     return validate_javascript(path)
 
 
-def validate_yaml(path: Path) -> Tuple[bool, str]:
+def validate_yaml(path: Path) -> tuple[bool, str]:
     if not path.exists():
         return False, f"File not found: {path}"
     try:
@@ -108,7 +107,7 @@ def validate_yaml(path: Path) -> Tuple[bool, str]:
         return False, f"YAML error: {e}"
 
 
-def validate_json(path: Path) -> Tuple[bool, str]:
+def validate_json(path: Path) -> tuple[bool, str]:
     if not path.exists():
         return False, f"File not found: {path}"
     try:
@@ -118,7 +117,7 @@ def validate_json(path: Path) -> Tuple[bool, str]:
         return False, f"JSON error: {e}"
 
 
-def validate_file(path: Path) -> Tuple[bool, str]:
+def validate_file(path: Path) -> tuple[bool, str]:
     if not path.exists():
         return False, f"File not found: {path}"
     if not path.is_file():
@@ -130,7 +129,7 @@ def validate_file(path: Path) -> Tuple[bool, str]:
     return True, f"File OK (size: {path.stat().st_size} bytes)"
 
 
-def validate_git(path: Path) -> Tuple[bool, str]:
+def validate_git(path: Path) -> tuple[bool, str]:
     git_root = path if path.is_dir() else path.parent
     while git_root != git_root.parent:
         if (git_root / ".git").exists():

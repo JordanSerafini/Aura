@@ -9,7 +9,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any
 from datetime import datetime
 
 # Imports conditionnels
@@ -46,7 +46,7 @@ except ImportError:
     pass
 
 
-def get_environment_info() -> Dict[str, Any]:
+def get_environment_info() -> dict[str, Any]:
     """Récupère les infos de l'environnement ML."""
     import platform
     import os
@@ -73,7 +73,7 @@ def get_environment_info() -> Dict[str, Any]:
     return env
 
 
-def inspect_sklearn_model(model) -> Dict[str, Any]:
+def inspect_sklearn_model(model) -> dict[str, Any]:
     """Inspecte un modèle scikit-learn."""
     info = {
         "type": "sklearn",
@@ -114,7 +114,7 @@ def inspect_sklearn_model(model) -> Dict[str, Any]:
     return info
 
 
-def inspect_pytorch_model(model) -> Dict[str, Any]:
+def inspect_pytorch_model(model) -> dict[str, Any]:
     """Inspecte un modèle PyTorch."""
     import torch
 
@@ -146,7 +146,7 @@ def inspect_pytorch_model(model) -> Dict[str, Any]:
     return info
 
 
-def load_and_inspect(filepath: Path) -> Optional[Dict[str, Any]]:
+def load_and_inspect(filepath: Path) -> dict[str, Any | None]:
     """Charge et inspecte un modèle."""
     result = {
         "file": str(filepath),
@@ -214,7 +214,7 @@ def load_and_inspect(filepath: Path) -> Optional[Dict[str, Any]]:
     return result
 
 
-def scan_models(path: Path) -> Dict[str, Any]:
+def scan_models(path: Path) -> dict[str, Any]:
     """Scan un répertoire pour trouver les modèles."""
     extensions = ['.pkl', '.pickle', '.joblib', '.pt', '.pth', '.onnx', '.h5', '.keras', '.pb']
     models = []
@@ -243,7 +243,7 @@ def scan_models(path: Path) -> Dict[str, Any]:
     }
 
 
-def print_inspection(result: Dict[str, Any]):
+def print_inspection(result: dict[str, Any]):
     """Affiche le résultat d'inspection."""
     print(f"\n{'='*60}")
     print(f" Model Inspection: {Path(result['file']).name}")

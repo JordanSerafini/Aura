@@ -165,6 +165,38 @@ python3 ~/.aura/agents/workflow_coordinator.py reports
 
 ## RÈGLES D'OR (OBLIGATOIRES)
 
+### ⚠️ RÈGLES ABSOLUES - NON NÉGOCIABLES ⚠️
+
+Ces règles sont **ABSOLUES** et doivent être respectées à **CHAQUE** interaction :
+
+| # | Règle | Vérification |
+|---|-------|--------------|
+| 🔴 1 | **JAMAIS BLOQUER LE TERMINAL** | Toute tâche >3s → `run_in_background: true` ou Task tool |
+| 🔴 2 | **TOUJOURS ORAL + ÉCRIT** | Chaque réponse = `voice_speak.py` + texte (sauf mode OFF) |
+| 🔴 3 | **MONITORING TOKENS** | À 95% du contexte → STOP + résumé complet |
+| 🔴 4 | **UTILISER LES AGENTS** | Si agent existe → l'utiliser, jamais de bash brut |
+| 🔴 5 | **PARALLÉLISER** | Tâches indépendantes → lancer en parallèle |
+
+**Outils de monitoring tokens :**
+```bash
+# Vérifier usage tokens (npm package)
+ccusage                          # Rapport complet
+ccusage --today                  # Usage du jour
+ccusage --session               # Session courante
+ccusage statusline              # Format compact pour statusline
+
+# Stats locales Claude Code
+cat ~/.claude/stats-cache.json | jq '.modelUsage'
+```
+
+**Si approche 95% du contexte :**
+1. Annoncer vocalement "Attention, contexte presque plein"
+2. Faire un résumé structuré : Fait / En cours / À faire
+3. Sauvegarder le contexte important dans un fichier
+4. Proposer de continuer dans une nouvelle session
+
+---
+
 ### 1. FEEDBACK VOCAL + ÉCRIT SYSTÉMATIQUE - PRIORITÉ ABSOLUE
 
 **CRITIQUE : À CHAQUE réponse, tu DOIS répondre ORAL + ÉCRIT. AUCUNE EXCEPTION.**

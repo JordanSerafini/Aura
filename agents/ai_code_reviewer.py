@@ -12,7 +12,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import Dict, Any
 from datetime import datetime
 from collections import defaultdict
 import difflib
@@ -87,7 +87,7 @@ class AICodeReviewer:
     def __init__(self, path: Path, verbose: bool = False):
         self.path = path.resolve()
         self.verbose = verbose
-        self.results: Dict[str, Any] = {
+        self.results: dict[str, Any] = {
             "path": str(self.path),
             "reviewed_at": datetime.now().isoformat(),
             "files_reviewed": 0,
@@ -104,7 +104,7 @@ class AICodeReviewer:
             "ai_suggestions": []
         }
 
-    def review_file(self, filepath: Path) -> List[Dict]:
+    def review_file(self, filepath: Path) -> list[Dict]:
         """Review un fichier."""
         findings = []
 
@@ -134,7 +134,7 @@ class AICodeReviewer:
 
         return findings
 
-    def review_diff(self, diff_content: str) -> List[Dict]:
+    def review_diff(self, diff_content: str) -> list[Dict]:
         """Review un diff (pour intégration PR)."""
         findings = []
         current_file = None
@@ -174,7 +174,7 @@ class AICodeReviewer:
 
         return findings
 
-    def get_git_diff(self, base_branch: str = "main") -> Optional[str]:
+    def get_git_diff(self, base_branch: str = "main") -> str | None:
         """Récupère le diff Git par rapport à une branche."""
         try:
             result = subprocess.run(
@@ -256,7 +256,7 @@ class AICodeReviewer:
 
         self.results["ai_suggestions"] = suggestions
 
-    def review(self, diff_only: bool = False, base_branch: str = "main") -> Dict[str, Any]:
+    def review(self, diff_only: bool = False, base_branch: str = "main") -> dict[str, Any]:
         """Lance la review complète."""
 
         if diff_only:
@@ -296,7 +296,7 @@ class AICodeReviewer:
         return self.results
 
 
-def print_report(results: Dict[str, Any], verbose: bool = False):
+def print_report(results: dict[str, Any], verbose: bool = False):
     """Affiche le rapport de review."""
     print(f"\n{'='*60}")
     print(f" AI Code Review Report")

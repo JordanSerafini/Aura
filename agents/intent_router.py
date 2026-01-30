@@ -16,7 +16,7 @@ import re
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Any
 from datetime import datetime
 
 # Configuration
@@ -35,9 +35,9 @@ class AgentCapability:
     """Capacité d'un agent."""
     name: str
     description: str
-    keywords: List[str]
-    patterns: List[str] = field(default_factory=list)
-    embedding: Optional[List[float]] = None
+    keywords: list[str]
+    patterns: list[str] = field(default_factory=list)
+    embedding: list[float | None] = None
     priority: int = 5  # 1-10, 10 = priorité max
     requires_background: bool = False
     typical_duration: str = "quick"  # quick, medium, long
@@ -48,7 +48,7 @@ class RoutingDecision:
     """Décision de routage."""
     primary_agent: str
     confidence: float
-    secondary_agents: List[Tuple[str, float]] = field(default_factory=list)
+    secondary_agents: list[tuple[str, float]] = field(default_factory=list)
     reasoning: str = ""
     run_parallel: bool = False
     run_background: bool = False
@@ -56,7 +56,7 @@ class RoutingDecision:
 
 
 # Table de routage statique (fallback si pas d'embeddings)
-ROUTING_TABLE: Dict[str, AgentCapability] = {
+ROUTING_TABLE: dict[str, AgentCapability] = {
     # === SYSTÈME ===
     "sys_health": AgentCapability(
         name="sys_health",
@@ -272,7 +272,7 @@ class IntentRouter:
             self.use_embeddings = False
             self.embedder = None
 
-    def _keyword_match(self, query: str) -> List[Tuple[str, float]]:
+    def _keyword_match(self, query: str) -> list[tuple[str, float]]:
         """Match basé sur les keywords."""
         query_lower = query.lower()
         scores = []
@@ -302,7 +302,7 @@ class IntentRouter:
 
         return sorted(scores, key=lambda x: x[1], reverse=True)
 
-    def _embedding_match(self, query: str) -> List[Tuple[str, float]]:
+    def _embedding_match(self, query: str) -> list[tuple[str, float]]:
         """Match basé sur les embeddings."""
         if not self.embedder:
             return []
@@ -324,9 +324,9 @@ class IntentRouter:
 
     def _combine_scores(
         self,
-        keyword_scores: List[Tuple[str, float]],
-        embedding_scores: List[Tuple[str, float]]
-    ) -> List[Tuple[str, float]]:
+        keyword_scores: list[tuple[str, float]],
+        embedding_scores: list[tuple[str, float]]
+    ) -> list[tuple[str, float]]:
         """Combine les scores keywords et embeddings."""
         combined = {}
 
@@ -406,11 +406,11 @@ class IntentRouter:
             requires_confirmation=requires_confirm
         )
 
-    def get_agent_info(self, agent_name: str) -> Optional[AgentCapability]:
+    def get_agent_info(self, agent_name: str) -> AgentCapability | None:
         """Récupère les infos d'un agent."""
         return self.routing_table.get(agent_name)
 
-    def list_agents(self) -> List[Dict[str, Any]]:
+    def list_agents(self) -> list[dict[str, Any]]:
         """Liste tous les agents disponibles."""
         return [
             {
@@ -437,7 +437,7 @@ class IntentRouter:
             agent.embedding = self.embedder.encode(text).tolist()
 
 
-def route_query(query: str, use_embeddings: bool = True) -> Dict[str, Any]:
+def route_query(query: str, use_embeddings: bool = True) -> dict[str, Any]:
     """Fonction helper pour routage rapide."""
     router = IntentRouter(use_embeddings=use_embeddings)
     decision = router.route(query)

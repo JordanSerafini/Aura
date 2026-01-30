@@ -13,7 +13,7 @@ import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Dict
+from typing import Dict
 import hashlib
 
 WORKFLOWS_DIR = Path.home() / ".aura" / "workflows"
@@ -138,7 +138,7 @@ def create_agent_report(agent_id: str, role: str, output: str, status: str, dura
     report += "\n\n---\n"
     return report
 
-def create_synthesis(results: List[Dict]) -> str:
+def create_synthesis(results: list[Dict]) -> str:
     """Crée la synthèse finale du workflow"""
     success_count = sum(1 for r in results if r["status"] == "success")
     total_duration = sum(r["duration"] for r in results)
@@ -195,7 +195,7 @@ def create_synthesis(results: List[Dict]) -> str:
 """
     return synthesis
 
-def run_agent(agent_config: dict, context_file: Optional[Path] = None) -> dict:
+def run_agent(agent_config: dict, context_file: Path | None = None) -> dict:
     """Exécute un agent et retourne son résultat"""
     agent_id = agent_config["id"]
     cmd = agent_config["cmd"]
@@ -245,8 +245,8 @@ def run_agent(agent_config: dict, context_file: Optional[Path] = None) -> dict:
         "executed_at": datetime.now().isoformat()
     }
 
-def run_workflow(template_name: str, parallel: Optional[bool] = None,
-                 output_dir: Optional[Path] = None) -> dict:
+def run_workflow(template_name: str, parallel: bool | None = None,
+                 output_dir: Path | None = None) -> dict:
     """Exécute un workflow complet"""
     templates = load_templates()
 

@@ -10,7 +10,6 @@ import json
 import os
 import subprocess
 from pathlib import Path
-from typing import Optional
 from datetime import datetime
 
 CONTEXT_CACHE = Path.home() / ".aura" / "context" / "projects.json"
@@ -218,7 +217,7 @@ def analyze_structure(path: Path) -> dict:
 
     return structure
 
-def get_git_info(path: Path) -> Optional[dict]:
+def get_git_info(path: Path) -> dict | None:
     """Récupère les infos Git du projet"""
     git_dir = path / ".git"
     if not git_dir.is_dir():

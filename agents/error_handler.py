@@ -20,7 +20,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from enum import Enum, auto
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, TypeVar
+from typing import Any, Callable, Dict, TypeVar
 import threading
 
 # Configuration
@@ -66,7 +66,7 @@ class ErrorRecord:
     error_type: str
     message: str
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
-    context: Dict[str, Any] = field(default_factory=dict)
+    context: dict[str, Any] = field(default_factory=dict)
     resolved: bool = False
     resolution: str = ""
 
@@ -78,12 +78,12 @@ class CircuitBreakerState:
     state: CircuitState = CircuitState.CLOSED
     failure_count: int = 0
     success_count: int = 0
-    last_failure_time: Optional[str] = None
+    last_failure_time: str | None = None
     half_open_calls: int = 0
 
 
 # Fallback mappings
-FALLBACK_AGENTS: Dict[str, List[str]] = {
+FALLBACK_AGENTS: dict[str, list[str]] = {
     "voice_speak": ["voice_speak_piper"],
     "network_monitor": ["security_auditor"],
     "sys_health": ["process_manager"],
@@ -107,8 +107,8 @@ class ErrorHandler:
     """Gestionnaire d'erreurs centralisé."""
 
     def __init__(self):
-        self.circuit_states: Dict[str, CircuitBreakerState] = {}
-        self.error_history: List[ErrorRecord] = []
+        self.circuit_states: dict[str, CircuitBreakerState] = {}
+        self.error_history: list[ErrorRecord] = []
         self._lock = threading.Lock()
         self._load_circuit_states()
 
@@ -285,10 +285,10 @@ class ErrorHandler:
     def execute_with_circuit_breaker(
         self,
         agent: str,
-        args: List[str] = None,
+        args: list[str] = None,
         config: CircuitBreakerConfig = None,
         retry_config: RetryConfig = None
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Exécute un agent avec circuit breaker et retry.
 
@@ -370,9 +370,9 @@ class ErrorHandler:
     def execute_with_fallback(
         self,
         agent: str,
-        args: List[str] = None,
-        fallbacks: List[str] = None
-    ) -> Dict[str, Any]:
+        args: list[str] = None,
+        fallbacks: list[str] = None
+    ) -> dict[str, Any]:
         """
         Exécute un agent avec fallback automatique.
 
@@ -423,7 +423,7 @@ class ErrorHandler:
             "tried": agents_to_try
         }
 
-    def get_circuit_status(self) -> Dict[str, Any]:
+    def get_circuit_status(self) -> dict[str, Any]:
         """Retourne le statut de tous les circuits."""
         return {
             agent: {
@@ -442,7 +442,7 @@ class ErrorHandler:
             return True
         return False
 
-    def get_recent_errors(self, hours: int = 24, agent: str = None) -> List[ErrorRecord]:
+    def get_recent_errors(self, hours: int = 24, agent: str = None) -> list[ErrorRecord]:
         """Récupère les erreurs récentes."""
         cutoff = datetime.now() - timedelta(hours=hours)
         errors = []

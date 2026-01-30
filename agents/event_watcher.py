@@ -16,7 +16,6 @@ import uuid
 from datetime import datetime
 from fnmatch import fnmatch
 from pathlib import Path
-from typing import Optional
 
 try:
     from watchdog.observers import Observer
@@ -156,7 +155,7 @@ class AuraEventHandler(FileSystemEventHandler):
         self.cooldown[key] = now
         return True
 
-    def _match_rule(self, file_path: str, event_type: str) -> Optional[dict]:
+    def _match_rule(self, file_path: str, event_type: str) -> dict | None:
         """Find matching rule for file and event type."""
         file_path = Path(file_path)
 
@@ -227,7 +226,7 @@ class AuraEventHandler(FileSystemEventHandler):
         self._handle_event(event, "delete")
 
 # --- Daemon Management ---
-def is_running() -> Optional[int]:
+def is_running() -> int | None:
     """Check if daemon is running, return PID if so."""
     if not PID_FILE.exists():
         return None

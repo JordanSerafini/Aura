@@ -9,7 +9,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any
 from datetime import datetime
 
 try:
@@ -20,7 +20,7 @@ except ImportError:
     PANDAS_AVAILABLE = False
 
 
-def profile_dataframe(df: pd.DataFrame, name: str = "dataset") -> Dict[str, Any]:
+def profile_dataframe(df: pd.DataFrame, name: str = "dataset") -> dict[str, Any]:
     """Profile complet d'un DataFrame."""
     profile = {
         "name": name,
@@ -106,7 +106,7 @@ def profile_dataframe(df: pd.DataFrame, name: str = "dataset") -> Dict[str, Any]
     return profile
 
 
-def load_data(filepath: Path) -> Optional[pd.DataFrame]:
+def load_data(filepath: Path) -> pd.DataFrame | None:
     """Charge un fichier de données."""
     try:
         if filepath.suffix == '.csv':
@@ -124,7 +124,7 @@ def load_data(filepath: Path) -> Optional[pd.DataFrame]:
         return None
 
 
-def print_profile(profile: Dict[str, Any], verbose: bool = False):
+def print_profile(profile: dict[str, Any], verbose: bool = False):
     """Affiche le profil formaté."""
     print(f"\n{'='*60}")
     print(f" Data Profile: {profile['name']}")
@@ -159,7 +159,7 @@ def print_profile(profile: Dict[str, Any], verbose: bool = False):
     print(f"\n{'='*60}\n")
 
 
-def scan_directory(path: Path) -> Dict[str, Any]:
+def scan_directory(path: Path) -> dict[str, Any]:
     """Scan un répertoire pour trouver les fichiers de données."""
     extensions = ['.csv', '.json', '.parquet', '.xlsx', '.xls']
     files = []

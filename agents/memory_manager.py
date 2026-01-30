@@ -13,7 +13,7 @@ import sys
 import hashlib
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, List, Dict, Any
+from typing import Any
 
 import chromadb
 from chromadb.config import Settings
@@ -77,7 +77,7 @@ class MemoryManager:
             )
 
         # Nouveau système de mémoire avancé
-        self._api: Optional[MemoryAPI] = None
+        self._api: MemoryAPI | None = None
 
     @property
     def model(self) -> SentenceTransformer:
@@ -87,13 +87,13 @@ class MemoryManager:
         return self._model
 
     @property
-    def api(self) -> Optional['MemoryAPI']:
+    def api(self) -> 'MemoryAPI' | None:
         """Accès à l'API de mémoire avancée."""
         if self._api is None and ADVANCED_MEMORY:
             self._api = MemoryAPI()
         return self._api
 
-    def _chunk_text(self, text: str) -> List[str]:
+    def _chunk_text(self, text: str) -> list[str]:
         """Découpe le texte en chunks optimisés (512 tokens)."""
         if len(text) <= CHUNK_SIZE:
             return [text]
@@ -112,7 +112,7 @@ class MemoryManager:
         data = f"{source}:{index}:{content[:100]}"
         return hashlib.sha256(data.encode()).hexdigest()[:16]
 
-    def _get_embeddings(self, texts: List[str]) -> List[List[float]]:
+    def _get_embeddings(self, texts: list[str]) -> list[list[float]]:
         """Génère les embeddings."""
         embeddings = self.model.encode(texts, show_progress_bar=False)
         return embeddings.tolist()
@@ -168,7 +168,7 @@ class MemoryManager:
 
         return len(chunks)
 
-    def index_directory(self, dir_path: Path, recursive: bool = True) -> Dict[str, int]:
+    def index_directory(self, dir_path: Path, recursive: bool = True) -> dict[str, int]:
         """Indexe un dossier."""
         if not dir_path.exists():
             raise FileNotFoundError(f"Dossier non trouvé: {dir_path}")
@@ -190,7 +190,7 @@ class MemoryManager:
 
         return stats
 
-    def search(self, query: str, collection_name: Optional[str] = None, n_results: int = TOP_K) -> List[Dict[str, Any]]:
+    def search(self, query: str, collection_name: str | None = None, n_results: int = TOP_K) -> list[dict[str, Any]]:
         """Recherche dans les documents indexés."""
         query_embedding = self._get_embeddings([query])[0]
         results = []
@@ -250,11 +250,11 @@ class MemoryManager:
 
         return doc_id
 
-    def recall(self, context: str, n_results: int = TOP_K) -> List[Dict[str, Any]]:
+    def recall(self, context: str, n_results: int = TOP_K) -> list[dict[str, Any]]:
         """Rappelle le contexte pertinent."""
         return self.search(context, n_results=n_results)
 
-    def forget(self, doc_id: Optional[str] = None, older_than: Optional[str] = None) -> int:
+    def forget(self, doc_id: str | None = None, older_than: str | None = None) -> int:
         """Supprime des entrées."""
         deleted = 0
 
@@ -305,7 +305,7 @@ class MemoryManager:
         thought_process: str = "",
         importance: float = 0.5,
         valence: float = 0.0
-    ) -> Optional[str]:
+    ) -> str | None:
         """Enregistre un épisode dans la mémoire épisodique."""
         if not self.api:
             print("Mémoire avancée non disponible", file=sys.stderr)
@@ -321,41 +321,41 @@ class MemoryManager:
         )
         return result.get("episode_id")
 
-    def recall_episodes(self, query: str, n_results: int = 5) -> List[Dict[str, Any]]:
+    def recall_episodes(self, query: str, n_results: int = 5) -> list[dict[str, Any]]:
         """Rappelle des épisodes pertinents."""
         if not self.api:
             return []
         result = self.api.recall_episodes(query, n_results)
         return result.get("episodes", [])
 
-    def find_skills(self, context: str, n_results: int = 3) -> List[Dict[str, Any]]:
+    def find_skills(self, context: str, n_results: int = 3) -> list[dict[str, Any]]:
         """Trouve les skills applicables."""
         if not self.api:
             return []
         result = self.api.find_skills(context, n_results)
         return result.get("skills", [])
 
-    def add_knowledge(self, subject: str, predicate: str, obj: str) -> Optional[str]:
+    def add_knowledge(self, subject: str, predicate: str, obj: str) -> str | None:
         """Ajoute un triplet de connaissance."""
         if not self.api:
             return None
         result = self.api.add_knowledge(subject, predicate, obj)
         return result.get("triple_id")
 
-    def query_knowledge(self, query: str, n_results: int = 5) -> List[Dict[str, Any]]:
+    def query_knowledge(self, query: str, n_results: int = 5) -> list[dict[str, Any]]:
         """Recherche dans le graphe de connaissances."""
         if not self.api:
             return []
         result = self.api.query_knowledge(query, n_results)
         return result.get("triples", [])
 
-    def consolidate(self, dry_run: bool = False) -> Dict[str, Any]:
+    def consolidate(self, dry_run: bool = False) -> dict[str, Any]:
         """Lance une consolidation de la mémoire."""
         if not self.api:
             return {"error": "Mémoire avancée non disponible"}
         return self.api.consolidate(dry_run=dry_run)
 
-    def unified_search(self, query: str, n_results: int = 5) -> Dict[str, Any]:
+    def unified_search(self, query: str, n_results: int = 5) -> dict[str, Any]:
         """Recherche unifiée dans tous les types de mémoire."""
         results = {
             "documents": self.search(query, n_results=n_results),
@@ -371,7 +371,7 @@ class MemoryManager:
 
         return results
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """Statistiques complètes."""
         stats = {
             "version": "3.1.0",

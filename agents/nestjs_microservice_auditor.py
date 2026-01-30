@@ -12,7 +12,7 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, List, Any, Optional
+from typing import List, Any
 from datetime import datetime
 from collections import defaultdict
 
@@ -77,7 +77,7 @@ class NestJSMicroserviceAuditor:
     def __init__(self, path: Path, verbose: bool = False):
         self.path = path.resolve()
         self.verbose = verbose
-        self.results: Dict[str, Any] = {
+        self.results: dict[str, Any] = {
             "path": str(self.path),
             "audited_at": datetime.now().isoformat(),
             "architecture": {
@@ -278,7 +278,7 @@ class NestJSMicroserviceAuditor:
         self.results["score"] = max(0, self.results["score"])
 
 
-def print_report(results: Dict[str, Any], verbose: bool = False):
+def print_report(results: dict[str, Any], verbose: bool = False):
     """Affiche le rapport."""
     print(f"\n{'='*60}")
     print(f" NestJS Microservices Audit Report")

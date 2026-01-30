@@ -13,7 +13,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Dict, Any
+from typing import Dict, Any
 import threading
 
 # Configuration
@@ -31,7 +31,7 @@ class TaskRunner:
     def __init__(self):
         self.running_tasks = self._load_running_tasks()
 
-    def _load_running_tasks(self) -> Dict[str, Any]:
+    def _load_running_tasks(self) -> dict[str, Any]:
         """Charge la liste des tâches en cours."""
         if RUNNING_TASKS_FILE.exists():
             try:
@@ -66,11 +66,11 @@ class TaskRunner:
     def run_agent(
         self,
         agent: str,
-        args: List[str] = None,
+        args: list[str] = None,
         background: bool = True,
         notify: bool = True,
-        timeout: Optional[int] = None
-    ) -> Dict[str, Any]:
+        timeout: int | None = None
+    ) -> dict[str, Any]:
         """
         Exécute un agent Aura.
 
@@ -206,10 +206,10 @@ class TaskRunner:
 
     def run_parallel(
         self,
-        tasks: List[Dict[str, Any]],
+        tasks: list[dict[str, Any]],
         notify_each: bool = False,
         notify_all: bool = True
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Exécute plusieurs agents en parallèle.
 
@@ -259,7 +259,7 @@ class TaskRunner:
             "results": results
         }
 
-    def list_tasks(self, status: Optional[str] = None) -> List[Dict[str, Any]]:
+    def list_tasks(self, status: str | None = None) -> list[dict[str, Any]]:
         """Liste les tâches."""
         tasks = list(self.running_tasks.values())
 
@@ -268,7 +268,7 @@ class TaskRunner:
 
         return sorted(tasks, key=lambda t: t.get("started_at", ""), reverse=True)
 
-    def get_task(self, task_id: str) -> Optional[Dict[str, Any]]:
+    def get_task(self, task_id: str) -> dict[str, Any | None]:
         """Récupère les infos d'une tâche."""
         task = self.running_tasks.get(task_id)
         if task:
@@ -339,7 +339,7 @@ def run_bg(agent: str, *args, notify: bool = True) -> str:
     return result.get("task_id", "")
 
 
-def run_parallel_bg(tasks: List[tuple]) -> Dict[str, Any]:
+def run_parallel_bg(tasks: list[tuple]) -> dict[str, Any]:
     """Lance plusieurs agents en parallèle.
 
     Args:
