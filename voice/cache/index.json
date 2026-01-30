@@ -1,0 +1,2222 @@
+{
+  "7dce3c93a87f0169": {
+    "text_hash": "7dce3c93a87f0169",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/7dce3c93a87f0169.mp3",
+    "created_at": 1768474679.1565742,
+    "last_accessed": 1768474679.1565745,
+    "access_count": 1,
+    "size_bytes": 29088
+  },
+  "0a9410540e02de4b": {
+    "text_hash": "0a9410540e02de4b",
+    "voice": "denise",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0a9410540e02de4b.mp3",
+    "created_at": 1768474699.5856543,
+    "last_accessed": 1768474699.5856545,
+    "access_count": 1,
+    "size_bytes": 19728
+  },
+  "9372cbdb6908277b": {
+    "text_hash": "9372cbdb6908277b",
+    "voice": "henri",
+    "engine": "piper",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9372cbdb6908277b.wav",
+    "created_at": 1768474703.9380772,
+    "last_accessed": 1768474703.9380774,
+    "access_count": 1,
+    "size_bytes": 110752
+  },
+  "f1f5e72e94cf56b2": {
+    "text_hash": "f1f5e72e94cf56b2",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f1f5e72e94cf56b2.mp3",
+    "created_at": 1768474768.4886742,
+    "last_accessed": 1768474768.4886744,
+    "access_count": 1,
+    "size_bytes": 33408
+  },
+  "4c250c27295c3167": {
+    "text_hash": "4c250c27295c3167",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/4c250c27295c3167.mp3",
+    "created_at": 1768474777.6823316,
+    "last_accessed": 1768474777.6823318,
+    "access_count": 1,
+    "size_bytes": 49824
+  },
+  "c8180ca72ed07aa7": {
+    "text_hash": "c8180ca72ed07aa7",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/c8180ca72ed07aa7.mp3",
+    "created_at": 1768474785.0533152,
+    "last_accessed": 1768474785.0533156,
+    "access_count": 1,
+    "size_bytes": 49536
+  },
+  "6fb99ec83359bc6d": {
+    "text_hash": "6fb99ec83359bc6d",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6fb99ec83359bc6d.mp3",
+    "created_at": 1768474906.3538697,
+    "last_accessed": 1768474906.35387,
+    "access_count": 1,
+    "size_bytes": 69408
+  },
+  "a614f3a606627cde": {
+    "text_hash": "a614f3a606627cde",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/a614f3a606627cde.mp3",
+    "created_at": 1768474935.4399502,
+    "last_accessed": 1768474935.4399507,
+    "access_count": 1,
+    "size_bytes": 28368
+  },
+  "5317684d9dbe06fa": {
+    "text_hash": "5317684d9dbe06fa",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/5317684d9dbe06fa.mp3",
+    "created_at": 1768474991.6540246,
+    "last_accessed": 1768474991.654025,
+    "access_count": 1,
+    "size_bytes": 42192
+  },
+  "6802d363f4acf55b": {
+    "text_hash": "6802d363f4acf55b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6802d363f4acf55b.mp3",
+    "created_at": 1768475053.6647792,
+    "last_accessed": 1768475053.6647794,
+    "access_count": 1,
+    "size_bytes": 25344
+  },
+  "f65aada44fdff46e": {
+    "text_hash": "f65aada44fdff46e",
+    "voice": "henri",
+    "engine": "kyutai",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f65aada44fdff46e.wav",
+    "created_at": 1768475065.1229982,
+    "last_accessed": 1768475065.1229985,
+    "access_count": 1,
+    "size_bytes": 583738
+  },
+  "476c3d9ad917b7fd": {
+    "text_hash": "476c3d9ad917b7fd",
+    "voice": "alba",
+    "engine": "kyutai",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/476c3d9ad917b7fd.wav",
+    "created_at": 1768475085.0775032,
+    "last_accessed": 1768475085.0775034,
+    "access_count": 1,
+    "size_bytes": 422458
+  },
+  "906dd45b01e9950e": {
+    "text_hash": "906dd45b01e9950e",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/906dd45b01e9950e.mp3",
+    "created_at": 1768475123.8608506,
+    "last_accessed": 1768475123.8608506,
+    "access_count": 1,
+    "size_bytes": 39024
+  },
+  "70e5fae78e5fcb17": {
+    "text_hash": "70e5fae78e5fcb17",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/70e5fae78e5fcb17.mp3",
+    "created_at": 1768475167.9837813,
+    "last_accessed": 1768475167.9837816,
+    "access_count": 1,
+    "size_bytes": 27072
+  },
+  "7941cf475242f63a": {
+    "text_hash": "7941cf475242f63a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/7941cf475242f63a.mp3",
+    "created_at": 1768475523.8331213,
+    "last_accessed": 1768475523.8331215,
+    "access_count": 1,
+    "size_bytes": 90000
+  },
+  "ff306cc80247dc81": {
+    "text_hash": "ff306cc80247dc81",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/ff306cc80247dc81.mp3",
+    "created_at": 1768741015.647233,
+    "last_accessed": 1768741015.6472332,
+    "access_count": 1,
+    "size_bytes": 44928
+  },
+  "374e5233bcbd9aaa": {
+    "text_hash": "374e5233bcbd9aaa",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/374e5233bcbd9aaa.mp3",
+    "created_at": 1768741044.9964206,
+    "last_accessed": 1768741044.9964209,
+    "access_count": 1,
+    "size_bytes": 96480
+  },
+  "4978455bb2ec2951": {
+    "text_hash": "4978455bb2ec2951",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/4978455bb2ec2951.mp3",
+    "created_at": 1768741089.0742137,
+    "last_accessed": 1768741089.074214,
+    "access_count": 1,
+    "size_bytes": 33408
+  },
+  "d97d938b3e4791ea": {
+    "text_hash": "d97d938b3e4791ea",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d97d938b3e4791ea.mp3",
+    "created_at": 1768741215.7082546,
+    "last_accessed": 1768741215.7082546,
+    "access_count": 1,
+    "size_bytes": 71712
+  },
+  "25f1129599b07723": {
+    "text_hash": "25f1129599b07723",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/25f1129599b07723.mp3",
+    "created_at": 1769077242.050038,
+    "last_accessed": 1769077242.0500386,
+    "access_count": 1,
+    "size_bytes": 51840
+  },
+  "a766a02b3127abd5": {
+    "text_hash": "a766a02b3127abd5",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/a766a02b3127abd5.mp3",
+    "created_at": 1769077445.1051023,
+    "last_accessed": 1769077445.1051025,
+    "access_count": 1,
+    "size_bytes": 88704
+  },
+  "faad14b0831dde9f": {
+    "text_hash": "faad14b0831dde9f",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/faad14b0831dde9f.mp3",
+    "created_at": 1769077574.2629387,
+    "last_accessed": 1769077574.262939,
+    "access_count": 1,
+    "size_bytes": 57024
+  },
+  "ebae916cd701edc4": {
+    "text_hash": "ebae916cd701edc4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/ebae916cd701edc4.mp3",
+    "created_at": 1769077681.411162,
+    "last_accessed": 1769077681.411162,
+    "access_count": 1,
+    "size_bytes": 40896
+  },
+  "60ed5ddd8c69f4f0": {
+    "text_hash": "60ed5ddd8c69f4f0",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/60ed5ddd8c69f4f0.mp3",
+    "created_at": 1769077780.5219135,
+    "last_accessed": 1769077780.5219138,
+    "access_count": 1,
+    "size_bytes": 50688
+  },
+  "2e4279be70398463": {
+    "text_hash": "2e4279be70398463",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2e4279be70398463.mp3",
+    "created_at": 1769077875.6440022,
+    "last_accessed": 1769077875.6440027,
+    "access_count": 1,
+    "size_bytes": 76752
+  },
+  "b7286969bc365403": {
+    "text_hash": "b7286969bc365403",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b7286969bc365403.mp3",
+    "created_at": 1769077923.391752,
+    "last_accessed": 1769077923.3917522,
+    "access_count": 1,
+    "size_bytes": 71280
+  },
+  "9f63a362fc651686": {
+    "text_hash": "9f63a362fc651686",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9f63a362fc651686.mp3",
+    "created_at": 1769077960.8444235,
+    "last_accessed": 1769077960.8444235,
+    "access_count": 1,
+    "size_bytes": 73008
+  },
+  "65409f36f669cc3a": {
+    "text_hash": "65409f36f669cc3a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/65409f36f669cc3a.mp3",
+    "created_at": 1769078395.2457135,
+    "last_accessed": 1769078395.2457135,
+    "access_count": 1,
+    "size_bytes": 26784
+  },
+  "186cfb9f2d8190cd": {
+    "text_hash": "186cfb9f2d8190cd",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/186cfb9f2d8190cd.mp3",
+    "created_at": 1769078768.5451756,
+    "last_accessed": 1769078768.5451756,
+    "access_count": 1,
+    "size_bytes": 73728
+  },
+  "b71ba4b7bcd2a66c": {
+    "text_hash": "b71ba4b7bcd2a66c",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b71ba4b7bcd2a66c.mp3",
+    "created_at": 1769078841.3513625,
+    "last_accessed": 1769078841.3513625,
+    "access_count": 1,
+    "size_bytes": 64080
+  },
+  "75d67ca6e6233654": {
+    "text_hash": "75d67ca6e6233654",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/75d67ca6e6233654.mp3",
+    "created_at": 1769078884.2068903,
+    "last_accessed": 1769078884.2068906,
+    "access_count": 1,
+    "size_bytes": 59184
+  },
+  "c467b3edbf8a896b": {
+    "text_hash": "c467b3edbf8a896b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/c467b3edbf8a896b.mp3",
+    "created_at": 1769079228.4856422,
+    "last_accessed": 1769079228.4856422,
+    "access_count": 1,
+    "size_bytes": 80928
+  },
+  "ae5a34c40a2518b6": {
+    "text_hash": "ae5a34c40a2518b6",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/ae5a34c40a2518b6.mp3",
+    "created_at": 1769079558.6305184,
+    "last_accessed": 1769079558.6305192,
+    "access_count": 1,
+    "size_bytes": 21024
+  },
+  "3986b5ec0fb99851": {
+    "text_hash": "3986b5ec0fb99851",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3986b5ec0fb99851.mp3",
+    "created_at": 1769079636.0370994,
+    "last_accessed": 1769079636.0370996,
+    "access_count": 1,
+    "size_bytes": 33552
+  },
+  "cf4e943aaa9dbb90": {
+    "text_hash": "cf4e943aaa9dbb90",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/cf4e943aaa9dbb90.mp3",
+    "created_at": 1769079917.0395029,
+    "last_accessed": 1769079917.0395033,
+    "access_count": 1,
+    "size_bytes": 50832
+  },
+  "0c19f2e09f325af2": {
+    "text_hash": "0c19f2e09f325af2",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0c19f2e09f325af2.mp3",
+    "created_at": 1769079942.864912,
+    "last_accessed": 1769079942.8649123,
+    "access_count": 1,
+    "size_bytes": 29808
+  },
+  "82a7c91d42b0c547": {
+    "text_hash": "82a7c91d42b0c547",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/82a7c91d42b0c547.mp3",
+    "created_at": 1769080625.7934523,
+    "last_accessed": 1769080625.7934525,
+    "access_count": 1,
+    "size_bytes": 78480
+  },
+  "c1e87a0b4aa57575": {
+    "text_hash": "c1e87a0b4aa57575",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/c1e87a0b4aa57575.mp3",
+    "created_at": 1769080795.272685,
+    "last_accessed": 1769080795.2726858,
+    "access_count": 1,
+    "size_bytes": 86832
+  },
+  "1ef3cc6bac2db26f": {
+    "text_hash": "1ef3cc6bac2db26f",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/1ef3cc6bac2db26f.mp3",
+    "created_at": 1769080841.6174285,
+    "last_accessed": 1769080841.6174288,
+    "access_count": 1,
+    "size_bytes": 34560
+  },
+  "7981a00d134f4767": {
+    "text_hash": "7981a00d134f4767",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/7981a00d134f4767.mp3",
+    "created_at": 1769098386.609552,
+    "last_accessed": 1769098386.609552,
+    "access_count": 1,
+    "size_bytes": 28224
+  },
+  "9175fddf9e4c6178": {
+    "text_hash": "9175fddf9e4c6178",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9175fddf9e4c6178.mp3",
+    "created_at": 1769098457.5729399,
+    "last_accessed": 1769098457.57294,
+    "access_count": 1,
+    "size_bytes": 49536
+  },
+  "75f055fbf475fe56": {
+    "text_hash": "75f055fbf475fe56",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/75f055fbf475fe56.mp3",
+    "created_at": 1769098580.154309,
+    "last_accessed": 1769098580.1543093,
+    "access_count": 1,
+    "size_bytes": 73008
+  },
+  "a4bb056bf5c0ed8b": {
+    "text_hash": "a4bb056bf5c0ed8b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/a4bb056bf5c0ed8b.mp3",
+    "created_at": 1769098662.818141,
+    "last_accessed": 1769098662.818141,
+    "access_count": 1,
+    "size_bytes": 80928
+  },
+  "da66daa40f4d54a8": {
+    "text_hash": "da66daa40f4d54a8",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/da66daa40f4d54a8.mp3",
+    "created_at": 1769098736.7552016,
+    "last_accessed": 1769098736.7552018,
+    "access_count": 1,
+    "size_bytes": 48096
+  },
+  "d1da0c856ecf68aa": {
+    "text_hash": "d1da0c856ecf68aa",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d1da0c856ecf68aa.mp3",
+    "created_at": 1769098901.3776898,
+    "last_accessed": 1769098901.37769,
+    "access_count": 1,
+    "size_bytes": 99216
+  },
+  "f01606e32a0f5d07": {
+    "text_hash": "f01606e32a0f5d07",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f01606e32a0f5d07.mp3",
+    "created_at": 1769098971.5429497,
+    "last_accessed": 1769098971.54295,
+    "access_count": 1,
+    "size_bytes": 47088
+  },
+  "6650f08852f2eacb": {
+    "text_hash": "6650f08852f2eacb",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6650f08852f2eacb.mp3",
+    "created_at": 1769099295.4469554,
+    "last_accessed": 1769099295.4469557,
+    "access_count": 1,
+    "size_bytes": 145152
+  },
+  "25a71f697c08f68c": {
+    "text_hash": "25a71f697c08f68c",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/25a71f697c08f68c.mp3",
+    "created_at": 1769099473.8415263,
+    "last_accessed": 1769099473.8415263,
+    "access_count": 1,
+    "size_bytes": 104688
+  },
+  "9d6062a1c072addb": {
+    "text_hash": "9d6062a1c072addb",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9d6062a1c072addb.mp3",
+    "created_at": 1769099507.8880122,
+    "last_accessed": 1769099507.8880126,
+    "access_count": 1,
+    "size_bytes": 45504
+  },
+  "847c4e37d4e7ce44": {
+    "text_hash": "847c4e37d4e7ce44",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/847c4e37d4e7ce44.mp3",
+    "created_at": 1769099645.6712582,
+    "last_accessed": 1769099645.6712584,
+    "access_count": 1,
+    "size_bytes": 94464
+  },
+  "56059681e2961331": {
+    "text_hash": "56059681e2961331",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/56059681e2961331.mp3",
+    "created_at": 1769099670.9966917,
+    "last_accessed": 1769099670.9966917,
+    "access_count": 1,
+    "size_bytes": 46368
+  },
+  "ffbc4ad1d967536c": {
+    "text_hash": "ffbc4ad1d967536c",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/ffbc4ad1d967536c.mp3",
+    "created_at": 1769099735.4594793,
+    "last_accessed": 1769099735.4594796,
+    "access_count": 1,
+    "size_bytes": 70992
+  },
+  "6123f44f9d2ad131": {
+    "text_hash": "6123f44f9d2ad131",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6123f44f9d2ad131.mp3",
+    "created_at": 1769099774.4823437,
+    "last_accessed": 1769099774.482344,
+    "access_count": 1,
+    "size_bytes": 40896
+  },
+  "0e2d5eb3257372a0": {
+    "text_hash": "0e2d5eb3257372a0",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0e2d5eb3257372a0.mp3",
+    "created_at": 1769099827.794137,
+    "last_accessed": 1769099827.7941372,
+    "access_count": 1,
+    "size_bytes": 76176
+  },
+  "d3b376408bde84ab": {
+    "text_hash": "d3b376408bde84ab",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d3b376408bde84ab.mp3",
+    "created_at": 1769099869.4741728,
+    "last_accessed": 1769099869.474173,
+    "access_count": 1,
+    "size_bytes": 66096
+  },
+  "18ac8e8c0e5b0bb4": {
+    "text_hash": "18ac8e8c0e5b0bb4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/18ac8e8c0e5b0bb4.mp3",
+    "created_at": 1769099902.925872,
+    "last_accessed": 1769099902.9258726,
+    "access_count": 1,
+    "size_bytes": 71712
+  },
+  "29bad594e220756e": {
+    "text_hash": "29bad594e220756e",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/29bad594e220756e.mp3",
+    "created_at": 1769099960.5548785,
+    "last_accessed": 1769099960.5548787,
+    "access_count": 1,
+    "size_bytes": 61344
+  },
+  "952a846282c06797": {
+    "text_hash": "952a846282c06797",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/952a846282c06797.mp3",
+    "created_at": 1769100142.597059,
+    "last_accessed": 1769100142.5970595,
+    "access_count": 1,
+    "size_bytes": 33120
+  },
+  "006c1c14303bc5fe": {
+    "text_hash": "006c1c14303bc5fe",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/006c1c14303bc5fe.mp3",
+    "created_at": 1769100281.5999887,
+    "last_accessed": 1769100281.599989,
+    "access_count": 1,
+    "size_bytes": 40176
+  },
+  "13dc311a706a96a3": {
+    "text_hash": "13dc311a706a96a3",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/13dc311a706a96a3.mp3",
+    "created_at": 1769100381.9350324,
+    "last_accessed": 1769100381.9350326,
+    "access_count": 1,
+    "size_bytes": 43920
+  },
+  "598215c5ce72fdc8": {
+    "text_hash": "598215c5ce72fdc8",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/598215c5ce72fdc8.mp3",
+    "created_at": 1769100436.9021258,
+    "last_accessed": 1769100436.9021263,
+    "access_count": 1,
+    "size_bytes": 52416
+  },
+  "887a90afa6d656e4": {
+    "text_hash": "887a90afa6d656e4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/887a90afa6d656e4.mp3",
+    "created_at": 1769100537.8915427,
+    "last_accessed": 1769100537.8915434,
+    "access_count": 1,
+    "size_bytes": 49104
+  },
+  "ea470fab65608387": {
+    "text_hash": "ea470fab65608387",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/ea470fab65608387.mp3",
+    "created_at": 1769100716.4904747,
+    "last_accessed": 1769100716.490475,
+    "access_count": 1,
+    "size_bytes": 37008
+  },
+  "d0c22b654b1f6583": {
+    "text_hash": "d0c22b654b1f6583",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d0c22b654b1f6583.mp3",
+    "created_at": 1769100818.9586,
+    "last_accessed": 1769100818.9586003,
+    "access_count": 1,
+    "size_bytes": 71424
+  },
+  "103f4124ac68f96d": {
+    "text_hash": "103f4124ac68f96d",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/103f4124ac68f96d.mp3",
+    "created_at": 1769100882.8894384,
+    "last_accessed": 1769100882.8894386,
+    "access_count": 1,
+    "size_bytes": 39600
+  },
+  "3db220902f30a137": {
+    "text_hash": "3db220902f30a137",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3db220902f30a137.mp3",
+    "created_at": 1769100911.7511775,
+    "last_accessed": 1769100911.7511775,
+    "access_count": 1,
+    "size_bytes": 39600
+  },
+  "27d8c74801071301": {
+    "text_hash": "27d8c74801071301",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/27d8c74801071301.mp3",
+    "created_at": 1769101027.0896888,
+    "last_accessed": 1769101027.0896888,
+    "access_count": 1,
+    "size_bytes": 34992
+  },
+  "fe9f580cd3c755d4": {
+    "text_hash": "fe9f580cd3c755d4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/fe9f580cd3c755d4.mp3",
+    "created_at": 1769101095.4487758,
+    "last_accessed": 1769101095.448776,
+    "access_count": 1,
+    "size_bytes": 42768
+  },
+  "a8acc1d8d8330453": {
+    "text_hash": "a8acc1d8d8330453",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/a8acc1d8d8330453.mp3",
+    "created_at": 1769101114.466339,
+    "last_accessed": 1769101114.466339,
+    "access_count": 1,
+    "size_bytes": 39168
+  },
+  "19aa6c3995c93fa5": {
+    "text_hash": "19aa6c3995c93fa5",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/19aa6c3995c93fa5.mp3",
+    "created_at": 1769101164.9663002,
+    "last_accessed": 1769101164.9663005,
+    "access_count": 1,
+    "size_bytes": 44784
+  },
+  "05173a050da50abd": {
+    "text_hash": "05173a050da50abd",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/05173a050da50abd.mp3",
+    "created_at": 1769101247.0540845,
+    "last_accessed": 1769101247.0540848,
+    "access_count": 1,
+    "size_bytes": 33696
+  },
+  "e9e929507eeff6e7": {
+    "text_hash": "e9e929507eeff6e7",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/e9e929507eeff6e7.mp3",
+    "created_at": 1769101397.8263361,
+    "last_accessed": 1769101397.8263366,
+    "access_count": 1,
+    "size_bytes": 53136
+  },
+  "54421eef5c63fc73": {
+    "text_hash": "54421eef5c63fc73",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/54421eef5c63fc73.mp3",
+    "created_at": 1769101602.2342215,
+    "last_accessed": 1769101602.2342215,
+    "access_count": 1,
+    "size_bytes": 39600
+  },
+  "5bacb4ef36d40210": {
+    "text_hash": "5bacb4ef36d40210",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/5bacb4ef36d40210.mp3",
+    "created_at": 1769249815.3359652,
+    "last_accessed": 1769249815.3359654,
+    "access_count": 1,
+    "size_bytes": 39168
+  },
+  "8a50413b5382b70d": {
+    "text_hash": "8a50413b5382b70d",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/8a50413b5382b70d.mp3",
+    "created_at": 1769249947.2578905,
+    "last_accessed": 1769249947.2578907,
+    "access_count": 1,
+    "size_bytes": 55008
+  },
+  "4749cab6bd898b76": {
+    "text_hash": "4749cab6bd898b76",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/4749cab6bd898b76.mp3",
+    "created_at": 1769250165.594308,
+    "last_accessed": 1769250165.594308,
+    "access_count": 1,
+    "size_bytes": 87264
+  },
+  "eb1201778230ba99": {
+    "text_hash": "eb1201778230ba99",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/eb1201778230ba99.mp3",
+    "created_at": 1769250240.1383584,
+    "last_accessed": 1769250240.1383586,
+    "access_count": 1,
+    "size_bytes": 25776
+  },
+  "06f71f115a53a719": {
+    "text_hash": "06f71f115a53a719",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/06f71f115a53a719.mp3",
+    "created_at": 1769250314.2918756,
+    "last_accessed": 1769250314.2918758,
+    "access_count": 1,
+    "size_bytes": 30672
+  },
+  "2a54671f37b92c1d": {
+    "text_hash": "2a54671f37b92c1d",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2a54671f37b92c1d.mp3",
+    "created_at": 1769250944.0274796,
+    "last_accessed": 1769250944.02748,
+    "access_count": 1,
+    "size_bytes": 78192
+  },
+  "27e5fdaa4306671b": {
+    "text_hash": "27e5fdaa4306671b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/27e5fdaa4306671b.mp3",
+    "created_at": 1769251510.5196385,
+    "last_accessed": 1769251510.5196388,
+    "access_count": 1,
+    "size_bytes": 93168
+  },
+  "6b0da4d1fc04e1a6": {
+    "text_hash": "6b0da4d1fc04e1a6",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6b0da4d1fc04e1a6.mp3",
+    "created_at": 1769251703.4984176,
+    "last_accessed": 1769251703.4984179,
+    "access_count": 1,
+    "size_bytes": 64656
+  },
+  "b408859cc8dd2143": {
+    "text_hash": "b408859cc8dd2143",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b408859cc8dd2143.mp3",
+    "created_at": 1769251734.9896348,
+    "last_accessed": 1769251734.9896348,
+    "access_count": 1,
+    "size_bytes": 53568
+  },
+  "2918fa709d9f8f2a": {
+    "text_hash": "2918fa709d9f8f2a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2918fa709d9f8f2a.mp3",
+    "created_at": 1769251886.0944018,
+    "last_accessed": 1769251886.094402,
+    "access_count": 1,
+    "size_bytes": 35712
+  },
+  "037f0024222765ee": {
+    "text_hash": "037f0024222765ee",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/037f0024222765ee.mp3",
+    "created_at": 1769251952.4454648,
+    "last_accessed": 1769251952.445465,
+    "access_count": 1,
+    "size_bytes": 34992
+  },
+  "9b553485e5c412c4": {
+    "text_hash": "9b553485e5c412c4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9b553485e5c412c4.mp3",
+    "created_at": 1769267178.065558,
+    "last_accessed": 1769267178.0655582,
+    "access_count": 1,
+    "size_bytes": 35712
+  },
+  "2e5c6770077f43e8": {
+    "text_hash": "2e5c6770077f43e8",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2e5c6770077f43e8.mp3",
+    "created_at": 1769267359.797001,
+    "last_accessed": 1769267359.7970011,
+    "access_count": 1,
+    "size_bytes": 31104
+  },
+  "d35860bca88387cc": {
+    "text_hash": "d35860bca88387cc",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d35860bca88387cc.mp3",
+    "created_at": 1769267851.4741497,
+    "last_accessed": 1769267851.47415,
+    "access_count": 1,
+    "size_bytes": 96048
+  },
+  "318ddb913f04d6d9": {
+    "text_hash": "318ddb913f04d6d9",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/318ddb913f04d6d9.mp3",
+    "created_at": 1769268211.3495312,
+    "last_accessed": 1769268211.3495314,
+    "access_count": 1,
+    "size_bytes": 74736
+  },
+  "97915c3eabacec71": {
+    "text_hash": "97915c3eabacec71",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/97915c3eabacec71.mp3",
+    "created_at": 1769268340.7454593,
+    "last_accessed": 1769268340.7454596,
+    "access_count": 1,
+    "size_bytes": 36864
+  },
+  "30cf5da8aa891f0f": {
+    "text_hash": "30cf5da8aa891f0f",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/30cf5da8aa891f0f.mp3",
+    "created_at": 1769268780.0823689,
+    "last_accessed": 1769268780.082369,
+    "access_count": 1,
+    "size_bytes": 50544
+  },
+  "b01faec3129cca23": {
+    "text_hash": "b01faec3129cca23",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b01faec3129cca23.mp3",
+    "created_at": 1769268825.4441957,
+    "last_accessed": 1769268825.444196,
+    "access_count": 1,
+    "size_bytes": 63216
+  },
+  "72124936af9a0061": {
+    "text_hash": "72124936af9a0061",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/72124936af9a0061.mp3",
+    "created_at": 1769284878.6478813,
+    "last_accessed": 1769284878.6478815,
+    "access_count": 1,
+    "size_bytes": 52560
+  },
+  "8bb9264ec64e6cd2": {
+    "text_hash": "8bb9264ec64e6cd2",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/8bb9264ec64e6cd2.mp3",
+    "created_at": 1769284981.8563173,
+    "last_accessed": 1769284981.8563173,
+    "access_count": 1,
+    "size_bytes": 68832
+  },
+  "280a55ae901fd721": {
+    "text_hash": "280a55ae901fd721",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/280a55ae901fd721.mp3",
+    "created_at": 1769285133.104804,
+    "last_accessed": 1769285133.1048043,
+    "access_count": 1,
+    "size_bytes": 46224
+  },
+  "f6f05930647e83ac": {
+    "text_hash": "f6f05930647e83ac",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f6f05930647e83ac.mp3",
+    "created_at": 1769285256.043533,
+    "last_accessed": 1769285256.0435333,
+    "access_count": 1,
+    "size_bytes": 59760
+  },
+  "6866623e1a6ed697": {
+    "text_hash": "6866623e1a6ed697",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6866623e1a6ed697.mp3",
+    "created_at": 1769286350.0565493,
+    "last_accessed": 1769286350.0565495,
+    "access_count": 1,
+    "size_bytes": 66960
+  },
+  "b2bd90599918ea73": {
+    "text_hash": "b2bd90599918ea73",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b2bd90599918ea73.mp3",
+    "created_at": 1769286488.5322025,
+    "last_accessed": 1769286488.5322027,
+    "access_count": 1,
+    "size_bytes": 31968
+  },
+  "d68a859ab38dc201": {
+    "text_hash": "d68a859ab38dc201",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d68a859ab38dc201.mp3",
+    "created_at": 1769286874.2820325,
+    "last_accessed": 1769286874.282033,
+    "access_count": 1,
+    "size_bytes": 49536
+  },
+  "92a4c894618790fe": {
+    "text_hash": "92a4c894618790fe",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/92a4c894618790fe.mp3",
+    "created_at": 1769286970.9785435,
+    "last_accessed": 1769286970.9785438,
+    "access_count": 1,
+    "size_bytes": 54144
+  },
+  "5d4162cf5b4dc0a3": {
+    "text_hash": "5d4162cf5b4dc0a3",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/5d4162cf5b4dc0a3.mp3",
+    "created_at": 1769287186.6135273,
+    "last_accessed": 1769287186.6135275,
+    "access_count": 1,
+    "size_bytes": 71712
+  },
+  "befbcc7d9db4e15e": {
+    "text_hash": "befbcc7d9db4e15e",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/befbcc7d9db4e15e.mp3",
+    "created_at": 1769287244.2951896,
+    "last_accessed": 1769287244.2951899,
+    "access_count": 1,
+    "size_bytes": 42912
+  },
+  "478aa260c0f03abb": {
+    "text_hash": "478aa260c0f03abb",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/478aa260c0f03abb.mp3",
+    "created_at": 1769336511.9567,
+    "last_accessed": 1769336511.9567003,
+    "access_count": 1,
+    "size_bytes": 27792
+  },
+  "63b5241050f0157a": {
+    "text_hash": "63b5241050f0157a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/63b5241050f0157a.mp3",
+    "created_at": 1769336724.2742517,
+    "last_accessed": 1769336724.2742522,
+    "access_count": 1,
+    "size_bytes": 33840
+  },
+  "9a3bfd4cc21e74e9": {
+    "text_hash": "9a3bfd4cc21e74e9",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9a3bfd4cc21e74e9.mp3",
+    "created_at": 1769336825.313597,
+    "last_accessed": 1769336825.3135972,
+    "access_count": 1,
+    "size_bytes": 37008
+  },
+  "3901acb32f2e9c9b": {
+    "text_hash": "3901acb32f2e9c9b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3901acb32f2e9c9b.mp3",
+    "created_at": 1769336859.9140744,
+    "last_accessed": 1769336859.9140744,
+    "access_count": 1,
+    "size_bytes": 26064
+  },
+  "58d01124053f64e1": {
+    "text_hash": "58d01124053f64e1",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/58d01124053f64e1.mp3",
+    "created_at": 1769336874.4428396,
+    "last_accessed": 1769336874.4428399,
+    "access_count": 1,
+    "size_bytes": 35856
+  },
+  "dd5fce30b99b622b": {
+    "text_hash": "dd5fce30b99b622b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/dd5fce30b99b622b.mp3",
+    "created_at": 1769336925.6280313,
+    "last_accessed": 1769336925.6280315,
+    "access_count": 1,
+    "size_bytes": 42480
+  },
+  "667db89a0b0cd1cb": {
+    "text_hash": "667db89a0b0cd1cb",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/667db89a0b0cd1cb.mp3",
+    "created_at": 1769337015.8947213,
+    "last_accessed": 1769337015.8947215,
+    "access_count": 1,
+    "size_bytes": 27936
+  },
+  "350f2b5f70367dee": {
+    "text_hash": "350f2b5f70367dee",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/350f2b5f70367dee.mp3",
+    "created_at": 1769337168.3569047,
+    "last_accessed": 1769337168.356905,
+    "access_count": 1,
+    "size_bytes": 54720
+  },
+  "bf26fa558f5f6b7f": {
+    "text_hash": "bf26fa558f5f6b7f",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/bf26fa558f5f6b7f.mp3",
+    "created_at": 1769337209.1363552,
+    "last_accessed": 1769337209.1363554,
+    "access_count": 1,
+    "size_bytes": 74592
+  },
+  "dec9cc01fce9d24a": {
+    "text_hash": "dec9cc01fce9d24a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/dec9cc01fce9d24a.mp3",
+    "created_at": 1769337344.9428108,
+    "last_accessed": 1769337344.9428113,
+    "access_count": 1,
+    "size_bytes": 44784
+  },
+  "caae2db375dcc9a3": {
+    "text_hash": "caae2db375dcc9a3",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/caae2db375dcc9a3.mp3",
+    "created_at": 1769337381.0273263,
+    "last_accessed": 1769337381.0273268,
+    "access_count": 1,
+    "size_bytes": 47520
+  },
+  "e35f8eea9314effe": {
+    "text_hash": "e35f8eea9314effe",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/e35f8eea9314effe.mp3",
+    "created_at": 1769337537.8682427,
+    "last_accessed": 1769337537.868243,
+    "access_count": 1,
+    "size_bytes": 22464
+  },
+  "01090dea5ffe1801": {
+    "text_hash": "01090dea5ffe1801",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/01090dea5ffe1801.mp3",
+    "created_at": 1769337639.276156,
+    "last_accessed": 1769337639.2761562,
+    "access_count": 1,
+    "size_bytes": 51840
+  },
+  "61c1bd8ddf8f460f": {
+    "text_hash": "61c1bd8ddf8f460f",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/61c1bd8ddf8f460f.mp3",
+    "created_at": 1769337670.459385,
+    "last_accessed": 1769337670.4593852,
+    "access_count": 1,
+    "size_bytes": 57168
+  },
+  "2d5d060876fcd67a": {
+    "text_hash": "2d5d060876fcd67a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2d5d060876fcd67a.mp3",
+    "created_at": 1769337752.8863456,
+    "last_accessed": 1769337752.886346,
+    "access_count": 1,
+    "size_bytes": 51264
+  },
+  "34e21b84f90f8628": {
+    "text_hash": "34e21b84f90f8628",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/34e21b84f90f8628.mp3",
+    "created_at": 1769337786.0605102,
+    "last_accessed": 1769337786.0605104,
+    "access_count": 1,
+    "size_bytes": 20880
+  },
+  "dba354dfd7494610": {
+    "text_hash": "dba354dfd7494610",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/dba354dfd7494610.mp3",
+    "created_at": 1769337861.2608786,
+    "last_accessed": 1769337861.2608788,
+    "access_count": 1,
+    "size_bytes": 68544
+  },
+  "fd8d8cfbdf980cf5": {
+    "text_hash": "fd8d8cfbdf980cf5",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/fd8d8cfbdf980cf5.mp3",
+    "created_at": 1769337924.8865747,
+    "last_accessed": 1769337924.8865752,
+    "access_count": 1,
+    "size_bytes": 46224
+  },
+  "17466eb29108e4bf": {
+    "text_hash": "17466eb29108e4bf",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/17466eb29108e4bf.mp3",
+    "created_at": 1769338068.974681,
+    "last_accessed": 1769338068.9746814,
+    "access_count": 1,
+    "size_bytes": 87264
+  },
+  "6e1e20aa63f4abc9": {
+    "text_hash": "6e1e20aa63f4abc9",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6e1e20aa63f4abc9.mp3",
+    "created_at": 1769338201.237835,
+    "last_accessed": 1769338201.2378352,
+    "access_count": 1,
+    "size_bytes": 52416
+  },
+  "177ce5d6b6512bf1": {
+    "text_hash": "177ce5d6b6512bf1",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/177ce5d6b6512bf1.mp3",
+    "created_at": 1769338482.0600631,
+    "last_accessed": 1769338482.0600636,
+    "access_count": 1,
+    "size_bytes": 51552
+  },
+  "6a246257ce5b2868": {
+    "text_hash": "6a246257ce5b2868",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6a246257ce5b2868.mp3",
+    "created_at": 1769414186.4835324,
+    "last_accessed": 1769414186.4835331,
+    "access_count": 1,
+    "size_bytes": 57168
+  },
+  "0b039415d9c998a3": {
+    "text_hash": "0b039415d9c998a3",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0b039415d9c998a3.mp3",
+    "created_at": 1769418556.312213,
+    "last_accessed": 1769418556.3122132,
+    "access_count": 1,
+    "size_bytes": 87696
+  },
+  "431c710242ea8466": {
+    "text_hash": "431c710242ea8466",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/431c710242ea8466.mp3",
+    "created_at": 1769418815.3634925,
+    "last_accessed": 1769418815.3634925,
+    "access_count": 1,
+    "size_bytes": 78480
+  },
+  "0e4c56555c20195f": {
+    "text_hash": "0e4c56555c20195f",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0e4c56555c20195f.mp3",
+    "created_at": 1769419281.081636,
+    "last_accessed": 1769419281.0816362,
+    "access_count": 1,
+    "size_bytes": 60768
+  },
+  "f32cda526b6b352a": {
+    "text_hash": "f32cda526b6b352a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f32cda526b6b352a.mp3",
+    "created_at": 1769434404.2523906,
+    "last_accessed": 1769434404.2523909,
+    "access_count": 1,
+    "size_bytes": 68976
+  },
+  "9d376b089d09c750": {
+    "text_hash": "9d376b089d09c750",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9d376b089d09c750.mp3",
+    "created_at": 1769457212.9522445,
+    "last_accessed": 1769457212.9522448,
+    "access_count": 1,
+    "size_bytes": 59760
+  },
+  "3a45fba07a09c083": {
+    "text_hash": "3a45fba07a09c083",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3a45fba07a09c083.mp3",
+    "created_at": 1769459003.0132267,
+    "last_accessed": 1769459003.013227,
+    "access_count": 1,
+    "size_bytes": 66240
+  },
+  "b9909d72f8a5b29b": {
+    "text_hash": "b9909d72f8a5b29b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b9909d72f8a5b29b.mp3",
+    "created_at": 1769459638.0512495,
+    "last_accessed": 1769459638.0512497,
+    "access_count": 1,
+    "size_bytes": 62352
+  },
+  "329d896997809aca": {
+    "text_hash": "329d896997809aca",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/329d896997809aca.mp3",
+    "created_at": 1769459974.2927516,
+    "last_accessed": 1769459974.2927518,
+    "access_count": 1,
+    "size_bytes": 62064
+  },
+  "49d97a1892e7c2c0": {
+    "text_hash": "49d97a1892e7c2c0",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/49d97a1892e7c2c0.mp3",
+    "created_at": 1769462155.5940735,
+    "last_accessed": 1769462155.5940735,
+    "access_count": 1,
+    "size_bytes": 91440
+  },
+  "5ae8d6f0ea1e7658": {
+    "text_hash": "5ae8d6f0ea1e7658",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/5ae8d6f0ea1e7658.mp3",
+    "created_at": 1769462625.0086997,
+    "last_accessed": 1769462625.0087001,
+    "access_count": 1,
+    "size_bytes": 71568
+  },
+  "3a275e977ba62599": {
+    "text_hash": "3a275e977ba62599",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3a275e977ba62599.mp3",
+    "created_at": 1769497825.1983397,
+    "last_accessed": 1769497825.19834,
+    "access_count": 1,
+    "size_bytes": 47664
+  },
+  "be79f444aaa34919": {
+    "text_hash": "be79f444aaa34919",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/be79f444aaa34919.mp3",
+    "created_at": 1769520307.3635476,
+    "last_accessed": 1769520307.3635478,
+    "access_count": 1,
+    "size_bytes": 52272
+  },
+  "7937b9324763d403": {
+    "text_hash": "7937b9324763d403",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/7937b9324763d403.mp3",
+    "created_at": 1769520656.0278456,
+    "last_accessed": 1769520656.0278459,
+    "access_count": 1,
+    "size_bytes": 94320
+  },
+  "230cd64509e059ed": {
+    "text_hash": "230cd64509e059ed",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/230cd64509e059ed.mp3",
+    "created_at": 1769527213.1477187,
+    "last_accessed": 1769527213.147719,
+    "access_count": 1,
+    "size_bytes": 72720
+  },
+  "dbf559fc6f4df586": {
+    "text_hash": "dbf559fc6f4df586",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/dbf559fc6f4df586.mp3",
+    "created_at": 1769527394.942533,
+    "last_accessed": 1769527394.9425335,
+    "access_count": 1,
+    "size_bytes": 89712
+  },
+  "1d77a7a796c76f6b": {
+    "text_hash": "1d77a7a796c76f6b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/1d77a7a796c76f6b.mp3",
+    "created_at": 1769536923.020407,
+    "last_accessed": 1769536923.0204072,
+    "access_count": 1,
+    "size_bytes": 62784
+  },
+  "56617d232a24f78a": {
+    "text_hash": "56617d232a24f78a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/56617d232a24f78a.mp3",
+    "created_at": 1769538522.9400537,
+    "last_accessed": 1769538522.940054,
+    "access_count": 1,
+    "size_bytes": 66528
+  },
+  "50c09b8d33c1a7af": {
+    "text_hash": "50c09b8d33c1a7af",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/50c09b8d33c1a7af.mp3",
+    "created_at": 1769539006.0052197,
+    "last_accessed": 1769539006.00522,
+    "access_count": 1,
+    "size_bytes": 68256
+  },
+  "89c12b6bfc1068da": {
+    "text_hash": "89c12b6bfc1068da",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/89c12b6bfc1068da.mp3",
+    "created_at": 1769539062.2232716,
+    "last_accessed": 1769539062.2232716,
+    "access_count": 1,
+    "size_bytes": 122112
+  },
+  "584fd9d1c36358c1": {
+    "text_hash": "584fd9d1c36358c1",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/584fd9d1c36358c1.mp3",
+    "created_at": 1769539202.5920594,
+    "last_accessed": 1769539202.5920599,
+    "access_count": 1,
+    "size_bytes": 36000
+  },
+  "8a1fa0c9e6d7ddaf": {
+    "text_hash": "8a1fa0c9e6d7ddaf",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/8a1fa0c9e6d7ddaf.mp3",
+    "created_at": 1769540199.423566,
+    "last_accessed": 1769540199.423566,
+    "access_count": 1,
+    "size_bytes": 56592
+  },
+  "54f6c775d3194e26": {
+    "text_hash": "54f6c775d3194e26",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/54f6c775d3194e26.mp3",
+    "created_at": 1769540629.9781206,
+    "last_accessed": 1769540629.9781208,
+    "access_count": 1,
+    "size_bytes": 62496
+  },
+  "af6ac2059643a37c": {
+    "text_hash": "af6ac2059643a37c",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/af6ac2059643a37c.mp3",
+    "created_at": 1769540838.229803,
+    "last_accessed": 1769540838.2298033,
+    "access_count": 1,
+    "size_bytes": 119952
+  },
+  "63fabe224ccdfc43": {
+    "text_hash": "63fabe224ccdfc43",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/63fabe224ccdfc43.mp3",
+    "created_at": 1769541666.3531318,
+    "last_accessed": 1769541666.353132,
+    "access_count": 1,
+    "size_bytes": 65808
+  },
+  "f03e740d03863c88": {
+    "text_hash": "f03e740d03863c88",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f03e740d03863c88.mp3",
+    "created_at": 1769542577.1009905,
+    "last_accessed": 1769542577.1009908,
+    "access_count": 1,
+    "size_bytes": 100512
+  },
+  "ef0e37bbf65ca9e4": {
+    "text_hash": "ef0e37bbf65ca9e4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/ef0e37bbf65ca9e4.mp3",
+    "created_at": 1769675179.6716938,
+    "last_accessed": 1769675179.671694,
+    "access_count": 1,
+    "size_bytes": 48384
+  },
+  "e73b7b14cd3d97ed": {
+    "text_hash": "e73b7b14cd3d97ed",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/e73b7b14cd3d97ed.mp3",
+    "created_at": 1769675244.0282798,
+    "last_accessed": 1769675244.02828,
+    "access_count": 1,
+    "size_bytes": 69840
+  },
+  "f81b9774def699b1": {
+    "text_hash": "f81b9774def699b1",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f81b9774def699b1.mp3",
+    "created_at": 1769679251.8035839,
+    "last_accessed": 1769679251.803584,
+    "access_count": 1,
+    "size_bytes": 129600
+  },
+  "6010d6b96842572f": {
+    "text_hash": "6010d6b96842572f",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6010d6b96842572f.mp3",
+    "created_at": 1769679304.7945342,
+    "last_accessed": 1769679304.7945344,
+    "access_count": 1,
+    "size_bytes": 32976
+  },
+  "178741e6c47ce63e": {
+    "text_hash": "178741e6c47ce63e",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/178741e6c47ce63e.mp3",
+    "created_at": 1769679411.484557,
+    "last_accessed": 1769679411.4845572,
+    "access_count": 1,
+    "size_bytes": 57312
+  },
+  "96b017a8a240cf73": {
+    "text_hash": "96b017a8a240cf73",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/96b017a8a240cf73.mp3",
+    "created_at": 1769679580.0164113,
+    "last_accessed": 1769679580.0164115,
+    "access_count": 1,
+    "size_bytes": 82656
+  },
+  "9fd3c58224f32948": {
+    "text_hash": "9fd3c58224f32948",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9fd3c58224f32948.mp3",
+    "created_at": 1769679613.8047981,
+    "last_accessed": 1769679613.8047984,
+    "access_count": 1,
+    "size_bytes": 70272
+  },
+  "0e7c639fc9a5a1be": {
+    "text_hash": "0e7c639fc9a5a1be",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0e7c639fc9a5a1be.mp3",
+    "created_at": 1769679720.7085714,
+    "last_accessed": 1769679720.7085714,
+    "access_count": 1,
+    "size_bytes": 23472
+  },
+  "0ae569ada255a8ec": {
+    "text_hash": "0ae569ada255a8ec",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0ae569ada255a8ec.mp3",
+    "created_at": 1769679829.6729732,
+    "last_accessed": 1769679829.6729734,
+    "access_count": 1,
+    "size_bytes": 62064
+  },
+  "354fbb9445228145": {
+    "text_hash": "354fbb9445228145",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/354fbb9445228145.mp3",
+    "created_at": 1769680086.437256,
+    "last_accessed": 1769680086.4372568,
+    "access_count": 1,
+    "size_bytes": 130320
+  },
+  "3835d3aebd4dd7b3": {
+    "text_hash": "3835d3aebd4dd7b3",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3835d3aebd4dd7b3.mp3",
+    "created_at": 1769680196.2150953,
+    "last_accessed": 1769680196.2150953,
+    "access_count": 1,
+    "size_bytes": 72432
+  },
+  "435de9acace4512d": {
+    "text_hash": "435de9acace4512d",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/435de9acace4512d.mp3",
+    "created_at": 1769680369.2510571,
+    "last_accessed": 1769680369.2510574,
+    "access_count": 1,
+    "size_bytes": 37728
+  },
+  "b4fedbfa9ed86323": {
+    "text_hash": "b4fedbfa9ed86323",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b4fedbfa9ed86323.mp3",
+    "created_at": 1769680454.934732,
+    "last_accessed": 1769680454.9347322,
+    "access_count": 1,
+    "size_bytes": 87264
+  },
+  "289ee95b9bfa710c": {
+    "text_hash": "289ee95b9bfa710c",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/289ee95b9bfa710c.mp3",
+    "created_at": 1769680559.037948,
+    "last_accessed": 1769680559.0379481,
+    "access_count": 1,
+    "size_bytes": 62064
+  },
+  "4d4b62d925406ed0": {
+    "text_hash": "4d4b62d925406ed0",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/4d4b62d925406ed0.mp3",
+    "created_at": 1769680724.860959,
+    "last_accessed": 1769680724.860959,
+    "access_count": 1,
+    "size_bytes": 41472
+  },
+  "34f7277c8a0dad04": {
+    "text_hash": "34f7277c8a0dad04",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/34f7277c8a0dad04.mp3",
+    "created_at": 1769680745.7969728,
+    "last_accessed": 1769680745.796973,
+    "access_count": 1,
+    "size_bytes": 24336
+  },
+  "3ae79253a4ba1992": {
+    "text_hash": "3ae79253a4ba1992",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3ae79253a4ba1992.mp3",
+    "created_at": 1769680807.397972,
+    "last_accessed": 1769680807.3979726,
+    "access_count": 1,
+    "size_bytes": 35712
+  },
+  "17718a36ba2999c4": {
+    "text_hash": "17718a36ba2999c4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/17718a36ba2999c4.mp3",
+    "created_at": 1769680918.5363204,
+    "last_accessed": 1769680918.5363204,
+    "access_count": 1,
+    "size_bytes": 34704
+  },
+  "2e066299d1b9bfbc": {
+    "text_hash": "2e066299d1b9bfbc",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2e066299d1b9bfbc.mp3",
+    "created_at": 1769681046.7824855,
+    "last_accessed": 1769681046.7824857,
+    "access_count": 1,
+    "size_bytes": 66528
+  },
+  "a08d272f84ef268b": {
+    "text_hash": "a08d272f84ef268b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/a08d272f84ef268b.mp3",
+    "created_at": 1769681108.0357437,
+    "last_accessed": 1769681108.0357437,
+    "access_count": 1,
+    "size_bytes": 38592
+  },
+  "fcf8d8e810cfc45e": {
+    "text_hash": "fcf8d8e810cfc45e",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/fcf8d8e810cfc45e.mp3",
+    "created_at": 1769682036.2898033,
+    "last_accessed": 1769682036.2898035,
+    "access_count": 1,
+    "size_bytes": 70272
+  },
+  "d6f4b8c9e2c0b08c": {
+    "text_hash": "d6f4b8c9e2c0b08c",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d6f4b8c9e2c0b08c.mp3",
+    "created_at": 1769682138.9799647,
+    "last_accessed": 1769682138.979965,
+    "access_count": 1,
+    "size_bytes": 59184
+  },
+  "d517200c64dd8985": {
+    "text_hash": "d517200c64dd8985",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d517200c64dd8985.mp3",
+    "created_at": 1769703552.0063772,
+    "last_accessed": 1769703552.0063775,
+    "access_count": 1,
+    "size_bytes": 40032
+  },
+  "f915424e02717b85": {
+    "text_hash": "f915424e02717b85",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f915424e02717b85.mp3",
+    "created_at": 1769703612.7474504,
+    "last_accessed": 1769703612.7474506,
+    "access_count": 1,
+    "size_bytes": 117072
+  },
+  "e652983598e1bda4": {
+    "text_hash": "e652983598e1bda4",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/e652983598e1bda4.mp3",
+    "created_at": 1769703750.788301,
+    "last_accessed": 1769703750.7883012,
+    "access_count": 1,
+    "size_bytes": 64944
+  },
+  "030d5c6f2a977566": {
+    "text_hash": "030d5c6f2a977566",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/030d5c6f2a977566.mp3",
+    "created_at": 1769703857.4892726,
+    "last_accessed": 1769703857.4892728,
+    "access_count": 1,
+    "size_bytes": 67248
+  },
+  "9d1e18754c192486": {
+    "text_hash": "9d1e18754c192486",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9d1e18754c192486.mp3",
+    "created_at": 1769704057.5652184,
+    "last_accessed": 1769704057.565219,
+    "access_count": 1,
+    "size_bytes": 61776
+  },
+  "2b58b52db7c2e61a": {
+    "text_hash": "2b58b52db7c2e61a",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2b58b52db7c2e61a.mp3",
+    "created_at": 1769709839.2597275,
+    "last_accessed": 1769709839.2597277,
+    "access_count": 1,
+    "size_bytes": 50112
+  },
+  "44d41c416f4ce8a8": {
+    "text_hash": "44d41c416f4ce8a8",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/44d41c416f4ce8a8.mp3",
+    "created_at": 1769710137.7567093,
+    "last_accessed": 1769710137.7567098,
+    "access_count": 1,
+    "size_bytes": 31968
+  },
+  "0c895019b7b3d532": {
+    "text_hash": "0c895019b7b3d532",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0c895019b7b3d532.mp3",
+    "created_at": 1769710241.1597977,
+    "last_accessed": 1769710241.159798,
+    "access_count": 1,
+    "size_bytes": 34272
+  },
+  "5b897fbaf4c3dced": {
+    "text_hash": "5b897fbaf4c3dced",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/5b897fbaf4c3dced.mp3",
+    "created_at": 1769710358.2052562,
+    "last_accessed": 1769710358.2052565,
+    "access_count": 1,
+    "size_bytes": 39312
+  },
+  "3fd6fe73f44a9fe6": {
+    "text_hash": "3fd6fe73f44a9fe6",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3fd6fe73f44a9fe6.mp3",
+    "created_at": 1769710454.7691026,
+    "last_accessed": 1769710454.7691026,
+    "access_count": 1,
+    "size_bytes": 61344
+  },
+  "fd06c781bb02bf66": {
+    "text_hash": "fd06c781bb02bf66",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/fd06c781bb02bf66.mp3",
+    "created_at": 1769710671.1214626,
+    "last_accessed": 1769710671.1214628,
+    "access_count": 1,
+    "size_bytes": 35280
+  },
+  "17648c7f6316ba98": {
+    "text_hash": "17648c7f6316ba98",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/17648c7f6316ba98.mp3",
+    "created_at": 1769710704.708244,
+    "last_accessed": 1769710704.7082446,
+    "access_count": 1,
+    "size_bytes": 67824
+  },
+  "843003c5cc7535e1": {
+    "text_hash": "843003c5cc7535e1",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/843003c5cc7535e1.mp3",
+    "created_at": 1769712434.524396,
+    "last_accessed": 1769712434.5243962,
+    "access_count": 1,
+    "size_bytes": 39888
+  },
+  "68847f719288af61": {
+    "text_hash": "68847f719288af61",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/68847f719288af61.mp3",
+    "created_at": 1769712586.7615101,
+    "last_accessed": 1769712586.7615104,
+    "access_count": 1,
+    "size_bytes": 46080
+  },
+  "0ea94dfa37915a8d": {
+    "text_hash": "0ea94dfa37915a8d",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0ea94dfa37915a8d.mp3",
+    "created_at": 1769712651.3917212,
+    "last_accessed": 1769712651.3917217,
+    "access_count": 1,
+    "size_bytes": 48240
+  },
+  "29040d5fefd211e2": {
+    "text_hash": "29040d5fefd211e2",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/29040d5fefd211e2.mp3",
+    "created_at": 1769712748.6279407,
+    "last_accessed": 1769712748.627941,
+    "access_count": 1,
+    "size_bytes": 47952
+  },
+  "d91128fb4727afab": {
+    "text_hash": "d91128fb4727afab",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/d91128fb4727afab.mp3",
+    "created_at": 1769714447.5550559,
+    "last_accessed": 1769714447.555056,
+    "access_count": 1,
+    "size_bytes": 36288
+  },
+  "8426483c8a807fdb": {
+    "text_hash": "8426483c8a807fdb",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/8426483c8a807fdb.mp3",
+    "created_at": 1769714669.5296595,
+    "last_accessed": 1769714669.5296597,
+    "access_count": 1,
+    "size_bytes": 32688
+  },
+  "1cfa5f44b95eaa85": {
+    "text_hash": "1cfa5f44b95eaa85",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/1cfa5f44b95eaa85.mp3",
+    "created_at": 1769714793.08102,
+    "last_accessed": 1769714793.0810204,
+    "access_count": 1,
+    "size_bytes": 43920
+  },
+  "581c464e1d955b40": {
+    "text_hash": "581c464e1d955b40",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/581c464e1d955b40.mp3",
+    "created_at": 1769714906.2285244,
+    "last_accessed": 1769714906.2285247,
+    "access_count": 1,
+    "size_bytes": 47952
+  },
+  "400d18c2398b97bc": {
+    "text_hash": "400d18c2398b97bc",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/400d18c2398b97bc.mp3",
+    "created_at": 1769714969.4017594,
+    "last_accessed": 1769714969.4017594,
+    "access_count": 1,
+    "size_bytes": 78624
+  },
+  "9d0f895bf1a3f4f9": {
+    "text_hash": "9d0f895bf1a3f4f9",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9d0f895bf1a3f4f9.mp3",
+    "created_at": 1769715032.2647312,
+    "last_accessed": 1769715032.2647314,
+    "access_count": 1,
+    "size_bytes": 49680
+  },
+  "5bc6c573cb8fc342": {
+    "text_hash": "5bc6c573cb8fc342",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/5bc6c573cb8fc342.mp3",
+    "created_at": 1769715086.6766326,
+    "last_accessed": 1769715086.6766326,
+    "access_count": 1,
+    "size_bytes": 51840
+  },
+  "e1d198af2c1bd446": {
+    "text_hash": "e1d198af2c1bd446",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/e1d198af2c1bd446.mp3",
+    "created_at": 1769798410.4749737,
+    "last_accessed": 1769798410.474974,
+    "access_count": 1,
+    "size_bytes": 104976
+  },
+  "7368589530a7e717": {
+    "text_hash": "7368589530a7e717",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/7368589530a7e717.mp3",
+    "created_at": 1769798461.8626814,
+    "last_accessed": 1769798461.8626816,
+    "access_count": 1,
+    "size_bytes": 151920
+  },
+  "dc6791e35d9f3919": {
+    "text_hash": "dc6791e35d9f3919",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/dc6791e35d9f3919.mp3",
+    "created_at": 1769798593.4346015,
+    "last_accessed": 1769798593.4346015,
+    "access_count": 1,
+    "size_bytes": 44784
+  },
+  "4a5a4f3abc07ef6b": {
+    "text_hash": "4a5a4f3abc07ef6b",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/4a5a4f3abc07ef6b.mp3",
+    "created_at": 1769798607.1030893,
+    "last_accessed": 1769798607.1030898,
+    "access_count": 1,
+    "size_bytes": 80208
+  },
+  "a72bc2a282bffae0": {
+    "text_hash": "a72bc2a282bffae0",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/a72bc2a282bffae0.mp3",
+    "created_at": 1769798662.036583,
+    "last_accessed": 1769798662.0365832,
+    "access_count": 1,
+    "size_bytes": 55872
+  },
+  "9a6403b85fac79a2": {
+    "text_hash": "9a6403b85fac79a2",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9a6403b85fac79a2.mp3",
+    "created_at": 1769798682.3854237,
+    "last_accessed": 1769798682.385424,
+    "access_count": 1,
+    "size_bytes": 66816
+  },
+  "7946b3329f6f05bb": {
+    "text_hash": "7946b3329f6f05bb",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/7946b3329f6f05bb.mp3",
+    "created_at": 1769798714.6632242,
+    "last_accessed": 1769798714.6632245,
+    "access_count": 1,
+    "size_bytes": 89856
+  },
+  "6d0e197fa2ff9d15": {
+    "text_hash": "6d0e197fa2ff9d15",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/6d0e197fa2ff9d15.mp3",
+    "created_at": 1769798754.9217362,
+    "last_accessed": 1769798754.9217365,
+    "access_count": 1,
+    "size_bytes": 73296
+  },
+  "f59a496b71802311": {
+    "text_hash": "f59a496b71802311",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f59a496b71802311.mp3",
+    "created_at": 1769798775.3493848,
+    "last_accessed": 1769798775.349385,
+    "access_count": 1,
+    "size_bytes": 68400
+  },
+  "2f367260bd01d2c5": {
+    "text_hash": "2f367260bd01d2c5",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/2f367260bd01d2c5.mp3",
+    "created_at": 1769798853.4115574,
+    "last_accessed": 1769798853.4115577,
+    "access_count": 1,
+    "size_bytes": 53856
+  },
+  "ddd308f3a8366b37": {
+    "text_hash": "ddd308f3a8366b37",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/ddd308f3a8366b37.mp3",
+    "created_at": 1769798879.737086,
+    "last_accessed": 1769798879.737086,
+    "access_count": 1,
+    "size_bytes": 66672
+  },
+  "fca8aa28e90e7d74": {
+    "text_hash": "fca8aa28e90e7d74",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/fca8aa28e90e7d74.mp3",
+    "created_at": 1769798904.213373,
+    "last_accessed": 1769798904.2133732,
+    "access_count": 1,
+    "size_bytes": 65664
+  },
+  "492710c9c306d9d6": {
+    "text_hash": "492710c9c306d9d6",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/492710c9c306d9d6.mp3",
+    "created_at": 1769798987.4263456,
+    "last_accessed": 1769798987.4263458,
+    "access_count": 1,
+    "size_bytes": 67824
+  },
+  "e978fdd084766987": {
+    "text_hash": "e978fdd084766987",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/e978fdd084766987.mp3",
+    "created_at": 1769799026.5757155,
+    "last_accessed": 1769799026.5757155,
+    "access_count": 1,
+    "size_bytes": 97920
+  },
+  "fd4949855ec31ce6": {
+    "text_hash": "fd4949855ec31ce6",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/fd4949855ec31ce6.mp3",
+    "created_at": 1769799071.311898,
+    "last_accessed": 1769799071.311898,
+    "access_count": 1,
+    "size_bytes": 36432
+  },
+  "8ab41694f4674dd2": {
+    "text_hash": "8ab41694f4674dd2",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/8ab41694f4674dd2.mp3",
+    "created_at": 1769799123.0275614,
+    "last_accessed": 1769799123.0275617,
+    "access_count": 1,
+    "size_bytes": 51984
+  },
+  "f707b681e3a88600": {
+    "text_hash": "f707b681e3a88600",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/f707b681e3a88600.mp3",
+    "created_at": 1769799320.2598634,
+    "last_accessed": 1769799320.2598636,
+    "access_count": 1,
+    "size_bytes": 99792
+  },
+  "dfce5c132fdf9d2e": {
+    "text_hash": "dfce5c132fdf9d2e",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/dfce5c132fdf9d2e.mp3",
+    "created_at": 1769799370.552303,
+    "last_accessed": 1769799370.5523033,
+    "access_count": 1,
+    "size_bytes": 93024
+  },
+  "91b42345cc8b1d4d": {
+    "text_hash": "91b42345cc8b1d4d",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/91b42345cc8b1d4d.mp3",
+    "created_at": 1769799673.094632,
+    "last_accessed": 1769799673.0946321,
+    "access_count": 1,
+    "size_bytes": 52416
+  },
+  "79701432ebeaa672": {
+    "text_hash": "79701432ebeaa672",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/79701432ebeaa672.mp3",
+    "created_at": 1769799896.0672681,
+    "last_accessed": 1769799896.0672684,
+    "access_count": 1,
+    "size_bytes": 95328
+  },
+  "72ae1adbd6801c15": {
+    "text_hash": "72ae1adbd6801c15",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/72ae1adbd6801c15.mp3",
+    "created_at": 1769800005.495776,
+    "last_accessed": 1769800005.4957764,
+    "access_count": 1,
+    "size_bytes": 32832
+  },
+  "b7013d58475ae6d0": {
+    "text_hash": "b7013d58475ae6d0",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/b7013d58475ae6d0.mp3",
+    "created_at": 1769800175.394889,
+    "last_accessed": 1769800175.3948894,
+    "access_count": 1,
+    "size_bytes": 85104
+  },
+  "3144b74b141e1d97": {
+    "text_hash": "3144b74b141e1d97",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/3144b74b141e1d97.mp3",
+    "created_at": 1769800302.2637956,
+    "last_accessed": 1769800302.2637956,
+    "access_count": 1,
+    "size_bytes": 36864
+  },
+  "00a8367dcb5df825": {
+    "text_hash": "00a8367dcb5df825",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/00a8367dcb5df825.mp3",
+    "created_at": 1769800334.9261224,
+    "last_accessed": 1769800334.9261227,
+    "access_count": 1,
+    "size_bytes": 46368
+  },
+  "0e1e210142759603": {
+    "text_hash": "0e1e210142759603",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/0e1e210142759603.mp3",
+    "created_at": 1769800524.9249437,
+    "last_accessed": 1769800524.9249437,
+    "access_count": 1,
+    "size_bytes": 42480
+  },
+  "97a7ee2b77ffb893": {
+    "text_hash": "97a7ee2b77ffb893",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/97a7ee2b77ffb893.mp3",
+    "created_at": 1769800654.0053415,
+    "last_accessed": 1769800654.0053418,
+    "access_count": 1,
+    "size_bytes": 57600
+  },
+  "c2b02547157a1d09": {
+    "text_hash": "c2b02547157a1d09",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/c2b02547157a1d09.mp3",
+    "created_at": 1769800754.1234045,
+    "last_accessed": 1769800754.1234047,
+    "access_count": 1,
+    "size_bytes": 33696
+  },
+  "68a2a14160136f96": {
+    "text_hash": "68a2a14160136f96",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/68a2a14160136f96.mp3",
+    "created_at": 1769801198.80187,
+    "last_accessed": 1769801198.8018703,
+    "access_count": 1,
+    "size_bytes": 34416
+  },
+  "9e90936fa161abb7": {
+    "text_hash": "9e90936fa161abb7",
+    "voice": "henri",
+    "engine": "edge-tts",
+    "file_path": "/home/tinkerbell/.aura/voice/cache/9e90936fa161abb7.mp3",
+    "created_at": 1769801270.2620366,
+    "last_accessed": 1769801270.2620368,
+    "access_count": 1,
+    "size_bytes": 30528
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "_metadata": {
+    "version": "1.0.0",
+    "created": "2026-01-30",
+    "description": "Workflows Dev/ML avant-gardistes - Tendances 2026",
+    "patterns": ["ReAct", "Maker-Checker", "Reflection", "Hierarchical", "Human-in-the-Loop"]
+  },
+
+  "dev_project_init": {
+    "name": "Initialisation Projet Dev",
+    "description": "Setup intelligent: contexte auto, structure, git, dépendances",
+    "category": "development",
+    "pattern": "Sequential with Context Chain",
+    "agents": [
+      {"id": "context_detect", "cmd": "python3 ~/.aura/agents/project_context.py analyze . --verbose --json", "role": "Détection automatique du contexte (framework, langage, structure)"},
+      {"id": "context_suggest", "cmd": "python3 ~/.aura/agents/project_context.py suggest .", "role": "Suggestion des agents Claude spécialisés à utiliser"},
+      {"id": "git_status", "cmd": "git status --porcelain 2>/dev/null || echo 'NOT_A_GIT_REPO'", "role": "Vérification état Git"},
+      {"id": "deps_check", "cmd": "[ -f package.json ] && npm outdated 2>/dev/null || [ -f requirements.txt ] && pip list --outdated 2>/dev/null || echo 'NO_DEPS_FILE'", "role": "Vérification dépendances obsolètes"}
+    ],
+    "parallel": false
+  },
+
+  "dev_code_review": {
+    "name": "Code Review Intelligent",
+    "description": "Pattern Maker-Checker: analyse statique + sécurité + qualité",
+    "category": "development",
+    "pattern": "Maker-Checker Loop",
+    "agents": [
+      {"id": "static_analysis", "cmd": "[ -f *.py ] && python3 -m py_compile *.py 2>&1 || [ -f *.ts ] && npx tsc --noEmit 2>&1 || echo 'No Python/TS files'", "role": "Analyse statique (compilation check)"},
+      {"id": "lint_check", "cmd": "[ -f *.py ] && python3 -m flake8 --max-line-length=120 . 2>&1 | head -30 || [ -f *.ts ] && npx eslint . 2>&1 | head -30 || echo 'No linter available'", "role": "Linting et style"},
+      {"id": "security_scan", "cmd": "[ -f *.py ] && python3 -m bandit -r . -f txt 2>&1 | head -50 || echo 'Bandit not available'", "role": "Scan de sécurité code (SAST)"},
+      {"id": "complexity_check", "cmd": "[ -f *.py ] && python3 -m mccabe --min 10 *.py 2>&1 || echo 'McCabe not available'", "role": "Analyse complexité cyclomatique"}
+    ],
+    "parallel": true
+  },
+
+  "dev_test_pipeline": {
+    "name": "Pipeline de Tests",
+    "description": "Tests unitaires + intégration + coverage + rapport",
+    "category": "development",
+    "pattern": "Sequential Pipeline",
+    "agents": [
+      {"id": "test_discovery", "cmd": "find . -name '*test*.py' -o -name '*.spec.ts' -o -name '*.test.js' 2>/dev/null | head -20", "role": "Découverte des fichiers de tests"},
+      {"id": "unit_tests", "cmd": "[ -f pytest.ini ] && pytest --tb=short -q 2>&1 | tail -30 || [ -f package.json ] && npm test 2>&1 | tail -30 || echo 'No test runner found'", "role": "Exécution tests unitaires"},
+      {"id": "coverage_report", "cmd": "[ -f pytest.ini ] && pytest --cov=. --cov-report=term-missing 2>&1 | tail -40 || echo 'Coverage not configured'", "role": "Rapport de couverture"}
+    ],
+    "parallel": false
+  },
+
+  "ml_data_pipeline": {
+    "name": "Pipeline Data ML",
+    "description": "Ingestion → Cleaning → Feature Engineering → Validation",
+    "category": "machine-learning",
+    "pattern": "DAG Pipeline",
+    "agents": [
+      {"id": "data_discovery", "cmd": "find . -name '*.csv' -o -name '*.parquet' -o -name '*.json' 2>/dev/null | head -10", "role": "Découverte des sources de données"},
+      {"id": "data_profile", "cmd": "python3 -c \"import pandas as pd; import sys; df=pd.read_csv(sys.argv[1]) if len(sys.argv)>1 else None; print(df.describe() if df is not None else 'No file')\" $(find . -name '*.csv' | head -1) 2>&1 || echo 'Pandas not available or no CSV'", "role": "Profilage statistique des données"},
+      {"id": "data_quality", "cmd": "python3 -c \"import pandas as pd; df=pd.read_csv('$(find . -name \"*.csv\" | head -1)'); print('Nulls:', df.isnull().sum().to_dict()); print('Dtypes:', df.dtypes.to_dict())\" 2>&1 || echo 'No data file'", "role": "Check qualité (nulls, types)"},
+      {"id": "feature_analysis", "cmd": "python3 -c \"import pandas as pd; df=pd.read_csv('$(find . -name \"*.csv\" | head -1)'); print('Correlations:', df.corr().to_dict() if df.select_dtypes('number').shape[1]>1 else 'Not enough numeric cols')\" 2>&1 | head -50 || echo 'Analysis failed'", "role": "Analyse des features (corrélations)"}
+    ],
+    "parallel": false
+  },
+
+  "ml_experiment_cycle": {
+    "name": "Cycle Expérimentation ML",
+    "description": "Train → Evaluate → Log → Compare (pattern MLOps)",
+    "category": "machine-learning",
+    "pattern": "Experiment Tracking Loop",
+    "agents": [
+      {"id": "env_check", "cmd": "python3 -c \"import sklearn, pandas, numpy; print('sklearn:', sklearn.__version__, 'pandas:', pandas.__version__, 'numpy:', numpy.__version__)\" 2>&1 || echo 'ML libs missing'", "role": "Vérification environnement ML"},
+      {"id": "model_discovery", "cmd": "find . -name '*.pkl' -o -name '*.joblib' -o -name '*.h5' -o -name '*.pt' -o -name '*.onnx' 2>/dev/null | head -10", "role": "Découverte modèles existants"},
+      {"id": "mlflow_check", "cmd": "python3 -c \"import mlflow; print('MLflow:', mlflow.__version__, 'Tracking URI:', mlflow.get_tracking_uri())\" 2>&1 || echo 'MLflow not available'", "role": "Check MLflow pour tracking"},
+      {"id": "gpu_status", "cmd": "nvidia-smi --query-gpu=name,memory.used,memory.total --format=csv 2>/dev/null || echo 'No NVIDIA GPU or driver'", "role": "Status GPU pour training"}
+    ],
+    "parallel": true
+  },
+
+  "ml_model_deploy": {
+    "name": "Déploiement Modèle ML",
+    "description": "Packaging → Testing → Containerization → Deploy check",
+    "category": "machine-learning",
+    "pattern": "CI/CD Pipeline",
+    "agents": [
+      {"id": "model_validate", "cmd": "find . -name '*.pkl' -o -name '*.onnx' | head -1 | xargs -I{} python3 -c \"import joblib; m=joblib.load('{}'); print('Model loaded:', type(m))\" 2>&1 || echo 'No model to validate'", "role": "Validation du modèle sérialisé"},
+      {"id": "docker_check", "cmd": "[ -f Dockerfile ] && echo 'Dockerfile found' && head -20 Dockerfile || echo 'No Dockerfile'", "role": "Check containerization"},
+      {"id": "api_check", "cmd": "[ -f app.py ] && grep -l 'FastAPI\\|Flask' *.py 2>/dev/null && echo 'API endpoint found' || echo 'No API detected'", "role": "Check endpoint API pour serving"},
+      {"id": "requirements_check", "cmd": "[ -f requirements.txt ] && cat requirements.txt | head -20 || echo 'No requirements.txt'", "role": "Vérification dépendances"}
+    ],
+    "parallel": false
+  },
+
+  "data_quality_audit": {
+    "name": "Audit Qualité Données",
+    "description": "Profiling complet + anomalies + recommandations",
+    "category": "data",
+    "pattern": "Analysis Pipeline",
+    "agents": [
+      {"id": "file_inventory", "cmd": "find . \\( -name '*.csv' -o -name '*.json' -o -name '*.parquet' -o -name '*.xlsx' \\) -exec ls -lh {} \\; 2>/dev/null | head -20", "role": "Inventaire des fichiers de données"},
+      {"id": "schema_analysis", "cmd": "python3 -c \"import pandas as pd; import glob; files=glob.glob('*.csv'); [print(f, pd.read_csv(f, nrows=1).columns.tolist()) for f in files[:3]]\" 2>&1 || echo 'No CSV files'", "role": "Analyse des schémas"},
+      {"id": "encoding_check", "cmd": "file *.csv *.json 2>/dev/null | head -10 || echo 'No data files'", "role": "Vérification encodage fichiers"},
+      {"id": "size_analysis", "cmd": "du -sh *.csv *.parquet *.json 2>/dev/null | sort -h | tail -10 || echo 'No data files'", "role": "Analyse taille des fichiers"}
+    ],
+    "parallel": true
+  },
+
+  "full_dev_cycle": {
+    "name": "Cycle Dev Complet",
+    "description": "Contexte → Review → Tests → Sécurité → Rapport final",
+    "category": "development",
+    "pattern": "Full CI Pipeline",
+    "agents": [
+      {"id": "context", "cmd": "python3 ~/.aura/agents/project_context.py analyze . --verbose", "role": "Analyse contexte projet"},
+      {"id": "git_status", "cmd": "git status && git log --oneline -5 2>/dev/null || echo 'Not a git repo'", "role": "État Git et commits récents"},
+      {"id": "code_stats", "cmd": "cloc . --exclude-dir=node_modules,venv,.venv,__pycache__,dist,build --quiet 2>/dev/null || find . -name '*.py' -o -name '*.ts' -o -name '*.js' | wc -l", "role": "Statistiques du code"},
+      {"id": "deps_audit", "cmd": "[ -f package.json ] && npm audit 2>&1 | head -30 || [ -f requirements.txt ] && pip-audit 2>&1 | head -30 || echo 'No deps to audit'", "role": "Audit sécurité dépendances"},
+      {"id": "todo_scan", "cmd": "grep -rn 'TODO\\|FIXME\\|HACK\\|XXX' --include='*.py' --include='*.ts' --include='*.js' . 2>/dev/null | head -20 || echo 'No TODOs found'", "role": "Scan des TODOs/FIXMEs"}
+    ],
+    "parallel": false
+  },
+
+  "devops_health": {
+    "name": "Santé DevOps",
+    "description": "Docker + CI/CD + Infra check",
+    "category": "devops",
+    "pattern": "Infrastructure Audit",
+    "agents": [
+      {"id": "docker_status", "cmd": "docker ps --format 'table {{.Names}}\\t{{.Status}}\\t{{.Ports}}' 2>/dev/null || echo 'Docker not running'", "role": "Containers en cours"},
+      {"id": "docker_images", "cmd": "docker images --format 'table {{.Repository}}\\t{{.Tag}}\\t{{.Size}}' | head -15 2>/dev/null || echo 'Docker not available'", "role": "Images Docker"},
+      {"id": "compose_check", "cmd": "[ -f docker-compose.yml ] && docker-compose config --quiet && echo 'Compose valid' || echo 'No docker-compose.yml'", "role": "Validation docker-compose"},
+      {"id": "ci_check", "cmd": "[ -f .github/workflows/*.yml ] && echo 'GitHub Actions found' && ls .github/workflows/ || [ -f .gitlab-ci.yml ] && echo 'GitLab CI found' || echo 'No CI config'", "role": "Check configuration CI/CD"}
+    ],
+    "parallel": true
+  },
+
+  "security_deep_audit": {
+    "name": "Audit Sécurité Approfondi",
+    "description": "Système + Code + Deps + Network",
+    "category": "security",
+    "pattern": "Defense in Depth",
+    "agents": [
+      {"id": "system_audit", "cmd": "python3 ~/.aura/agents/security_auditor.py audit", "role": "Audit sécurité système complet"},
+      {"id": "network_audit", "cmd": "python3 ~/.aura/agents/network_monitor.py ports", "role": "Analyse des ports ouverts"},
+      {"id": "deps_vulns", "cmd": "[ -f requirements.txt ] && pip-audit 2>&1 || [ -f package.json ] && npm audit 2>&1 || echo 'No deps'", "role": "Vulnérabilités dépendances"},
+      {"id": "secrets_scan", "cmd": "grep -rn 'password\\|secret\\|api_key\\|token' --include='*.py' --include='*.js' --include='*.env' . 2>/dev/null | grep -v '.pyc' | head -20 || echo 'No secrets found'", "role": "Scan secrets hardcodés"},
+      {"id": "permissions_check", "cmd": "find . -perm -002 -type f 2>/dev/null | head -10 || echo 'No world-writable files'", "role": "Check permissions fichiers"}
+    ],
+    "parallel": false
+  },
+
+  "ebp_audit_complet": {
+    "name": "Audit Complet EBP",
+    "description": "Build + Lint + Types backend et frontend EBP",
+    "category": "ebp",
+    "pattern": "Sequential CI Pipeline",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App",
+    "agents": [
+      {"id": "backend_build", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-api && npm run build 2>&1 | tail -20", "role": "Build backend NestJS"},
+      {"id": "backend_lint", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-api && npm run lint 2>&1 | tail -30", "role": "Lint backend (ESLint)"},
+      {"id": "frontend_build", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-web && npm run build 2>&1 | tail -20", "role": "Build frontend Next.js"},
+      {"id": "frontend_lint", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-web && npm run lint 2>&1 | tail -30", "role": "Lint frontend (ESLint)"},
+      {"id": "git_status", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && git status --short && git log --oneline -5", "role": "État Git"}
+    ],
+    "parallel": false
+  },
+
+  "ebp_code_review": {
+    "name": "Code Review EBP",
+    "description": "Review code selon standards EBP (types, SQL, patterns)",
+    "category": "ebp",
+    "pattern": "Maker-Checker",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App",
+    "agents": [
+      {"id": "any_check", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && grep -rn ': any' --include='*.ts' ebp-api/src ebp-web/src 2>/dev/null | head -20 || echo 'No any found'", "role": "Détection des 'any' TypeScript"},
+      {"id": "sql_injection", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && grep -rn 'query.*\\${\\|query.*+' --include='*.ts' ebp-api/src 2>/dev/null | head -15 || echo 'No SQL injection risks'", "role": "Détection risques SQL injection"},
+      {"id": "missing_guards", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && grep -L '@UseGuards\\|@Public' ebp-api/src/modules/*/*.controller.ts 2>/dev/null | head -10 || echo 'All controllers have guards'", "role": "Vérification Guards JWT"},
+      {"id": "missing_swagger", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && grep -L '@ApiTags' ebp-api/src/modules/*/*.controller.ts 2>/dev/null | head -10 || echo 'All controllers have Swagger'", "role": "Vérification décorateurs Swagger"},
+      {"id": "todo_fixme", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && grep -rn 'TODO\\|FIXME\\|HACK' --include='*.ts' --include='*.tsx' ebp-api/src ebp-web/src 2>/dev/null | head -20", "role": "Scan TODO/FIXME"}
+    ],
+    "parallel": true
+  },
+
+  "ebp_backend_check": {
+    "name": "Check Backend EBP",
+    "description": "Vérification complète backend NestJS",
+    "category": "ebp",
+    "pattern": "Sequential",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App/ebp-api",
+    "agents": [
+      {"id": "modules_list", "cmd": "ls -la ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules/", "role": "Liste des modules NestJS"},
+      {"id": "build_check", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-api && npm run build 2>&1 | tail -15", "role": "Vérification build"},
+      {"id": "endpoints_count", "cmd": "grep -r '@Get\\|@Post\\|@Put\\|@Delete\\|@Patch' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules --include='*.ts' | wc -l", "role": "Comptage endpoints API"},
+      {"id": "dto_validation", "cmd": "grep -rL '@IsString\\|@IsNumber\\|@IsEmail\\|@IsOptional' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules/*/dto/*.dto.ts 2>/dev/null | head -10 || echo 'All DTOs validated'", "role": "Vérification DTOs avec class-validator"}
+    ],
+    "parallel": false
+  },
+
+  "ebp_frontend_check": {
+    "name": "Check Frontend EBP",
+    "description": "Vérification complète frontend Next.js",
+    "category": "ebp",
+    "pattern": "Sequential",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App/ebp-web",
+    "agents": [
+      {"id": "pages_list", "cmd": "find ~/Desktop/Code/Projets/Ebp_App/ebp-web/src/app -name 'page.tsx' | head -20", "role": "Liste des pages Next.js"},
+      {"id": "build_check", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-web && npm run build 2>&1 | tail -15", "role": "Vérification build"},
+      {"id": "components_count", "cmd": "find ~/Desktop/Code/Projets/Ebp_App/ebp-web/src/components -name '*.tsx' | wc -l", "role": "Comptage composants React"},
+      {"id": "api_client_check", "cmd": "ls -la ~/Desktop/Code/Projets/Ebp_App/ebp-web/src/lib/api/", "role": "Liste clients API"},
+      {"id": "use_client_check", "cmd": "grep -L \"'use client'\" ~/Desktop/Code/Projets/Ebp_App/ebp-web/src/app/**/page.tsx 2>/dev/null | head -10 || echo 'All pages have use client'", "role": "Vérification 'use client'"}
+    ],
+    "parallel": false
+  },
+
+  "ebp_types_sync": {
+    "name": "Sync Types EBP",
+    "description": "Vérification alignement types backend/frontend",
+    "category": "ebp",
+    "pattern": "Comparison",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App",
+    "agents": [
+      {"id": "backend_dtos", "cmd": "find ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules -name '*.dto.ts' | wc -l && echo 'DTOs found'", "role": "Comptage DTOs backend"},
+      {"id": "frontend_types", "cmd": "find ~/Desktop/Code/Projets/Ebp_App/ebp-web/src/lib/api -name '*.ts' | wc -l && echo 'API clients found'", "role": "Comptage types frontend"},
+      {"id": "interface_match", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && diff <(grep -rh 'export interface\\|export type' ebp-api/src/modules/*/dto/*.ts 2>/dev/null | sort) <(grep -rh 'export interface\\|export type' ebp-web/src/lib/api/*.ts 2>/dev/null | sort) 2>&1 | head -30 || echo 'Types comparison done'", "role": "Comparaison interfaces"},
+      {"id": "enum_check", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && grep -rh 'export enum' ebp-api/src ebp-web/src --include='*.ts' | sort | uniq -c | sort -rn | head -15", "role": "Vérification enums partagés"}
+    ],
+    "parallel": true
+  },
+
+  "ebp_security_audit": {
+    "name": "Audit Sécurité EBP",
+    "description": "Audit sécurité spécifique EBP (auth, SQL, secrets)",
+    "category": "ebp",
+    "pattern": "Security Checklist",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App",
+    "agents": [
+      {"id": "jwt_config", "cmd": "grep -rn 'JWT_SECRET\\|JWT_REFRESH' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src --include='*.ts' | head -10", "role": "Vérification config JWT"},
+      {"id": "sql_params", "cmd": "grep -rn '\\$1\\|\\$2\\|\\$3' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules --include='*.ts' | wc -l && echo 'parameterized queries'", "role": "Comptage requêtes paramétrées"},
+      {"id": "env_secrets", "cmd": "cat ~/Desktop/Code/Projets/Ebp_App/ebp-api/.env.example 2>/dev/null | grep -i 'secret\\|password\\|key' | head -10 || echo 'No .env.example'", "role": "Vérification secrets .env"},
+      {"id": "cors_config", "cmd": "grep -rn 'CORS\\|cors' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src --include='*.ts' | head -10", "role": "Vérification config CORS"},
+      {"id": "rate_limit", "cmd": "grep -rn 'Throttle\\|RateLimit' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src --include='*.ts' | head -10 || echo 'No rate limiting found'", "role": "Vérification rate limiting"}
+    ],
+    "parallel": true
+  },
+
+  "ebp_migration_check": {
+    "name": "Check Migrations EBP",
+    "description": "Vérification migrations PostgreSQL",
+    "category": "ebp",
+    "pattern": "Sequential",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App",
+    "agents": [
+      {"id": "migrations_list", "cmd": "ls -la ~/Desktop/Code/Projets/Ebp_App/migrations/ 2>/dev/null | tail -20 || echo 'No migrations folder'", "role": "Liste des migrations"},
+      {"id": "registry_check", "cmd": "cat ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/database/migration-registry.ts 2>/dev/null | head -40 || echo 'No registry'", "role": "Vérification registre migrations"},
+      {"id": "deferred_check", "cmd": "grep -rn 'deferred\\|Deferred' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/database --include='*.ts' | head -10", "role": "Vérification migrations différées"},
+      {"id": "schema_check", "cmd": "grep -rn 'CREATE TABLE\\|ALTER TABLE\\|CREATE INDEX' ~/Desktop/Code/Projets/Ebp_App/migrations --include='*.sql' | wc -l && echo 'SQL statements'", "role": "Comptage statements SQL"}
+    ],
+    "parallel": false
+  },
+
+  "ebp_sync_module_check": {
+    "name": "Check Module Sync EBP",
+    "description": "Vérification module synchronisation EBP-MSSQL",
+    "category": "ebp",
+    "pattern": "Sequential",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App",
+    "agents": [
+      {"id": "sync_services", "cmd": "ls -la ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules/sync/ 2>/dev/null", "role": "Liste services sync"},
+      {"id": "csv_generator", "cmd": "grep -n 'generateCsv\\|toCsv\\|CSV' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules/sync/*.ts 2>/dev/null | head -15 || echo 'No CSV generation'", "role": "Vérification génération CSV"},
+      {"id": "sync_endpoints", "cmd": "grep -n '@Get\\|@Post' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules/sync/*.controller.ts 2>/dev/null | head -15", "role": "Liste endpoints sync"},
+      {"id": "conflict_handling", "cmd": "grep -rn 'conflict\\|Conflict' ~/Desktop/Code/Projets/Ebp_App/ebp-api/src/modules/sync --include='*.ts' | head -10", "role": "Vérification gestion conflits"}
+    ],
+    "parallel": false
+  },
+
+  "ebp_full_ci": {
+    "name": "CI Complet EBP",
+    "description": "Pipeline CI complet: build, lint, types, security",
+    "category": "ebp",
+    "pattern": "Full CI/CD Pipeline",
+    "workdir": "~/Desktop/Code/Projets/Ebp_App",
+    "agents": [
+      {"id": "git_clean", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App && git status --short | wc -l", "role": "Vérification working tree clean"},
+      {"id": "backend_ci", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-api && npm run build && npm run lint 2>&1 | tail -20", "role": "CI Backend (build+lint)"},
+      {"id": "frontend_ci", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-web && npm run build && npm run lint 2>&1 | tail -20", "role": "CI Frontend (build+lint)"},
+      {"id": "deps_audit", "cmd": "cd ~/Desktop/Code/Projets/Ebp_App/ebp-api && npm audit --audit-level=high 2>&1 | tail -15", "role": "Audit dépendances backend"},
+      {"id": "summary", "cmd": "echo '=== EBP CI Summary ===' && cd ~/Desktop/Code/Projets/Ebp_App && echo 'Backend modules:' && ls ebp-api/src/modules | wc -l && echo 'Frontend pages:' && find ebp-web/src/app -name 'page.tsx' | wc -l", "role": "Résumé CI"}
+    ],
+    "parallel": false
+  },
+
+  "_comment_microservices": "Workflows Microservices NestJS + API Gateway",
+
+  "microservices_scaffold": {
+    "name": "Scaffold Microservice NestJS",
+    "description": "Création structure microservice NestJS avec API Gateway pattern",
+    "category": "microservices",
+    "pattern": "Scaffolding Pipeline",
+    "agents": [
+      {"id": "structure_check", "cmd": "ls -la apps/ libs/ 2>/dev/null || echo 'Monorepo structure not found - consider nest g app'", "role": "Vérification structure monorepo NestJS"},
+      {"id": "gateway_check", "cmd": "ls -la apps/api-gateway/ 2>/dev/null || ls -la src/gateway/ 2>/dev/null || echo 'No API Gateway found'", "role": "Vérification existence API Gateway"},
+      {"id": "services_list", "cmd": "find . -name 'main.ts' -path '*/apps/*' 2>/dev/null | head -10 || find . -name '*.module.ts' -path '*/src/*' | head -10", "role": "Liste des microservices"},
+      {"id": "transport_config", "cmd": "grep -rn 'Transport\\.' --include='*.ts' . 2>/dev/null | head -15 || echo 'No transport config found'", "role": "Configuration transport (TCP/Redis/RMQ)"},
+      {"id": "nest_cli_check", "cmd": "cat nest-cli.json 2>/dev/null | head -30 || echo 'No nest-cli.json'", "role": "Configuration Nest CLI monorepo"}
+    ],
+    "parallel": false
+  },
+
+  "microservices_gateway_audit": {
+    "name": "Audit API Gateway",
+    "description": "Vérification complète de l'API Gateway (routing, auth, rate limiting)",
+    "category": "microservices",
+    "pattern": "Gateway Checklist",
+    "agents": [
+      {"id": "gateway_routes", "cmd": "grep -rn '@Controller\\|@Get\\|@Post\\|@Put\\|@Delete' --include='*.ts' apps/api-gateway/src 2>/dev/null || grep -rn '@Controller' --include='*.ts' src/gateway 2>/dev/null | head -20", "role": "Routes définies dans Gateway"},
+      {"id": "proxy_config", "cmd": "grep -rn 'ClientProxy\\|ClientsModule\\|@Client' --include='*.ts' . 2>/dev/null | head -15", "role": "Configuration ClientProxy vers services"},
+      {"id": "auth_middleware", "cmd": "grep -rn '@UseGuards\\|JwtAuthGuard\\|AuthGuard' --include='*.ts' apps/api-gateway 2>/dev/null | head -15 || echo 'Check auth guards'", "role": "Vérification middleware auth"},
+      {"id": "rate_limiting", "cmd": "grep -rn 'ThrottlerGuard\\|RateLimit\\|@Throttle' --include='*.ts' . 2>/dev/null | head -10 || echo 'No rate limiting found'", "role": "Configuration rate limiting"},
+      {"id": "swagger_gateway", "cmd": "grep -rn 'SwaggerModule\\|DocumentBuilder' --include='*.ts' apps/api-gateway 2>/dev/null | head -10 || echo 'Check Swagger config'", "role": "Documentation Swagger Gateway"}
+    ],
+    "parallel": true
+  },
+
+  "microservices_communication": {
+    "name": "Check Communication Inter-Services",
+    "description": "Vérification patterns communication (sync/async, events, CQRS)",
+    "category": "microservices",
+    "pattern": "Communication Audit",
+    "agents": [
+      {"id": "message_patterns", "cmd": "grep -rn '@MessagePattern\\|@EventPattern' --include='*.ts' . 2>/dev/null | head -20", "role": "Patterns de messages définis"},
+      {"id": "client_send", "cmd": "grep -rn '\\.send(\\|\\.emit(' --include='*.ts' . 2>/dev/null | head -20", "role": "Appels send/emit vers services"},
+      {"id": "event_handlers", "cmd": "grep -rn '@OnEvent\\|EventEmitter' --include='*.ts' . 2>/dev/null | head -15", "role": "Event handlers"},
+      {"id": "cqrs_check", "cmd": "grep -rn '@CommandHandler\\|@QueryHandler\\|@EventsHandler' --include='*.ts' . 2>/dev/null | head -15 || echo 'No CQRS pattern'", "role": "Vérification pattern CQRS"},
+      {"id": "saga_check", "cmd": "grep -rn '@Saga\\|ofType' --include='*.ts' . 2>/dev/null | head -10 || echo 'No Saga pattern'", "role": "Vérification Sagas (long-running)"}
+    ],
+    "parallel": true
+  },
+
+  "microservices_health": {
+    "name": "Health Check Microservices",
+    "description": "Vérification health checks et service discovery",
+    "category": "microservices",
+    "pattern": "Health Monitoring",
+    "agents": [
+      {"id": "health_endpoints", "cmd": "grep -rn 'HealthCheck\\|@HealthCheck\\|TerminusModule' --include='*.ts' . 2>/dev/null | head -15", "role": "Endpoints health check"},
+      {"id": "health_indicators", "cmd": "grep -rn 'HealthIndicator\\|HttpHealthIndicator\\|TypeOrmHealthIndicator' --include='*.ts' . 2>/dev/null | head -15", "role": "Health indicators configurés"},
+      {"id": "docker_healthcheck", "cmd": "grep -rn 'HEALTHCHECK' Dockerfile* docker-compose*.yml 2>/dev/null | head -10 || echo 'No Docker healthchecks'", "role": "Docker healthchecks"},
+      {"id": "consul_eureka", "cmd": "grep -rn 'consul\\|eureka\\|ServiceDiscovery' --include='*.ts' --include='*.yml' . 2>/dev/null | head -10 || echo 'No service discovery'", "role": "Service discovery (Consul/Eureka)"},
+      {"id": "circuit_breaker", "cmd": "grep -rn 'CircuitBreaker\\|@CircuitBreaker\\|resilience' --include='*.ts' . 2>/dev/null | head -10 || echo 'No circuit breaker'", "role": "Pattern Circuit Breaker"}
+    ],
+    "parallel": true
+  },
+
+  "microservices_docker": {
+    "name": "Docker Microservices Setup",
+    "description": "Vérification conteneurisation et orchestration",
+    "category": "microservices",
+    "pattern": "Container Audit",
+    "agents": [
+      {"id": "dockerfiles", "cmd": "find . -name 'Dockerfile*' | head -10 && echo '---' && cat $(find . -name 'Dockerfile' | head -1) 2>/dev/null | head -30", "role": "Liste et contenu Dockerfiles"},
+      {"id": "compose_services", "cmd": "cat docker-compose.yml 2>/dev/null | grep -A2 'services:' | head -30 || echo 'No docker-compose.yml'", "role": "Services docker-compose"},
+      {"id": "networks", "cmd": "grep -n 'networks:' docker-compose*.yml 2>/dev/null | head -10 || echo 'Check network config'", "role": "Configuration réseaux Docker"},
+      {"id": "volumes", "cmd": "grep -n 'volumes:' docker-compose*.yml 2>/dev/null | head -10 || echo 'Check volumes'", "role": "Configuration volumes"},
+      {"id": "env_files", "cmd": "find . -name '.env*' -o -name '*.env' | head -10 && cat .env.example 2>/dev/null | head -20 || echo 'No env files'", "role": "Fichiers environnement"}
+    ],
+    "parallel": false
+  },
+
+  "microservices_database": {
+    "name": "Database per Service Pattern",
+    "description": "Vérification pattern database-per-service",
+    "category": "microservices",
+    "pattern": "Data Isolation Audit",
+    "agents": [
+      {"id": "db_connections", "cmd": "grep -rn 'TypeOrmModule.forRoot\\|TypeOrmModule.forRootAsync\\|DATABASE_URL' --include='*.ts' . 2>/dev/null | head -15", "role": "Connexions DB par service"},
+      {"id": "schemas", "cmd": "grep -rn '@Entity\\|@Table' --include='*.ts' . 2>/dev/null | head -20", "role": "Entités par service"},
+      {"id": "migrations", "cmd": "find . -path '*/migrations/*' -name '*.ts' | head -15 || echo 'No migrations'", "role": "Migrations par service"},
+      {"id": "event_sourcing", "cmd": "grep -rn 'EventStore\\|@EventsHandler\\|AggregateRoot' --include='*.ts' . 2>/dev/null | head -10 || echo 'No event sourcing'", "role": "Pattern Event Sourcing"},
+      {"id": "data_sync", "cmd": "grep -rn 'Saga\\|Choreography\\|Orchestration' --include='*.ts' . 2>/dev/null | head -10 || echo 'Check data consistency pattern'", "role": "Pattern sync données (Saga)"}
+    ],
+    "parallel": true
+  },
+
+  "microservices_security": {
+    "name": "Sécurité Microservices",
+    "description": "Audit sécurité inter-services et API Gateway",
+    "category": "microservices",
+    "pattern": "Security Audit",
+    "agents": [
+      {"id": "jwt_config", "cmd": "grep -rn 'JwtModule\\|JwtService\\|JWT_SECRET' --include='*.ts' . 2>/dev/null | head -15", "role": "Configuration JWT"},
+      {"id": "service_auth", "cmd": "grep -rn 'X-Service-Key\\|InternalAuthGuard\\|ServiceToService' --include='*.ts' . 2>/dev/null | head -10 || echo 'Check service-to-service auth'", "role": "Auth inter-services"},
+      {"id": "cors_per_service", "cmd": "grep -rn 'enableCors\\|CorsOptions' --include='*.ts' . 2>/dev/null | head -10", "role": "CORS par service"},
+      {"id": "secrets_management", "cmd": "grep -rn 'ConfigModule\\|process.env\\|@nestjs/config' --include='*.ts' . 2>/dev/null | head -15", "role": "Gestion des secrets"},
+      {"id": "https_config", "cmd": "grep -rn 'httpsOptions\\|SSL\\|TLS' --include='*.ts' --include='*.yml' . 2>/dev/null | head -10 || echo 'Check HTTPS config'", "role": "Configuration HTTPS/TLS"}
+    ],
+    "parallel": true
+  },
+
+  "microservices_full_audit": {
+    "name": "Audit Complet Microservices",
+    "description": "Audit complet architecture microservices NestJS",
+    "category": "microservices",
+    "pattern": "Full Architecture Audit",
+    "agents": [
+      {"id": "structure", "cmd": "tree -L 2 apps/ libs/ 2>/dev/null || ls -la apps/ libs/ 2>/dev/null || echo 'Standard structure - check src/'", "role": "Structure monorepo"},
+      {"id": "services_count", "cmd": "find . -name 'main.ts' -path '*/apps/*' 2>/dev/null | wc -l || echo 'Check service count'", "role": "Nombre de services"},
+      {"id": "shared_libs", "cmd": "ls -la libs/ 2>/dev/null || find . -path '*/shared/*' -name '*.ts' | head -10 || echo 'No shared libs'", "role": "Librairies partagées"},
+      {"id": "messaging", "cmd": "grep -rn 'Transport\\.' --include='*.ts' . 2>/dev/null | grep -oP 'Transport\\.\\w+' | sort | uniq -c", "role": "Transports utilisés"},
+      {"id": "observability", "cmd": "grep -rn 'OpenTelemetry\\|Prometheus\\|Jaeger\\|@nestjs/terminus' --include='*.ts' . 2>/dev/null | head -10 || echo 'Check observability'", "role": "Observabilité (traces, metrics)"}
+    ],
+    "parallel": false
+  }
+}

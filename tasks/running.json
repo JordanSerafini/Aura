@@ -1,0 +1,12 @@
+{
+  "task_120135_51166": {
+    "id": "task_120135_51166",
+    "agent": "sys_health.py",
+    "args": [],
+    "started_at": "2026-01-15T12:01:35.167798",
+    "status": "running",
+    "pid": 51167,
+    "stdout_file": "/home/tinkerbell/.aura/tasks/task_120135_51166.stdout",
+    "stderr_file": "/home/tinkerbell/.aura/tasks/task_120135_51166.stderr"
+  }
+}

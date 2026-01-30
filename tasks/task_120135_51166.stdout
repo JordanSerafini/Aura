@@ -1,0 +1,10 @@
+═══ AURA-OS System Health Report ═══ [LIVE]
+
+🖥️  CPU: 14.9% (16 cores)
+🧠 RAM: 43.6% (13.63/31.28 GB)
+🌡️  Températures:
+   - k10temp/Tccd1: 59.5°C
+   - k10temp/Tctl: 57.5°C
+💾 Disque /: 43% utilisé (366G/916G)
+
+📊 Status: 🟢 HEALTHY

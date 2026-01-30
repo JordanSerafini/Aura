@@ -1,0 +1,24 @@
+# Python virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Large backup archives (keep md backups)
+backups/*.tar.gz
+
+# Logs and stats (regenerable)
+error_logs/
+stats/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo

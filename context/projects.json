@@ -1,0 +1,43 @@
+{
+  "projects": {
+    "/home/tinkerbell/.aura": {
+      "path": "/home/tinkerbell/.aura",
+      "name": ".aura",
+      "analyzed_at": "2026-01-30T20:34:57.608943",
+      "frameworks": [],
+      "structure": {
+        "total_files": 771,
+        "total_dirs": 62,
+        "file_types": {
+          "(no ext)": 446,
+          ".mp3": 219,
+          ".py": 52,
+          ".md": 15,
+          ".json": 11,
+          ".onnx": 4,
+          ".bin": 4,
+          ".gz": 3,
+          ".1": 3,
+          ".so": 3
+        },
+        "main_dirs": [
+          "memory",
+          "voice",
+          "backups",
+          "context",
+          "error_logs",
+          "hooks",
+          "brain_dumps",
+          "tasks",
+          "stats",
+          "triggers",
+          "agents"
+        ],
+        "size_mb": 324.03
+      },
+      "git": null,
+      "primary_framework": "unknown",
+      "primary_confidence": 0
+    }
+  }
+}

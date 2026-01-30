@@ -1,0 +1,31 @@
+{
+  "validators": {
+    "python": {
+      "enabled": true
+    },
+    "javascript": {
+      "enabled": true
+    },
+    "typescript": {
+      "enabled": true
+    },
+    "yaml": {
+      "enabled": false
+    },
+    "json": {
+      "enabled": true
+    },
+    "file": {
+      "enabled": true
+    },
+    "git": {
+      "enabled": true
+    }
+  },
+  "skip_log": [
+    {
+      "timestamp": "2026-01-15T09:07:09.392225",
+      "reason": "Testing skip functionality"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "version": "1.0.0",
+  "description": "Configuration MCP pour AURA - Model Context Protocol",
+  "enabled": false,
+  "servers": {
+    "filesystem": {
+      "enabled": true,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/home/tinkerbell"],
+      "description": "Accès au système de fichiers"
+    },
+    "github": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      },
+      "description": "Intégration GitHub (repos, issues, PRs)"
+    },
+    "postgres": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "postgresql://localhost/mydb"
+      },
+      "description": "Requêtes PostgreSQL"
+    },
+    "sqlite": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sqlite", "--db-path", "/path/to/db.sqlite"],
+      "description": "Base de données SQLite"
+    },
+    "brave-search": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": ""
+      },
+      "description": "Recherche web via Brave"
+    },
+    "slack": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "",
+        "SLACK_TEAM_ID": ""
+      },
+      "description": "Intégration Slack"
+    },
+    "google-drive": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "description": "Accès Google Drive"
+    },
+    "memory": {
+      "enabled": true,
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "description": "Mémoire persistante pour Claude"
+    }
+  },
+  "custom_servers": {
+    "home-assistant": {
+      "enabled": false,
+      "url": "http://homeassistant.local:8123",
+      "token": "",
+      "description": "Domotique Home Assistant"
+    }
+  },
+  "notes": {
+    "setup": "Pour activer un serveur: mettre enabled=true et configurer les clés API",
+    "claude_code_config": "Copier la config active dans ~/.claude/settings.json sous mcpServers",
+    "docs": "https://modelcontextprotocol.io/docs"
+  }
+}

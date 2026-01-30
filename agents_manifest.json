@@ -1,0 +1,1038 @@
+{
+  "version": "1.0.0",
+  "name": "AURA-OS Agent Registry",
+  "description": "Registre central des agents Aura-OS",
+  "created": "2026-01-14",
+  "teams": {
+    "core": {
+      "name": "Core System",
+      "description": "Agents système fondamentaux"
+    },
+    "cyber": {
+      "name": "Team Cyber",
+      "description": "Scan, monitoring réseau, audit sécurité"
+    },
+    "pc-admin": {
+      "name": "Team PC-Admin",
+      "description": "Nettoyage, gestion KDE, installation, monitoring"
+    },
+    "info-data": {
+      "name": "Team Info-Data",
+      "description": "Scraping, veille technologique, résumés"
+    },
+    "vocal-ui": {
+      "name": "Team Vocal-UI",
+      "description": "Voix Piper, notifications système"
+    }
+  },
+  "agents": [
+    {
+      "id": "agent_factory",
+      "name": "Agent Factory",
+      "team": "core",
+      "script": "agent_factory.py",
+      "description": "Meta-agent qui crée d'autres agents avec templates",
+      "arguments": [
+        {
+          "name": "command",
+          "required": true,
+          "choices": [
+            "create",
+            "batch",
+            "templates",
+            "list"
+          ]
+        },
+        {
+          "name": "--name",
+          "required": false,
+          "description": "Nom de l'agent"
+        },
+        {
+          "name": "--team",
+          "required": false,
+          "choices": [
+            "core",
+            "cyber",
+            "pc-admin",
+            "info-data",
+            "vocal-ui"
+          ]
+        },
+        {
+          "name": "--desc",
+          "required": false,
+          "description": "Description de l'agent"
+        },
+        {
+          "name": "--template",
+          "required": false,
+          "choices": [
+            "scraper",
+            "monitor",
+            "utility",
+            "empty"
+          ]
+        }
+      ],
+      "examples": [
+        "python3 agent_factory.py create --name 'Mon Agent' --team pc-admin --desc 'Description'",
+        "python3 agent_factory.py templates",
+        "python3 agent_factory.py list"
+      ]
+    },
+    {
+      "id": "prompt_evolver",
+      "name": "Prompt Evolver",
+      "team": "core",
+      "script": "prompt_evolver.py",
+      "description": "Auto-amélioration continue du prompt système Aura",
+      "arguments": [
+        {
+          "name": "command",
+          "required": false,
+          "default": "report",
+          "choices": [
+            "report",
+            "sync",
+            "backup",
+            "add-rule",
+            "restore"
+          ]
+        },
+        {
+          "name": "--rule",
+          "required": false,
+          "description": "Règle à ajouter au comportement"
+        }
+      ],
+      "examples": [
+        "python3 prompt_evolver.py report",
+        "python3 prompt_evolver.py sync",
+        "python3 prompt_evolver.py backup"
+      ]
+    },
+    {
+      "id": "logger_master",
+      "name": "Logger Master",
+      "team": "core",
+      "script": "logger_master.py",
+      "description": "Agent central de logging - écrit des logs formatés en Markdown",
+      "arguments": [
+        {
+          "name": "--team",
+          "required": true,
+          "choices": [
+            "cyber",
+            "pc-admin",
+            "info-data",
+            "vocal-ui",
+            "core"
+          ]
+        },
+        {
+          "name": "--agent",
+          "required": true,
+          "description": "Nom de l'agent source"
+        },
+        {
+          "name": "--status",
+          "required": true,
+          "choices": [
+            "success",
+            "error",
+            "warning",
+            "info",
+            "start",
+            "complete"
+          ]
+        },
+        {
+          "name": "--message",
+          "required": true,
+          "description": "Message principal"
+        },
+        {
+          "name": "--details",
+          "required": false,
+          "description": "Détails supplémentaires"
+        }
+      ],
+      "examples": [
+        "python3 logger_master.py --team pc-admin --agent sys_health --status success --message 'Diagnostic terminé'"
+      ]
+    },
+    {
+      "id": "sys_health",
+      "name": "System Health Monitor",
+      "team": "pc-admin",
+      "script": "sys_health.py",
+      "description": "Vérifie l'état du système (CPU, RAM, températures, disque)",
+      "arguments": [
+        {
+          "name": "--format",
+          "required": false,
+          "default": "text",
+          "choices": [
+            "text",
+            "json"
+          ]
+        },
+        {
+          "name": "--component",
+          "required": false,
+          "default": "all",
+          "choices": [
+            "cpu",
+            "memory",
+            "temps",
+            "disk",
+            "all"
+          ]
+        }
+      ],
+      "examples": [
+        "python3 sys_health.py",
+        "python3 sys_health.py --format json",
+        "python3 sys_health.py --component cpu"
+      ]
+    },
+    {
+      "id": "voice_speak",
+      "name": "Voice Speaker (Edge-TTS)",
+      "team": "vocal-ui",
+      "script": "voice_speak.py",
+      "description": "Synthèse vocale via Microsoft Edge-TTS - voix naturelles (backup Piper: voice_speak_piper.py)",
+      "arguments": [
+        {
+          "name": "text",
+          "required": true,
+          "description": "Texte à synthétiser"
+        },
+        {
+          "name": "--voice",
+          "required": false,
+          "default": "henri",
+          "choices": [
+            "henri",
+            "denise",
+            "eloise",
+            "remy",
+            "vivienne"
+          ]
+        },
+        {
+          "name": "--rate",
+          "required": false,
+          "default": "+20%",
+          "description": "Vitesse: -50% à +100%"
+        },
+        {
+          "name": "--silent",
+          "required": false,
+          "description": "Mode silencieux"
+        },
+        {
+          "name": "--stdin",
+          "required": false,
+          "description": "Lire depuis stdin"
+        },
+        {
+          "name": "--list",
+          "required": false,
+          "description": "Lister les voix disponibles"
+        },
+        {
+          "name": "--piper",
+          "required": false,
+          "description": "Utiliser Piper (backup) au lieu de Edge-TTS"
+        }
+      ],
+      "examples": [
+        "python3 voice_speak.py 'Bonjour'",
+        "python3 voice_speak.py --voice denise 'Test'",
+        "python3 voice_speak.py --piper 'Utilise Piper'",
+        "python3 voice_speak.py --list"
+      ]
+    },
+    {
+      "id": "voice_speak_piper",
+      "name": "Voice Speaker (Piper)",
+      "team": "vocal-ui",
+      "script": "voice_speak_piper.py",
+      "description": "Synthèse vocale offline via Piper - backup quand Edge-TTS est indisponible",
+      "arguments": [
+        {
+          "name": "text",
+          "required": true,
+          "description": "Texte à synthétiser"
+        },
+        {
+          "name": "--model",
+          "required": false,
+          "default": "fr_FR-siwis-medium",
+          "description": "Modèle vocal Piper"
+        },
+        {
+          "name": "--rate",
+          "required": false,
+          "default": "1.0",
+          "description": "Vitesse de parole (0.5-2.0)"
+        },
+        {
+          "name": "--silent",
+          "required": false,
+          "description": "Mode silencieux (génère sans jouer)"
+        }
+      ],
+      "examples": [
+        "python3 voice_speak_piper.py 'Bonjour'",
+        "python3 voice_speak_piper.py --rate 1.2 'Test rapide'"
+      ]
+    },
+    {
+      "id": "process_manager",
+      "name": "Process Manager",
+      "team": "pc-admin",
+      "script": "process_manager.py",
+      "description": "Gestion complète des processus - liste, monitoring CPU/GPU, lancement et fermeture d'applications",
+      "arguments": [
+        {
+          "name": "command",
+          "required": true,
+          "choices": [
+            "list",
+            "top",
+            "kill",
+            "launch",
+            "find",
+            "info"
+          ]
+        },
+        {
+          "name": "--sort",
+          "required": false,
+          "default": "cpu",
+          "choices": [
+            "cpu",
+            "mem",
+            "rss",
+            "pid"
+          ],
+          "for": "list"
+        },
+        {
+          "name": "--limit",
+          "required": false,
+          "default": 20,
+          "for": "list"
+        },
+        {
+          "name": "--filter",
+          "required": false,
+          "description": "Filtrer par nom",
+          "for": "list"
+        },
+        {
+          "name": "--format",
+          "required": false,
+          "default": "text",
+          "choices": [
+            "text",
+            "json"
+          ],
+          "for": "list"
+        },
+        {
+          "name": "--force",
+          "required": false,
+          "description": "Force SIGKILL",
+          "for": "kill"
+        },
+        {
+          "name": "--args",
+          "required": false,
+          "description": "Arguments pour l'app",
+          "for": "launch"
+        },
+        {
+          "name": "--wait",
+          "required": false,
+          "description": "Attendre la fin",
+          "for": "launch"
+        }
+      ],
+      "examples": [
+        "python3 process_manager.py list",
+        "python3 process_manager.py list --filter firefox",
+        "python3 process_manager.py top",
+        "python3 process_manager.py kill 12345",
+        "python3 process_manager.py kill firefox --force",
+        "python3 process_manager.py launch firefox",
+        "python3 process_manager.py launch code --args '. '",
+        "python3 process_manager.py find chrome",
+        "python3 process_manager.py info 12345"
+      ]
+    },
+    {
+      "id": "claude_cleaner",
+      "name": "Claude Cleaner",
+      "team": "pc-admin",
+      "script": "claude_cleaner.py",
+      "description": "Nettoie les instances orphelines de Claude Code pour éviter les freezes système",
+      "arguments": [
+        {
+          "name": "command",
+          "required": false,
+          "default": "status",
+          "choices": [
+            "status",
+            "clean"
+          ]
+        },
+        {
+          "name": "--force",
+          "required": false,
+          "description": "Utilise SIGKILL au lieu de SIGTERM",
+          "for": "clean"
+        },
+        {
+          "name": "--dry-run",
+          "required": false,
+          "description": "Simule sans tuer",
+          "for": "clean"
+        },
+        {
+          "name": "--quiet",
+          "required": false,
+          "description": "Mode silencieux",
+          "for": "clean"
+        }
+      ],
+      "examples": [
+        "python3 claude_cleaner.py status",
+        "python3 claude_cleaner.py clean",
+        "python3 claude_cleaner.py clean --force",
+        "python3 claude_cleaner.py clean --dry-run"
+      ]
+    },
+    {
+      "id": "system_cleaner",
+      "name": "System Cleaner",
+      "team": "pc-admin",
+      "script": "system_cleaner.py",
+      "description": "Scanne et nettoie fichiers obsolètes, liens cassés, caches gonflés",
+      "arguments": [
+        {
+          "name": "command",
+          "required": false,
+          "default": "scan",
+          "choices": [
+            "scan",
+            "clean",
+            "fix-links"
+          ]
+        },
+        {
+          "name": "target",
+          "required": false,
+          "choices": [
+            "trash",
+            "thumbnails",
+            "tmp",
+            "pip",
+            "npm",
+            "yarn"
+          ],
+          "for": "clean"
+        },
+        {
+          "name": "--dry-run",
+          "required": false,
+          "description": "Simule sans supprimer"
+        },
+        {
+          "name": "--format",
+          "required": false,
+          "choices": [
+            "text",
+            "json"
+          ],
+          "for": "scan"
+        }
+      ],
+      "examples": [
+        "python3 system_cleaner.py scan",
+        "python3 system_cleaner.py clean trash",
+        "python3 system_cleaner.py clean pip",
+        "python3 system_cleaner.py fix-links --dry-run"
+      ]
+    },
+    {
+      "id": "security_auditor",
+      "name": "Security Auditor",
+      "team": "cyber",
+      "script": "security_auditor.py",
+      "description": "Audit de sécurité - SSH, ports, firewall, processus suspects, permissions",
+      "arguments": [
+        {
+          "name": "command",
+          "required": false,
+          "default": "audit",
+          "choices": [
+            "audit",
+            "quick",
+            "ssh",
+            "ports",
+            "firewall",
+            "users",
+            "processes"
+          ]
+        },
+        {
+          "name": "--format",
+          "required": false,
+          "choices": [
+            "text",
+            "json"
+          ],
+          "for": "audit"
+        }
+      ],
+      "examples": [
+        "python3 security_auditor.py audit",
+        "python3 security_auditor.py quick",
+        "python3 security_auditor.py ssh",
+        "python3 security_auditor.py ports"
+      ]
+    },
+    {
+      "id": "tech_watcher",
+      "name": "Tech Watcher",
+      "team": "info-data",
+      "script": "tech_watcher.py",
+      "description": "Veille tech - scrape HN, Lobsters, Reddit",
+      "arguments": [
+        {
+          "name": "command",
+          "choices": [
+            "fetch",
+            "save"
+          ]
+        },
+        {
+          "name": "--source",
+          "choices": [
+            "all",
+            "hn",
+            "lobsters",
+            "reddit"
+          ]
+        },
+        {
+          "name": "--limit",
+          "type": "int",
+          "default": 10
+        }
+      ]
+    },
+    {
+      "id": "network_monitor",
+      "name": "Network Monitor",
+      "team": "cyber",
+      "script": "network_monitor.py",
+      "description": "Surveillance réseau en temps réel",
+      "arguments": [
+        {
+          "name": "command",
+          "choices": [
+            "status",
+            "connections",
+            "interfaces",
+            "bandwidth",
+            "ports"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plasma_controller",
+      "name": "Plasma Controller",
+      "team": "pc-admin",
+      "script": "plasma_controller.py",
+      "description": "Contrôle fenêtres et workspaces KDE",
+      "arguments": [
+        {
+          "name": "command",
+          "choices": [
+            "list",
+            "desktops",
+            "focus",
+            "close",
+            "switch",
+            "tile"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app_installer",
+      "name": "App Installer",
+      "team": "pc-admin",
+      "script": "app_installer.py",
+      "description": "Installation apt/flatpak/snap intelligente",
+      "arguments": [
+        {
+          "name": "command",
+          "choices": [
+            "search",
+            "install",
+            "remove",
+            "list",
+            "update"
+          ]
+        },
+        {
+          "name": "--source",
+          "choices": [
+            "auto",
+            "apt",
+            "flatpak",
+            "snap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thought_processor",
+      "name": "Thought Processor",
+      "team": "core",
+      "script": "thought_processor.py",
+      "description": "Transforme des pensées en vrac en plan d'action MD structuré pour les autres agents",
+      "created": "2026-01-14",
+      "arguments": [
+        {
+          "name": "thoughts",
+          "required": false,
+          "description": "Pensées à traiter (texte libre)"
+        },
+        {
+          "name": "--interactive",
+          "required": false,
+          "description": "Mode interactif multi-lignes"
+        },
+        {
+          "name": "--file",
+          "required": false,
+          "description": "Lire depuis un fichier"
+        },
+        {
+          "name": "--stdin",
+          "required": false,
+          "description": "Lire depuis stdin"
+        },
+        {
+          "name": "--output",
+          "required": false,
+          "description": "Nom du fichier de sortie"
+        },
+        {
+          "name": "--quiet",
+          "required": false,
+          "description": "Sortie minimale (juste le chemin)"
+        }
+      ],
+      "examples": [
+        "python3 thought_processor.py 'Je veux installer docker et vérifier la sécurité'",
+        "python3 thought_processor.py --interactive",
+        "cat notes.txt | python3 thought_processor.py --stdin"
+      ]
+    },
+    {
+      "id": "clipboard_manager",
+      "name": "Clipboard Manager",
+      "team": "pc-admin",
+      "script": "clipboard_manager.py",
+      "description": "Historique presse-papiers intelligent",
+      "created": "2026-01-14T13:44:14.726453",
+      "arguments": []
+    },
+    {
+      "id": "screenshot_ocr",
+      "name": "Screenshot OCR",
+      "team": "info-data",
+      "script": "screenshot_ocr.py",
+      "description": "Capture écran et extraction texte OCR",
+      "created": "2026-01-14T13:44:14.867250",
+      "arguments": []
+    },
+    {
+      "id": "calendar_sync",
+      "name": "Calendar Sync",
+      "team": "info-data",
+      "script": "calendar_sync.py",
+      "description": "Synchronisation calendrier Google/Outlook",
+      "created": "2026-01-14T13:44:15.014257",
+      "arguments": []
+    },
+    {
+      "id": "file_organizer",
+      "name": "File Organizer",
+      "team": "pc-admin",
+      "script": "file_organizer.py",
+      "description": "Rangement intelligent des téléchargements",
+      "created": "2026-01-14T13:44:15.145980",
+      "arguments": []
+    },
+    {
+      "id": "performance_tuner",
+      "name": "Performance Tuner",
+      "team": "pc-admin",
+      "script": "performance_tuner.py",
+      "description": "Optimisation automatique du système",
+      "created": "2026-01-14T13:44:15.295615",
+      "arguments": []
+    },
+    {
+      "id": "memory_manager",
+      "name": "Memory Manager v3.1",
+      "team": "core",
+      "script": "memory_manager.py",
+      "description": "Système de mémoire multi-niveaux: RAG + Épisodique + Procédurale + Graphe de connaissances + Consolidation",
+      "created": "2026-01-15T09:06:00",
+      "updated": "2026-01-15T12:00:00",
+      "version": "3.1.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["index", "search", "remember", "recall", "forget", "episode", "episodes", "skills", "knowledge", "consolidate", "unified", "stats"]}
+      ],
+      "submodules": [
+        "memory/memory_types.py",
+        "memory/episodic_memory.py",
+        "memory/procedural_memory.py",
+        "memory/knowledge_graph.py",
+        "memory/memory_consolidator.py",
+        "memory/memory_api.py"
+      ]
+    },
+    {
+      "id": "event_watcher",
+      "name": "Event Watcher",
+      "team": "core",
+      "script": "event_watcher.py",
+      "description": "Surveillance événementielle filesystem avec inotify/watchdog",
+      "created": "2026-01-15T09:02:00",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["start", "stop", "status", "add-rule", "remove-rule", "list-rules", "test"]}
+      ]
+    },
+    {
+      "id": "completion_validator",
+      "name": "Completion Validator",
+      "team": "core",
+      "script": "completion_validator.py",
+      "description": "Validation automatique avant complétion de tâches (Python, JS, YAML, etc.)",
+      "created": "2026-01-15T09:06:00",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["validate", "validate-auto", "configure", "list-validators", "skip"]}
+      ]
+    },
+    {
+      "id": "context_engineer",
+      "name": "Context Engineer",
+      "team": "core",
+      "script": "context_engineer.py",
+      "description": "Context packing, brain dump, scratchpad et compression de contexte",
+      "created": "2026-01-15T09:07:00",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["prepare", "compress", "scratchpad", "summarize", "template"]}
+      ]
+    },
+    {
+      "id": "task_runner",
+      "name": "Task Runner",
+      "team": "core",
+      "script": "task_runner.py",
+      "description": "Exécution d'agents en arrière-plan - libère le terminal et notifie vocalement à la fin",
+      "created": "2026-01-15T14:00:00",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["run", "parallel", "list", "status", "kill", "cleanup"]}
+      ],
+      "examples": [
+        "python3 task_runner.py run sys_health",
+        "python3 task_runner.py parallel 'sys_health' 'security_auditor quick'",
+        "python3 task_runner.py list --status running"
+      ]
+    },
+    {
+      "id": "intent_router",
+      "name": "Intent Router",
+      "team": "core",
+      "script": "intent_router.py",
+      "description": "Classification des intentions utilisateur et routage vers les agents appropriés (embeddings + keywords)",
+      "created": "2026-01-15T16:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["route", "list", "info"]},
+        {"name": "--no-embeddings", "required": false, "description": "Désactiver le matching par embeddings"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 intent_router.py route 'Vérifie la sécurité du système'",
+        "python3 intent_router.py list",
+        "python3 intent_router.py info sys_health"
+      ]
+    },
+    {
+      "id": "agent_supervisor",
+      "name": "Agent Supervisor",
+      "team": "core",
+      "script": "agent_supervisor.py",
+      "description": "Coordination multi-agent avec state machine, exécution parallèle et checkpoints",
+      "created": "2026-01-15T16:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["run", "list", "status", "resume", "cleanup"]},
+        {"name": "--agents", "required": false, "description": "Agents spécifiques à utiliser"},
+        {"name": "--parallel", "required": false, "description": "Exécution parallèle"},
+        {"name": "--background", "required": false, "description": "Exécution en arrière-plan"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 agent_supervisor.py run 'Audit complet du système'",
+        "python3 agent_supervisor.py run 'Check réseau et sécurité' --parallel",
+        "python3 agent_supervisor.py list --state COMPLETED"
+      ]
+    },
+    {
+      "id": "error_handler",
+      "name": "Error Handler",
+      "team": "core",
+      "script": "error_handler.py",
+      "description": "Gestion des erreurs avec retry exponential backoff, circuit breaker et fallback automatique",
+      "created": "2026-01-15T16:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["execute", "status", "errors", "reset"]},
+        {"name": "--retry", "required": false, "description": "Nombre de retries"},
+        {"name": "--no-circuit", "required": false, "description": "Désactiver circuit breaker"},
+        {"name": "--hours", "required": false, "description": "Heures pour filtrer erreurs"},
+        {"name": "--agent", "required": false, "description": "Filtrer par agent"}
+      ],
+      "examples": [
+        "python3 error_handler.py execute sys_health --retry 3",
+        "python3 error_handler.py status",
+        "python3 error_handler.py errors --hours 24"
+      ]
+    },
+    {
+      "id": "system_scheduler",
+      "name": "System Scheduler",
+      "team": "core",
+      "script": "system_scheduler.py",
+      "description": "Planification intelligente de tâches avec support cron-like, intervalles et historique d'exécution",
+      "created": "2026-01-30T21:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["add", "remove", "enable", "disable", "list", "history", "run-now", "check", "daemon"]}
+      ],
+      "examples": [
+        "python3 system_scheduler.py add 'backup' 'python3 ~/.aura/agents/backup_manager.py run aura' --interval 1d",
+        "python3 system_scheduler.py list",
+        "python3 system_scheduler.py daemon"
+      ]
+    },
+    {
+      "id": "project_context",
+      "name": "Project Context",
+      "team": "core",
+      "script": "project_context.py",
+      "description": "Auto-détection du contexte projet (framework, langage, structure Git) avec suggestions d'agents",
+      "created": "2026-01-30T21:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["analyze", "suggest", "list", "clear"]}
+      ],
+      "examples": [
+        "python3 project_context.py analyze ~/mon-projet --verbose",
+        "python3 project_context.py suggest .",
+        "python3 project_context.py list"
+      ]
+    },
+    {
+      "id": "backup_manager",
+      "name": "Backup Manager",
+      "team": "pc-admin",
+      "script": "backup_manager.py",
+      "description": "Sauvegardes automatisées intelligentes avec profils (aura, claude, dotfiles, projects), compression et rotation",
+      "created": "2026-01-30T21:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["run", "restore", "list", "profiles", "history", "init"]}
+      ],
+      "examples": [
+        "python3 backup_manager.py run aura",
+        "python3 backup_manager.py run --all",
+        "python3 backup_manager.py list"
+      ]
+    },
+    {
+      "id": "workflow_coordinator",
+      "name": "Workflow Coordinator",
+      "team": "core",
+      "script": "workflow_coordinator.py",
+      "description": "Orchestre les agents en workflow avec rapports MD intermédiaires, chaînage de contexte et synthèse finale",
+      "created": "2026-01-30T21:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "command", "required": true, "choices": ["run", "list", "reports", "read"]}
+      ],
+      "templates": ["security_audit", "system_health", "project_analysis", "daily_maintenance", "full_backup"],
+      "examples": [
+        "python3 workflow_coordinator.py run security_audit",
+        "python3 workflow_coordinator.py run daily_maintenance",
+        "python3 workflow_coordinator.py reports"
+      ]
+    },
+    {
+      "id": "code_analyzer",
+      "name": "Code Analyzer",
+      "team": "core",
+      "script": "code_analyzer.py",
+      "description": "Analyse statique de code Python/JS/TS avec métriques (AST, complexity, TODOs)",
+      "created": "2026-01-30T22:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "path", "required": false, "default": ".", "description": "Chemin à analyser"},
+        {"name": "--verbose", "required": false, "description": "Mode verbeux"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"},
+        {"name": "--ext", "required": false, "description": "Extensions à analyser"}
+      ],
+      "examples": [
+        "python3 code_analyzer.py ~/projet",
+        "python3 code_analyzer.py --verbose",
+        "python3 code_analyzer.py --json"
+      ]
+    },
+    {
+      "id": "data_profiler",
+      "name": "Data Profiler",
+      "team": "core",
+      "script": "data_profiler.py",
+      "description": "Profilage et analyse qualité de données CSV/JSON/Parquet avec score qualité",
+      "created": "2026-01-30T22:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "path", "required": false, "default": ".", "description": "Fichier ou répertoire"},
+        {"name": "--verbose", "required": false, "description": "Mode verbeux"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"},
+        {"name": "--scan", "required": false, "description": "Scanner répertoire"}
+      ],
+      "examples": [
+        "python3 data_profiler.py data.csv",
+        "python3 data_profiler.py --scan ~/data",
+        "python3 data_profiler.py --verbose"
+      ]
+    },
+    {
+      "id": "ml_inspector",
+      "name": "ML Inspector",
+      "team": "core",
+      "script": "ml_inspector.py",
+      "description": "Inspection et analyse de modèles ML/DL (sklearn, PyTorch, TensorFlow, ONNX)",
+      "created": "2026-01-30T22:00:00",
+      "version": "1.0.0",
+      "arguments": [
+        {"name": "path", "required": false, "default": ".", "description": "Fichier modèle ou répertoire"},
+        {"name": "--env", "required": false, "description": "Afficher infos environnement ML"},
+        {"name": "--scan", "required": false, "description": "Scanner répertoire pour modèles"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 ml_inspector.py model.pkl",
+        "python3 ml_inspector.py --env",
+        "python3 ml_inspector.py --scan ~/models"
+      ]
+    },
+    {
+      "id": "ts_strict_auditor",
+      "name": "TypeScript Strict Auditor",
+      "team": "core",
+      "script": "ts_strict_auditor.py",
+      "description": "Audit TypeScript ultra-strict: détection any, eslint flat config, tsconfig strict, patterns 2026",
+      "created": "2026-01-30T23:00:00",
+      "version": "1.0.0",
+      "sources": ["typescript-eslint", "ts-strict/eslint-config", "ESLint 9"],
+      "arguments": [
+        {"name": "path", "required": false, "default": ".", "description": "Chemin à auditer"},
+        {"name": "--verbose", "required": false, "description": "Mode verbeux"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 ts_strict_auditor.py ~/projet-ts",
+        "python3 ts_strict_auditor.py --verbose",
+        "python3 ts_strict_auditor.py --json"
+      ]
+    },
+    {
+      "id": "python_modern_auditor",
+      "name": "Python Modern Auditor",
+      "team": "core",
+      "script": "python_modern_auditor.py",
+      "description": "Audit Python moderne: Ruff, uv, type hints PEP 604, async patterns 2026",
+      "created": "2026-01-30T23:00:00",
+      "version": "1.0.0",
+      "sources": ["astral-sh/ruff", "uv", "mypy", "PEP 484/585/604"],
+      "arguments": [
+        {"name": "path", "required": false, "default": ".", "description": "Chemin à auditer"},
+        {"name": "--verbose", "required": false, "description": "Mode verbeux"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 python_modern_auditor.py ~/projet-python",
+        "python3 python_modern_auditor.py --verbose",
+        "python3 python_modern_auditor.py --json"
+      ]
+    },
+    {
+      "id": "ai_code_reviewer",
+      "name": "AI Code Reviewer",
+      "team": "core",
+      "script": "ai_code_reviewer.py",
+      "description": "Review automatique de code style CodeRabbit: security, bugs, performance, maintainability avec score et suggestions IA",
+      "created": "2026-01-30T23:00:00",
+      "version": "1.0.0",
+      "sources": ["coderabbitai/ai-pr-reviewer", "GitHub AI code reviews"],
+      "arguments": [
+        {"name": "path", "required": false, "default": ".", "description": "Chemin à reviewer"},
+        {"name": "--diff", "required": false, "description": "Review uniquement le diff Git"},
+        {"name": "--base", "required": false, "default": "main", "description": "Branche de base pour le diff"},
+        {"name": "--verbose", "required": false, "description": "Mode verbeux"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 ai_code_reviewer.py ~/projet",
+        "python3 ai_code_reviewer.py --diff",
+        "python3 ai_code_reviewer.py --diff --base develop"
+      ]
+    },
+    {
+      "id": "nestjs_microservice_auditor",
+      "name": "NestJS Microservices Auditor",
+      "team": "core",
+      "script": "nestjs_microservice_auditor.py",
+      "description": "Audit architecture microservices NestJS: API Gateway, communication, health checks, resilience, Docker",
+      "created": "2026-01-30T23:00:00",
+      "version": "1.0.0",
+      "sources": ["NestJS docs", "BackendWorks/nestjs-microservices", "Kong patterns"],
+      "arguments": [
+        {"name": "path", "required": false, "default": ".", "description": "Chemin à auditer"},
+        {"name": "--verbose", "required": false, "description": "Mode verbeux"},
+        {"name": "--json", "required": false, "description": "Sortie JSON"}
+      ],
+      "examples": [
+        "python3 nestjs_microservice_auditor.py ~/projet-nestjs",
+        "python3 nestjs_microservice_auditor.py --verbose"
+      ]
+    }
+  ]
+}

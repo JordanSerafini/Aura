@@ -1,0 +1,29 @@
+[
+  {
+    "id": "default-downloads",
+    "path": "/home/tinkerbell/Downloads",
+    "pattern": "*.*",
+    "event": "create",
+    "action": "/home/tinkerbell/.aura/agents/file_organizer.py organize --path {file}",
+    "enabled": true,
+    "description": "Organize new downloads automatically"
+  },
+  {
+    "id": "default-screenshots",
+    "path": "/home/tinkerbell/Pictures/Screenshots",
+    "pattern": "*.png",
+    "event": "create",
+    "action": "/home/tinkerbell/.aura/agents/screenshot_ocr.py process --file {file}",
+    "enabled": true,
+    "description": "OCR new screenshots"
+  },
+  {
+    "id": "default-aura-backup",
+    "path": "/home/tinkerbell/.aura",
+    "pattern": "*.md",
+    "event": "modify",
+    "action": "cp {file} /home/tinkerbell/.aura/backups/$(basename {file}).bak",
+    "enabled": true,
+    "description": "Backup AURA markdown files"
+  }
+]

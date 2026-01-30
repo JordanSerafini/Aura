@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-01-15",
+  "user": {
+    "name": "tinkerbell",
+    "locale": "fr_FR",
+    "timezone": "Europe/Paris"
+  },
+  "voice": {
+    "default_voice": "henri",
+    "speed": "+20%",
+    "backup_engine": "piper",
+    "always_speak": true
+  },
+  "system": {
+    "mode": "yolo",
+    "auto_backup": true,
+    "log_format": "markdown",
+    "notification_icon": "~/.aura/aura-icon.svg"
+  },
+  "dev_preferences": {
+    "primary_languages": ["Python", "TypeScript", "SQL"],
+    "preferred_frameworks": {
+      "backend": ["FastAPI", "NestJS"],
+      "frontend": ["React", "Vue"],
+      "ml": ["PyTorch", "scikit-learn"]
+    },
+    "code_style": {
+      "indent": 2,
+      "quotes": "double",
+      "semicolons": false
+    }
+  },
+  "learned_patterns": {
+    "frequent_commands": [],
+    "project_contexts": {},
+    "corrections": []
+  },
+  "schedules": {
+    "work_hours": {
+      "start": "09:00",
+      "end": "22:00"
+    },
+    "quiet_hours": {
+      "start": "23:00",
+      "end": "08:00"
+    }
+  },
+  "integrations": {
+    "mcp_enabled": [],
+    "api_keys": {}
+  }
+}
